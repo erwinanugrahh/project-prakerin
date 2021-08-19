@@ -9,9 +9,9 @@
         @csrf
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
             </div>
-            <input type="text"  class="form-control mt-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" name="email" placeholder="Nama Pengguna" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text"  class="form-control mt-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" name="email" placeholder="Masukan Email" aria-label="Username" aria-describedby="basic-addon1">
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -23,7 +23,12 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
             </div>
-            <input type="password" class="form-control mt-0" name="password" placeholder="Kata Sandi" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="password" class="form-control mt-0 @error('password') is-invalid @enderror" name="password" placeholder="Kata Sandi" aria-label="Password" aria-describedby="basic-addon1">
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="form-group">
@@ -37,7 +42,7 @@
 
 @section('another')
     <h3 class="mb-4">Belum Punya Akun?</h3>
-    <p class="mb-4">Jika anda tidak bisa masuk karena tidak terdaftar akun , silahkan buat akun baru dibawah ini.</p>
+    <p class="mb-4">Jika anda tidak bisa masuk karena tidak mempunyai akun , silahkan buat akun baru terlebih dahulu.</p>
     <p class="text-center"><a href="{{ route('register') }}" class="btn btn-light">Buat akun baru</a></p>
 @endsection
 {{-- @section('content')
