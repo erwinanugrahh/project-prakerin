@@ -47,7 +47,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-check-circle"></i></span>
         </div>
-        <input type="password_confirm" name="password_confirmation" class="form-control mt-0 @error('password') is-invalid @enderror" placeholder="Konfirmasi Kata Sandi" aria-label="Password" aria-describedby="basic-addon1">
+        <input type="password" name="password_confirmation" class="form-control mt-0 @error('password') is-invalid @enderror" placeholder="Konfirmasi Kata Sandi" aria-label="Password" aria-describedby="basic-addon1">
         @error('password_confirmation')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

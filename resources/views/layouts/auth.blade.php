@@ -12,17 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('admin/') }}/css/bootstrap.min.css">
     <!--Custom style.css-->
-    <link rel="stylesheet" href="{{ url('/') }}/css/quicksand.css">
-    <link rel="stylesheet" href="{{ url('/') }}/css/style.css">
+    <link rel="stylesheet" href="{{ url('admin/') }}/css/quicksand.css">
+    <link rel="stylesheet" href="{{ url('admin/') }}/css/style.css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="{{ url('/') }}/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{ url('/') }}/css/fontawesome.css">
+    <link rel="stylesheet" href="{{ url('admin/') }}/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{ url('admin/') }}/css/fontawesome.css">
     
     <!--[if lt IE 9]>
-        <script src="{{ url('/') }}/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="{{ url('/') }}/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="{{ url('admin/') }}/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="{{ url('admin/') }}/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <title>Login</title>
@@ -49,15 +49,15 @@
     <!--Login Wrapper-->
 
     <!-- Page JavaScript Files-->
-    <script src="{{ url('/') }}/js/jquery.min.js"></script>
-    <script src="{{ url('/') }}/js/jquery-1.12.4.min.js"></script>
+    <script src="{{ url('admin/') }}/js/jquery.min.js"></script>
+    <script src="{{ url('admin/') }}/js/jquery-1.12.4.min.js"></script>
     <!--Popper JS-->
-    <script src="{{ url('/') }}/js/popper.min.js"></script>
+    <script src="{{ url('admin/') }}/js/popper.min.js"></script>
     <!--Bootstrap-->
-    <script src="{{ url('/') }}/js/bootstrap.min.js"></script>
+    <script src="{{ url('admin/') }}/js/bootstrap.min.js"></script>
 
     <!--Custom Js Script-->
-    <script src="{{ url('/') }}/js/custom.js"></script>
+    <script src="{{ url('admin/') }}/js/custom.js"></script>
     <!--Custom Js Script-->
   </body>
 </html>
