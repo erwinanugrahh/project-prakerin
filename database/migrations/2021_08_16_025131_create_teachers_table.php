@@ -17,6 +17,7 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->string('nip', 13)->unique();
             $table->string('name');
+            $table->string('email')->unique();
             $table->integer('subject_id');
             $table->integer('class_id');
             $table->timestamps();
