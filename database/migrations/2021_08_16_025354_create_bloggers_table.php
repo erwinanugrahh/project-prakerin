@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBloggerTable extends Migration
+class CreateBloggersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBloggerTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogger', function (Blueprint $table) {
+        Schema::create('bloggers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateBloggerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogger');
+        Schema::dropIfExists('bloggers');
     }
 }
