@@ -29,3 +29,5 @@ Route::resource('subject', App\Http\Controllers\SubjectController::class)->middl
 Route::resource('teacher', App\Http\Controllers\TeacherController::class)->middleware('auth');
 
 Route::resource('student', App\Http\Controllers\StudentController::class)->middleware('auth');
+
+Route::resource('major', App\Http\Controllers\MajorController::class);

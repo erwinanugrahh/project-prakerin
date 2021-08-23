@@ -19,7 +19,7 @@ class CreateTeachersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->integer('subject_id');
-            $table->integer('class_id');
+            $table->integer('major_id');
             $table->timestamps();
         });
     }

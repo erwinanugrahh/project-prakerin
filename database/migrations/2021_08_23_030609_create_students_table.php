@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('name', 150);
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->integer('class_id');
+            $table->integer('mayor_id');
             $table->text('address');
             $table->timestamps();
         });
