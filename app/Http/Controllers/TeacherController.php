@@ -14,7 +14,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return "Ini adalah halaman home";
+        $teachers = Teacher::all();
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**
@@ -46,7 +47,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +58,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return request()->ajax()? response()->json($teacher):view('admin.teachers.edit', compact('teacher'));
     }
 
     /**
