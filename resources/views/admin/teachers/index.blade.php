@@ -1,17 +1,26 @@
-<form method="POST" action="{{ route('subject.store') }}">
-    @csrf
-    <input name="subject" type="text" placeholder="Subject Name">
-    <button class="btn-blue">Submit</button>
-</form>
-
-<ul>
-    @foreach ($subjects as $item)
-        <li style="font-size: 30px;"><a href="subject/{{ $item->id }}">{{ $item->name }}</a></li> 
-        <a href="{{ route('subject.edit', $item->id) }}" style="margin: 10px;">Edit</span></button>
-        <form action="{{ route('subject.destroy', $item->id) }}" method="POST">
-            @csrf
-            @method('delete')
-            <button type="submit" style="margin: 10px;">Hapus</span></button>    
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher</title>
+</head>
+<body>
+    @if (session()->has('success'))
+        {{ session()->get('success') }}
+    @endif
+    <a href="{{ route('teacher.create') }}">Tambah Guru</a>
+    @foreach ($teachers as $teacher)
+        <li>
+            <h4>{{ $teacher->name }}</h4>
+            <a href="{{ route('teacher.edit', $teacher->id) }}">edit</a>
+            <form action="{{ route('teacher.destroy', $teacher->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button>delete</button>
+            </form>
+        </li>
     @endforeach
-</ul>
+</body>
+</html>
