@@ -25,7 +25,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        //  
     }
 
     /**
@@ -61,7 +61,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        return view('admin.subjects.edit', compact('subject'));
+        return request()->ajax()? response()->json($subject):view('admin.subjects.edit', compact('subject'));
     }
 
     /**
