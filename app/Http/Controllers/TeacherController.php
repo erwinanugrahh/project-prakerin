@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\Subject;
+use App\Models\Major;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -25,7 +27,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $subjects = Subject::all();
+        $majorities = Major::all();
+        return view('admin.teachers.create', compact('subjects','majorities'));
     }
 
     /**
@@ -36,7 +40,24 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nip' => 'required|min:11|max:13',
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'subject_id' => 'required',
+            'major_id' => 'required',
+        ]);
+
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt('passwordguru'),
+            'role'=>'teacher'
+        ]);
+
+        Teacher::create(collect($validate)->put('user_id', $user->id)->toArray());
+
+        return redirect()->route('teacher.index')->with('success', 'Siswa berhasil ditambahkan');
     }
 
     /**
@@ -47,7 +68,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        
+
     }
 
     /**
@@ -70,7 +91,18 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+            $validate = $request->validate([
+            'nip' => 'required|min:11|max:13',
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'subject_id' => 'required',
+            'major_id' => 'required',
+        ]);
+
+        $teacher->update($validate);
+
+        $teacher->user->update($validate);
+
     }
 
     /**
@@ -81,6 +113,7 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->user->delete();
+        $teacher->delete();
     }
 }

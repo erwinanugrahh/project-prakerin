@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Major;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -25,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admin.students.create');
+        $majorities = Major::all();
+        return view('admin.students.create', compact('majorities'));
     }
 
     /**
@@ -41,11 +44,18 @@ class StudentController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email',
             'phone' => 'sometimes|min:9|max:13',
-            'class_id' => 'required',
+            'major_id' => 'required',
             'address' => 'required'
         ]);
 
-        Student::create($validate);
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt('passwordsiswa'),
+            'role'=>'student'
+        ]);
+
+        Student::create(collect($validate)->put('user_id', $user->id)->toArray());
 
         return redirect()->route('student.index')->with('success', 'Siswa berhasil ditambahkan');
     }
@@ -69,7 +79,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('admin.students.edit', compact('student'));
+        $majorities = Major::all();
+        return view('admin.students.edit', compact('student', 'majorities'));
     }
 
     /**
@@ -84,13 +95,15 @@ class StudentController extends Controller
         $validate = $request->validate([
             'nisn' => 'required|min:11|max:13',
             'name' => 'required',
-            'email' => 'required|unique:users,email,'.$student->id.',id',
+            'email' => 'required|unique:users,email,'.$student->email.',email',
             'phone' => 'sometimes|min:9|max:13',
-            'class_id' => 'required',
+            'major_id' => 'required',
             'address' => 'required'
         ]);
 
         $student->update($validate);
+
+        $student->user->update($validate);
 
         return redirect()->route('student.index')->with('success', 'Siswa berhasil diedit');
     }
@@ -103,6 +116,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        $student->user->delete();
+
         $student->delete();
 
         return redirect()->route('student.index')->with('success', 'Siswa berhasil dihapus');

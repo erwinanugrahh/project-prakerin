@@ -55,15 +55,11 @@
 </div>
 
 <div class="form-group floating-label">
-    <select class="custom-select @error('major-id') is-invalid @enderror" name="major_id" id="major_id" required>
+    <select class="custom-select @error('major_id') is-invalid @enderror" name="major_id" id="major_id" required>
         <option value=""></option>
-        <option value="1">Desain Pemodelan Informasi Bangunan</option>
-        <option value="2">Multimedia</option>
-        <option value="3">Rekayasa Perangkat Lunak</option>
-        <option value="4">Teknik Bisnis Sepeda Motor</option>
-        <option value="5">Teknik Elektronik Industri</option>
-        <option value="6">Teknik Kendaraan Ringan Otomotif</option>
-        <option value="7">Teknik Komputer dan Jaringan</option>
+        @foreach ($majorities as $major)
+            <option value="{{ $major->id }}" {{ old('major_id')==$major->id?'selected':'' }}>{{ $major->name }}</option>
+        @endforeach
     </select>
     <label for="">Jurusan</label>
     <div class="invalid-tooltip">
@@ -74,7 +70,7 @@
 <div class="form-group floating-label">
     <input class="form-control @error('name') is-invalid @enderror" type="text" id="address" name="address" value="{{ $student->address??old('address') }}" required>
     <label for="">Alamat</label>
-    <div class="invalid-tooltip">
+    <div class="invalid-tooltip" style="text-align: left;">
         Alamat Harus diisi
     </div>
 </div>
