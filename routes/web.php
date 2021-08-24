@@ -35,6 +35,6 @@ Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
     Route::resource('major', App\Http\Controllers\MajorController::class);
 });
 
-Route::prefix('teacher')->middleware(['auth','role:teacher'])->group(function(){
+Route::prefix('teacher')->middleware(['auth','role:admin,teacher'])->group(function(){
     Route::resource('lesson', LessonController::class);
 });

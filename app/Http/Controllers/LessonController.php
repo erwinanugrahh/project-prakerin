@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\Major;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LessonController extends Controller
 {
@@ -14,7 +16,12 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->teacher){
+            $lessons = Lesson::where('teacher_id',auth()->user()->teacher->id)->get();
+        }else{
+            $lessons = Lesson::all();
+        }
+        return view('teacher.lesson.index', compact('lessons'));
     }
 
     /**
@@ -24,7 +31,8 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+        $majorities = Major::all();
+        return view('teacher.lesson.create', compact('majorities'));
     }
 
     /**
@@ -35,7 +43,18 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'major_id' => 'required'
+        ]);
+
+        $validate['slug'] = Str::slug($validate['title']);
+        $validate['teacher_id'] = auth()->user()->teacher->id??null;
+
+        Lesson::create($validate);
+
+        return redirect()->route('lesson.index')->with('success', 'Materi berhasil ditambahkan.');
     }
 
     /**
@@ -57,7 +76,8 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        $majorities = Major::all();
+        return view('teacher.lesson.edit', compact('majorities', 'lesson'));
     }
 
     /**
@@ -69,7 +89,18 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'major_id' => 'required'
+        ]);
+
+        $validate['slug'] = Str::slug($validate['title']);
+        $validate['teacher_id'] = auth()->user()->teacher->id??null;
+
+        $lesson->update($validate);
+
+        return redirect()->route('lesson.index')->with('success', 'Materi berhasil diubah.');
     }
 
     /**
@@ -80,6 +111,8 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        // $lesson->tasks->delete();
+        $lesson->delete();
+        return back()->with('success','Materi berhasil dihapus');
     }
 }
