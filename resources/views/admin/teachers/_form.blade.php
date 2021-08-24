@@ -21,30 +21,25 @@
     {{ $message }}
 @enderror
 
+<select name="subject_id" id="subject_id">
+    <option value=""></option>
+    @foreach ($subjects as $subject)
+        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+    @endforeach
+</select>
 <br>
-<input type="number" id="phone" name="phone" value="{{ $teacher->phone??old('phone') }}">
-<label for="phone">NO TELEPON</label>
-<br>
-@error('phone')
+@error('name')
     {{ $message }}
 @enderror
 
 <br>
-<select name="class_id" id="class_id">
+<select name="major_id" id="major_id">
     <option value=""></option>
-    <option value="1">RPL</option>
-    <option value="2">TKJ</option>
-    <option value="3">MM</option>
+    @foreach ($majorities as $major)
+        <option value="{{ $major->id }}">{{ $major->name }}</option>
+    @endforeach
 </select>
 <br>
-@error('class_id')
+@error('major_id')
     {{ $message }}
 @enderror
-<br>
-<textarea type="text" id="address" name="address">{{ $teacher->address??old('address') }}</textarea>
-<label for="address">ALAMAT</label>
-<br>
-@error('address')
-    {{ $message }}
-@enderror
-<br>
