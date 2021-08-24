@@ -30,14 +30,14 @@
 @enderror
 
 <br>
-<select name="class_id" id="class_id">
+<select name="major_id" id="major_id">
     <option value=""></option>
-    <option value="1">RPL</option>
-    <option value="2">TKJ</option>
-    <option value="3">MM</option>
+    @foreach ($majorities as $major)
+        <option value="{{ $major->id }}">{{ $major->name }}</option>
+    @endforeach
 </select>
 <br>
-@error('class_id')
+@error('major_id')
     {{ $message }}
 @enderror
 <br>
