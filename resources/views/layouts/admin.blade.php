@@ -411,6 +411,7 @@
 
     <!--Custom Js Script-->
     <script src="{{ url('admin/') }}/js/custom.js"></script>
+    @stack('js')
     <!--Custom Js Script-->
     <script>
         //Order list dataTable
