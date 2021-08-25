@@ -15,7 +15,8 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title', 100);
+            $table->string('slug', 100);
             $table->longText('content');
             $table->integer('teacher_id');
             $table->integer('major_id');

@@ -19,6 +19,6 @@ class Role
         if(in_array(auth()->user()->role, $roles)){
             return $next($request);
         }
-        return abort(403);
+        return abort(403, 'Akses tidak diizinkan');
     }
 }

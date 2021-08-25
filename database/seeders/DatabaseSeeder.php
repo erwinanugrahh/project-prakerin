@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Major;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,7 +29,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Indra R',
                 'email' => 'indra@gmail.com',
                 'password' => bcrypt('123456'),
-                'role' => 'admin'
+                'role' => 'blogger'
             ],
             [
                 'name' => 'Erwin A',
@@ -37,17 +41,40 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Asep D',
                 'email' => 'asep@gmail.com',
                 'password' => bcrypt('123456'),
-                'role' => 'admin'
+                'role' => 'teacher'
             ],
             [
                 'name' => 'Nurfi',
                 'email' => 'nurfi@gmail.com',
                 'password' => bcrypt('123456'),
-                'role' => 'admin'
+                'role' => 'student'
             ],
         ];
         foreach($users as $user){
             User::create($user);
         }
+        Major::create(['name' => 'X RPL 2']);
+        Subject::create(['name'=>'Programan Web Pemrograman Bergerak']);
+
+        $teacher = [
+            'nip'        => '12345678901',
+            'user_id'    => 4,
+            'name'       => 'Asep D',
+            'email'      => 'asep@gmail.com',
+            'subject_id' => 1,
+            'major_id'   => 1
+        ];
+        $student = [
+            'user_id'  => 5,
+            'nisn'     => '12345678901',
+            'name'     => 'Nurfi',
+            'email'    => 'nurfi@gmail.com',
+            'phone'    => '08932352381',
+            'major_id' => 1,
+            'address'  => 'Tasimalaya'
+        ];
+
+        Teacher::create($teacher);
+        Student::create($student);
     }
 }
