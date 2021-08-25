@@ -34,6 +34,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('student', StudentController::class);
 
         Route::resource('major', MajorController::class);
+
+        Route::resource('blogger', BloggerController::class);
     });
 
     Route::prefix('teacher')->middleware(['auth','role:admin,teacher'])->group(function(){

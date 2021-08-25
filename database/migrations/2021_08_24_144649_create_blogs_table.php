@@ -20,6 +20,7 @@ class CreateBlogsTable extends Migration
             $table->string('banner');
             $table->longText('content');
             $table->integer('user_id');
+            $table->enum('status', ['pending', 'accepted', 'rejected']);
             $table->timestamps();
         });
     }
