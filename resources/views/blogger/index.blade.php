@@ -10,6 +10,7 @@
     <h1>Blog Ku</h1>
     @if (session()->has('success'))
         {{ session()->get('success') }}
+        <br>
     @endif
     <a href="{{ route('blog.create') }}">Tambah Blog</a>
     <table>

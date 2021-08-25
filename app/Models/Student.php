@@ -36,4 +36,9 @@ class Student extends Model
                               ->where('created_at', '<=', $absenToday.' 99:99:99')->first();
         return !is_null($absen);
     }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'major_id', 'id');
+    }
 }

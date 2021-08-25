@@ -74,7 +74,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('blogger.edit', compact('blog'));
     }
 
     /**
@@ -86,7 +86,22 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required',
+            'banner' => 'sometimes|mimes:png,jpg',
+            'content' => 'required'
+        ]);
+
+        if($request->hasFile('banner')){
+            unlink(base_path('public/images/banners/'.$blog->banner));
+            $fileName = "banner-".time().'.'.$request->file('banner')->getClientOriginalExtension();
+            $request->file('banner')->move('images/banners/', $fileName);
+            $validate['banner'] = $fileName;
+        }
+
+        $blog->update($validate);
+
+        return redirect()->route('blog.index')->with('success', 'Blog berhasil diedit');
     }
 
     /**
