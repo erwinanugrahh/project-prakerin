@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LessonController;
-use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +20,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
-    Route::resource('subject', App\Http\Controllers\SubjectController::class);
+Route::group(['namespace'=>'App\Http\Controllers'], function(){
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-    Route::resource('teacher', App\Http\Controllers\TeacherController::class);
+    Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
+        Route::get('/', 'DashboardController@admin');
 
-    Route::resource('student', App\Http\Controllers\StudentController::class);
+        Route::resource('subject', SubjectController::class);
 
-    Route::resource('major', App\Http\Controllers\MajorController::class);
-});
+        Route::resource('teacher', TeacherController::class);
 
-Route::prefix('teacher')->middleware(['auth','role:admin,teacher'])->group(function(){
-    Route::resource('lesson', LessonController::class);
+        Route::resource('student', StudentController::class);
+
+        Route::resource('major', MajorController::class);
+    });
+
+    Route::prefix('teacher')->middleware(['auth','role:admin,teacher'])->group(function(){
+        Route::get('/', 'DashboardController@teacher');
+
+        Route::resource('lesson', LessonController::class);
+
+        Route::resource('absen', AbsenController::class)->only(['index','store']);
+    });
+
+    Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
 });
