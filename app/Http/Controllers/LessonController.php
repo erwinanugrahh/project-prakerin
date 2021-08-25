@@ -43,18 +43,7 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'major_id' => 'required'
-        ]);
 
-        $validate['slug'] = Str::slug($validate['title']);
-        $validate['teacher_id'] = auth()->user()->teacher->id??null;
-
-        Lesson::create($validate);
-
-        return redirect()->route('lesson.index')->with('success', 'Materi berhasil ditambahkan.');
     }
 
     /**

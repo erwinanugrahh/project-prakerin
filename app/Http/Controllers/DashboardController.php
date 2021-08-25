@@ -14,7 +14,7 @@ class DashboardController extends Controller
         }else if(auth()->user()->role=='teacher'){
             return $this->teacher();
         }else if(auth()->user()->role=='student'){
-            return $this->teacher();
+            return $this->student();
         }else if(auth()->user()->role=='blogger'){
             return $this->blogger();
         }
@@ -28,6 +28,11 @@ class DashboardController extends Controller
     public function teacher()
     {
         return view('teacher.index');
+    }
+
+    public function student()
+    {
+        return view('student.index');
     }
 
     public function blogger()

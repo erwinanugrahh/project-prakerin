@@ -44,5 +44,9 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('absen', AbsenController::class)->only(['index','store']);
     });
 
+    Route::prefix('student')->middleware(['auth','role:student'])->group(function(){
+        Route::resource('task', TaskController::class);
+    });
+
     Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
-});
+    });
