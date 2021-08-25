@@ -9,20 +9,11 @@
     @endif
                         
     <div class="row border-bottom mb-4">
-        <div class="col-sm-8 pt-2"><h6 class="mb-4 bc-header">Order listing</h6></div>
+        <div class="col-sm-8 pt-2"><h6 class="mb-4 bc-header">Data Siswa</h6></div>
         <div class="col-sm-4 text-right pb-3">
             <button type="button" class="btn btn-danger icon-round shadow pull-right">
                 <i class="fas fa-trash"></i>
             </button>
-
-            {{-- <div class="pull-right mr-3 btn-order-bulk">
-                <select class="shadow bg-secondary bulk-actions">
-                    <option data-display="<span class='text-white'><b>Bulk status</b></span>">Status options</option>
-                    <option value="1">Pending</option>
-                    <option value="2">Cancelled</option>
-                    <option value="4">Delivered</option>
-                </select>
-            </div> --}}
 
             <a href="{{ route('student.create') }}" class="pull-right mr-3 btn btn-primary">Tambah Siswa</a>
 
@@ -46,7 +37,6 @@
                     <th>NISN</th>
                     <th>Nama Siswa</th>
                     <th>Kelas</th>
-                    <th>Jurusan</th>
                     <th>Alamat</th>
                     <th>Action</th>
                 </tr>
@@ -62,13 +52,12 @@
                                 </span>
                             </div>
                         </td>
-                        <td>Ord#13</td>
+                        <td>{{ $student->nisn }}</td>
                         <td class="align-middle">
-                            Stephanie Cott
+                            {{ $student->name }}
                         </td>
-                        <td class="align-middle"><span class="badge badge-warning">Pending</span></td>
-                        <td class="align-middle">$200</td>
-                        <td>15/09/2018</td>
+                        <td class="align-middle">{{ $student->major->name }}</td>
+                        <td>  {{ $student->address }}</td>
                         <td class="align-middle text-center">
                             <button class="btn btn-theme" data-toggle="modal" data-target="#orderInfo">
                                 <i class="fa fa-eye"></i>
@@ -84,6 +73,16 @@
 </div>
 
 @endsection
+
+
+            {{-- <div class="pull-right mr-3 btn-order-bulk">
+                <select class="shadow bg-secondary bulk-actions">
+                    <option data-display="<span class='text-white'><b>Bulk status</b></span>">Status options</option>
+                    <option value="1">Pending</option>
+                    <option value="2">Cancelled</option>
+                    <option value="4">Delivered</option>
+                </select>
+            </div> --}}
 
 {{-- <!DOCTYPE html>
 <html lang="en">

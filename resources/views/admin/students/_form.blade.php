@@ -61,16 +61,16 @@
             <option value="{{ $major->id }}" {{ old('major_id')==$major->id?'selected':'' }}>{{ $major->name }}</option>
         @endforeach
     </select>
-    <label for="">Jurusan</label>
+    <label for="">Kelas / Jurusan</label>
     <div class="invalid-tooltip">
-        Silahkan Pilih Jurusan Terlebih Dahulu
+        Silahkan Pilih Kelas / Jurusan Terlebih Dahulu
     </div>
 </div>
 
 <div class="form-group floating-label">
     <input class="form-control @error('name') is-invalid @enderror" type="text" id="address" name="address" value="{{ $student->address??old('address') }}" required>
     <label for="">Alamat</label>
-    <div class="invalid-tooltip" style="text-align: left;">
+    <div class="invalid-tooltip">
         Alamat Harus diisi
     </div>
 </div>
