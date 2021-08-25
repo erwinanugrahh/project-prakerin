@@ -8,7 +8,7 @@
     <form class="needs-validation" action="{{ route('student.store') }}" method="post" novalidate>
         @csrf
         @include('admin.students._form')
-        <button class="btn btn-success">Simpan</button>
+        <button class="btn btn-success" >Simpan</button>
     </form>
 
 </div>

@@ -253,7 +253,8 @@
     <!--Bootstrap-->
     <script src="{{ url('admin/') }}/js/bootstrap.min.js"></script>
     <!--Sweet alert JS-->
-    <script src="{{ url('admin/') }}/js/sweetalert.js"></script>
+    {{-- <script src="{{ url('admin/') }}/js/sweetalert.js"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--Progressbar JS-->
     <script src="{{ url('admin/') }}/js/progressbar.min.js"></script>
     <!--Datatable-->
@@ -274,6 +275,29 @@
         $("#productList").DataTable();
         //Nice select
         $('.bulk-actions').niceSelect();
+    </script>
+    <script>
+        $(document).on('click', '.delete', function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.form.submit();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        })
     </script>
   </body>
 </html>

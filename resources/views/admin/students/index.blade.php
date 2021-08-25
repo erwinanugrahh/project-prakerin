@@ -11,9 +11,6 @@
     <div class="row border-bottom mb-4">
         <div class="col-sm-8 pt-2"><h6 class="mb-4 bc-header">Data Siswa</h6></div>
         <div class="col-sm-4 text-right pb-3">
-            <button type="button" class="btn btn-danger icon-round shadow pull-right">
-                <i class="fas fa-trash"></i>
-            </button>
 
             <a href="{{ route('student.create') }}" class="pull-right mr-3 btn btn-primary">Tambah Siswa</a>
 
@@ -59,11 +56,15 @@
                         <td class="align-middle">{{ $student->major->name }}</td>
                         <td>  {{ $student->address }}</td>
                         <td class="align-middle text-center">
+                            <form action="{{ route('student.destroy', $student->id) }}" method="post">
                             <button class="btn btn-theme" data-toggle="modal" data-target="#orderInfo">
                                 <i class="fa fa-eye"></i>
                             </button>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#orderUpdate"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                               <a href="{{ route('student.edit', $student->id) }}"><button class="btn btn-success" type="button" data-toggle="modal" data-target="#orderUpdate"><i class="fa fa-pencil"></i></button></a> 
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -73,6 +74,7 @@
 </div>
 
 @endsection
+
 
 
             {{-- <div class="pull-right mr-3 btn-order-bulk">

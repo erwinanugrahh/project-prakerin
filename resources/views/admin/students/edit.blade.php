@@ -9,7 +9,7 @@
         @csrf
         @method('put')
         @include('admin.students._form')
-        <button>Edit</button>
+        <button class="btn btn-primary">Edit</button>
     </form>
 
 </div>

@@ -58,7 +58,7 @@
     <select class="custom-select @error('major_id') is-invalid @enderror" name="major_id" id="major_id" required>
         <option value=""></option>
         @foreach ($majorities as $major)
-            <option value="{{ $major->id }}" {{ old('major_id')==$major->id?'selected':'' }}>{{ $major->name }}</option>
+            <option value="{{ $major->id }}" {{ (isset($student)&&$student->major_id)||old('major_id')==$major->id?'selected':'' }}>{{ $major->name }}</option>
         @endforeach
     </select>
     <label for="">Kelas / Jurusan</label>

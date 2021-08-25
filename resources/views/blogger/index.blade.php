@@ -13,7 +13,6 @@
         {{ session()->get('success') }}
     @endif
     <a href="{{ route('blog.create') }}">Tambah Blog</a>
-    <table>
     
     <div class="table-responsive product-list">
         
@@ -47,13 +46,17 @@
                         </td>
                         <td>{{ $loop->iteration }}</td>
                         <td class="align-middle">{{ $blog->title }}</td>
-                        <td class="align-middle">{{ $blog->status }}</td>
+                        <td class="align-middle"><span class="badge badge-warning">Pending</span></td>
                         <td class="align-middle text-center">
-                            <button class="btn btn-theme" data-toggle="modal" data-target="#orderInfo">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#orderUpdate" href="{{ route('blog.edit', $blog->slug) }}"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            <form action="{{ route('blog.destroy', $blog->slug) }}" method="post">
+                                <button class="btn btn-theme" type="button" data-toggle="modal" data-target="#orderInfo">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <a href="{{ route('blog.edit', $blog->slug) }}"><button class="btn btn-success" type="button"><i class="fa fa-pencil"></i></button></a>
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -113,4 +116,4 @@
     </table>
 </body>
 </html>
- @endsection --}} --}}
+ @endsection --}}

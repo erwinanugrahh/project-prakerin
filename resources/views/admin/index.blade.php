@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+@extends('layouts.admin')
+
+@section('content')
+    <h3>Dashboard untuk user admin draa.</h3>
+@endsection
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,4 +15,4 @@
 <body>
     Dashboard untuk user admin draa.
 </body>
-</html>
+</html> --}}
