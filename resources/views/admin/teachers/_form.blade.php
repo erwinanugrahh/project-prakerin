@@ -66,6 +66,6 @@
     </div>
 </div>
 
-{{-- @push('js')
+@push('js')
     <script src="{{ url('admin/') }}/js/form-validator/jquery.form-validator.min.js"></script>
-@endpush --}}
+@endpush
