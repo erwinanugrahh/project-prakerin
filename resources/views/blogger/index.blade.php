@@ -1,4 +1,74 @@
-<!DOCTYPE html>
+@extends('layouts.admin')
+
+@section('content')
+    
+<div class="product-list">
+
+    @if (session()->has('success'))
+        {{ session()->get('success') }}
+    @endif
+                        
+    <h1>Blog Ku</h1>
+    @if (session()->has('success'))
+        {{ session()->get('success') }}
+    @endif
+    <a href="{{ route('blog.create') }}">Tambah Blog</a>
+    
+    <div class="table-responsive product-list">
+        
+        <table class="table table-bordered table-striped mt-3" id="productList">
+            <thead>
+                <tr>
+                    <th style="width: 10px;" class="p-0 pr-4 align-middle">
+                        <div class="form-check-box cta">
+                            <span class="color1">
+                                <input type="checkbox" id="orderAll">
+                                <label for="orderAll"></label>
+                            </span>
+                        </div>
+                    </th>
+                    <td>No</td>
+                    <td>Judul</td>
+                    <td>Status</td>
+                    <td>Aksi</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($blogs as $blog)
+                    <tr>
+                        <td style="width: 10px;" class="p-0 pr-1 align-middle">
+                            <div class="form-check-box cta">
+                                <span class="color1">
+                                    <input type="checkbox" id="order1">
+                                    <label for="order1"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $blog->title }}</td>
+                        <td class="align-middle"><span class="badge badge-warning">Pending</span></td>
+                        <td class="align-middle text-center">
+                            <form action="{{ route('blog.destroy', $blog->slug) }}" method="post">
+                                <button class="btn btn-theme" type="button" data-toggle="modal" data-target="#orderInfo">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <a href="{{ route('blog.edit', $blog->slug) }}"><button class="btn btn-success" type="button"><i class="fa fa-pencil"></i></button></a>
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@endsection
+
+
+{{-- {{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +76,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Blog</title>
 </head>
-<body>
+<body> --}}
+    
+    {{-- @extends('layouts.admin')
+
+    @section('content')
+        
+   
     <h1>Blog Ku</h1>
     @if (session()->has('success'))
         {{ session()->get('success') }}
@@ -40,3 +116,4 @@
     </table>
 </body>
 </html>
+ @endsection --}}

@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+    
 @if (session()->has('success'))
     {{ session()->get('success') }} <br>
 @endif
@@ -23,3 +27,5 @@
         </li>
     @endforeach
 </ul>
+
+@endsection
