@@ -44,7 +44,7 @@
                     <th>Nama Siswa</th>
                     <th>Kelas</th>
                     <th>Alamat</th>
-                    <th style="width: 150px">Action</th>
+                    <th style="width: 150px">Aksi</th>
                 </tr>
             </thead>
             <tbody>
