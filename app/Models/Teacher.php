@@ -9,6 +9,11 @@ class Teacher extends Model
 {
     protected $guarded = ["id"];
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
     public function major()
     {
         return $this->belongsTo(Major::class, 'major_id', 'id');

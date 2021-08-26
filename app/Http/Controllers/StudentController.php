@@ -6,6 +6,7 @@ use App\Models\Major;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class StudentController extends Controller
 {
@@ -14,10 +15,27 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $model=Student::query()->with('major');
+
+        if($request['filter_major']!=null)
+        {
+            $model->where('major_id',$request['filter_major']);
+        }
+
+        $datatable = DataTables::eloquent($model)
+        ->addColumn('checkbox', function($student){
+            return view('admin.students._checkbox', compact('student'));
+        })
+        ->addColumn('action',function($student){
+            return view('admin.students._action',compact('student'));
+        })
+        ->toJson();
+
         $students = Student::all();
-        return view('admin.students.index', compact('students'));
+        $majorities = Major::all();
+        return $request->ajax()?$datatable:view('admin.students.index', compact('students','majorities'));
     }
 
     /**
@@ -121,5 +139,18 @@ class StudentController extends Controller
         $student->delete();
 
         return redirect()->route('student.index')->with('success', 'Siswa berhasil dihapus');
+    }
+
+    public function delete_selected(Request $request)
+    {
+        foreach($request->id as $id){
+            $student = Student::find($id);
+            $student->user->delete();
+            $student->delete();
+        }
+
+        return response()->json([
+            'count' => count($request->id)
+        ]);
     }
 }

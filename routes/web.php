@@ -32,6 +32,7 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('teacher', TeacherController::class);
 
         Route::resource('student', StudentController::class);
+        Route::post('delete-selected', 'StudentController@delete_selected');
 
         Route::resource('major', MajorController::class);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\Major;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -79,7 +80,9 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return request()->ajax()? response()->json($teacher):view('admin.teachers.edit', compact('teacher'));
+        $subjects = Subject::all();
+        $majorities = Major::all();
+        return request()->ajax()? response()->json($teacher):view('admin.teachers.edit', compact('teacher','majorities','subjects'));
     }
 
     /**
@@ -91,10 +94,10 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-            $validate = $request->validate([
+        $validate = $request->validate([
             'nip' => 'required|min:11|max:13',
             'name' => 'required',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:users,email,'.$teacher->email.',email',
             'subject_id' => 'required',
             'major_id' => 'required',
         ]);
@@ -103,6 +106,7 @@ class TeacherController extends Controller
 
         $teacher->user->update($validate);
 
+        return redirect()->route('teacher.index')->with('success', 'Guru '.$teacher->name.' berhasil diedit');
     }
 
     /**

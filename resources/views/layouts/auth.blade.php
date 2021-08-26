@@ -19,7 +19,7 @@
     <!--Font Awesome-->
     <link rel="stylesheet" href="{{ url('admin/') }}/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="{{ url('admin/') }}/css/fontawesome.css">
-    
+
     <!--[if lt IE 9]>
         <script src="{{ url('admin/') }}/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="{{ url('admin/') }}/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -29,12 +29,12 @@
   </head>
 
   <body class="login-body">
-    
+
     <!--Login Wrapper-->
 
     <div class="container-fluid login-wrapper">
         <div class="login-box">
-            <h1 class="text-center mb-5"><i class="fab fa-xing text-primary"></i> @yield('title') </h1>    
+            <h1 class="text-center mb-5"><i class="fab fa-xing text-primary"></i> @yield('title') </h1>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-12 login-box-info">
                     @yield('another')
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
     <!--Login Wrapper-->
 

@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!--Meta Responsive tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -33,6 +33,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .invalid-tooltip{
+            right: 0;
+        }
+        .parent.active{
+            background: lightblue;
+        }
+        .parent.active>a{
+            color: blue;
+        }
+        .child.active>a{
+            color: royalblue;
+        }
+    </style>
+
     <title>Admin</title>
   </head>
   <body>
@@ -48,7 +63,7 @@
 
         <!--Header-->
         <div class="row header shadow-sm">
-            
+
             <!--Logo-->
             <div class="col-sm-3 pl-0 text-center header-logo">
                <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
@@ -60,7 +75,7 @@
             <!--Header Menu-->
             <div class="col-sm-9 header-menu pt-2 pb-0">
                 <div class="row">
-                    
+
                     <!--Menu Icons-->
                     <div class="col-sm-4 col-8 pl-0">
                         <!--Toggle sidebar-->
@@ -193,7 +208,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-power-off pr-2"></i> {{ __('Logout') }} 
+                                        <i class="fa fa-power-off pr-2"></i> {{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -203,7 +218,7 @@
                         </div>
                     </div>
                     <!--Search box and avatar-->
-                </div>    
+                </div>
             </div>
             <!--Header Menu-->
         </div>
@@ -218,9 +233,9 @@
 
             <!--Content right-->
             <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
-                <h5 class="mb-0" ><strong>Orders</strong></h5>
+                <h5 class="mb-0" ><strong>@yield('title')</strong></h5>
                 <span class="text-secondary">Ecommerce <i class="fa fa-angle-right"></i> orders</span>
-                
+
                 <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
                     @yield('content')
                 </div>
@@ -253,8 +268,7 @@
     <!--Bootstrap-->
     <script src="{{ url('admin/') }}/js/bootstrap.min.js"></script>
     <!--Sweet alert JS-->
-    {{-- <script src="{{ url('admin/') }}/js/sweetalert.js"></script> --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url('admin/') }}/js/sweetalert.js"></script>
     <!--Progressbar JS-->
     <script src="{{ url('admin/') }}/js/progressbar.min.js"></script>
     <!--Datatable-->
@@ -275,7 +289,27 @@
         $("#productList").DataTable();
         //Nice select
         $('.bulk-actions').niceSelect();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
     </script>
+    @if (session()->has('success'))
+        <script>
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session()->get("success") }}'
+            })
+        </script>
+    @endif
     <script>
         $(document).on('click', '.delete', function(e){
             e.preventDefault();
