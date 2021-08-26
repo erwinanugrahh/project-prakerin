@@ -20,11 +20,16 @@
                     @case('admin')
                         @include('partials.admin-nav')
                         @break
-                    @case(2)
-
+                    @case('teacher')
+                        @include('partials.teacher-nav')
+                        @break
+                    @case('student')
+                        @include('partials.student-nav')
+                        @break
+                    @case('blogger')
+                        @include('partials.blogger-nav')
                         @break
                     @default
-
                 @endswitch
             </ul>
         </div>

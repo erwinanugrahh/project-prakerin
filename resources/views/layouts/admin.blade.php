@@ -28,6 +28,8 @@
     <!--Bootstrap Calendar-->
     <link rel="stylesheet" href="{{ url('admin/') }}/js/calendar/bootstrap_calendar.css">
 
+    @stack('css')
+
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,7 +50,7 @@
         }
     </style>
 
-    <title>Admin</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <div class="loader-wrapper">
@@ -234,7 +236,7 @@
             <!--Content right-->
             <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
                 <h5 class="mb-0" ><strong>@yield('title')</strong></h5>
-                <span class="text-secondary">Ecommerce <i class="fa fa-angle-right"></i> orders</span>
+                <span class="text-secondary">@yield('page') <i class="fa fa-angle-right"></i> @yield('action')</span>
 
                 <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
                     @yield('content')
@@ -242,7 +244,7 @@
                 <!--Footer-->
                 <div class="row mt-5 mb-4 footer">
                     <div class="col-sm-8">
-                        <span>&copy; All rights reserved 2021 designed by <a class="text-info" href="#">Bryan X</a></span>
+                        <span>&copy; All rights reserved 2021 designed by <a class="text-info" href="http://instagram.com/indrabesset">Bryan X</a></span>
                     </div>
                     <div class="col-sm-4 text-right">
                         <a href="#" class="ml-2">Contact Us</a>
