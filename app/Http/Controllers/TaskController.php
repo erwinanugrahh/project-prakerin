@@ -39,11 +39,19 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-         $validate = $request->validate([
+        $validate = $request->validate([
             'lesson_id' => 'required',
             'content' => 'required',
-            'student_id' => 'required'
         ]);
+
+        Task::firstOrCreate([
+            'lesson_id' => $validate['lesson_id']
+        ],[
+            'content' => $validate['content'],
+            'student_id' => student()->id
+        ])->update(['content'=>$validate['content']]);
+
+        return redirect()->route('task.index')->with('success', 'Tugas berhasil diupload');
     }
 
     /**
@@ -54,7 +62,8 @@ class TaskController extends Controller
      */
     public function show(Lesson $task)
     {
-        return view('student.task.show', compact('task'));
+        $myAnswer = $task->tasks->where('student_id', student()->id)->first();
+        return view('student.task.show', compact('task', 'myAnswer'));
     }
 
     /**

@@ -101,6 +101,7 @@ class BloggerController extends Controller
      */
     public function destroy(User $blogger)
     {
+        $blogger->blogs->delete();
         $blogger->delete();
 
         return back()->with('success', 'Blogger berhasil dihapus');

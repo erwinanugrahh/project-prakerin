@@ -15,4 +15,9 @@ class Lesson extends Model
     {
         return 'slug';
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'lesson_id', 'id');
+    }
 }

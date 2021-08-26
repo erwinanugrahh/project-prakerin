@@ -6,3 +6,10 @@ if(!function_exists('teacher')){
         return auth()->user()->teacher;
     }
 }
+
+if(!function_exists('student')){
+    function student()
+    {
+        return auth()->user()->student;
+    }
+}

@@ -10,18 +10,19 @@
     <h1>{{ $task->title }}</h1>
     <h3>{!! $task->content !!}</h3>
 
-    <form action="{{ route('task.create') }}" method="post">
+    <form action="{{ route('task.store') }}" method="post">
         @csrf
+        <input type="hidden" name="lesson_id" value="{{ $task->id }}">
+        <textarea class="form-control content" name="content">{{ $myAnswer->content??old('content') }}</textarea>
+        <br>
+        @error('content')
+        <i>{{ $message }}</i>
+        @enderror
+        <br>
+
         <button>Simpan</button>
     </form>
-</body>
 
-    <textarea class="form-control content" name="content">{{ $lesson->content??old('content') }}</textarea>
-    <br>
-    @error('content')
-        <i>{{ $message }}</i>
-    @enderror
-    <br>
 
 
     <script src="{{ url('js/jquery.min.js') }}"></script>
@@ -38,7 +39,7 @@
                 editor.on('change', function () {
                     editor.save();
                 });},
-        height: 700,
+        height: 500,
         theme: 'silver',
         plugins: [
             'advlist autolink lists link image charmap print preview hr anchor pagebreak',
