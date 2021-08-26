@@ -323,12 +323,25 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    this.form.submit();
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    let id = $(this).data('id');
+                    $.ajax({
+                        url: id,
+                        method: 'DELETE',
+                        data: {_token: $('input[name=_token]').val()},
+                        success: function(result){
+                            table.draw()
+                            Toast.fire({
+                                icon: 'success',
+                                title: result.message
+                            })
+                        }
+                    })
+                    // this.form.submit();
+                    // Swal.fire(
+                    //     'Deleted!',
+                    //     'Your file has been deleted.',
+                    //     'success'
+                    // )
                 }
             })
         })

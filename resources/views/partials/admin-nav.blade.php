@@ -11,7 +11,7 @@
     </ul>
 </li>
 <li class="parent">
-    <a href="widgets.html" class=""><i class="fa fa-puzzle-piece mr-3"></i>
-        <span class="none">Widget </span>
+    <a href="widgets.html" class=""><i class="fa fa-blog mr-3"></i>
+        <span class="none">Penyetujuan Blog </span>
     </a>
 </li>

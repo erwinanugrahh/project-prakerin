@@ -11,6 +11,11 @@
         <!--Sidebar Navigation Menu-->
         <div class="sidebar-menu-container">
             <ul class="sidebar-menu mt-4 mb-4">
+                <li class="parent" id="dashboard">
+                    <a href="{{ url('/dashboard') }}" class=""><i class="fa fa-dashboard mr-3"></i>
+                        <span class="none">Dashboard </span>
+                    </a>
+                </li>
                 @switch(auth()->user()->role)
                     @case('admin')
                         @include('partials.admin-nav')

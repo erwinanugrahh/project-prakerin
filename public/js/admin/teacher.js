@@ -1,9 +1,9 @@
 ajax_url=''
 //active
-$('#data-student').addClass('active').parent().parent().addClass('active');
+$('#data-teacher').addClass('active').parent().parent().addClass('active');
 
 //patients datatable
-var table=$('#students_table').DataTable({
+var table=$('#teachers_table').DataTable({
     // "processing": true,
     "serverSide": true,
     "bSort" : true,
@@ -17,10 +17,9 @@ var table=$('#students_table').DataTable({
     fixedHeader: true,
     "columns": [
         {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
-        {data:"nisn",className:'align-middle',orderable:true,sortable:true},
-        {data:"name",className:'align-middle'},
-        {data:"major.name",className:'align-middle',sortable:false},
-        {data:"address",className:'align-middle'},
+        {data:"nip",name:'teachers.nip',className:'align-middle',orderable:true,sortable:true},
+        {data:"name",name:'teachers.name',className:'align-middle'},
+        {data:"major_name",name:'major.name',className:'align-middle'},
         {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
     ],
     "language": {
@@ -42,10 +41,6 @@ var table=$('#students_table').DataTable({
             "sPrevious": "Previous"
         },
     }
-});
-
-$('#filter_major').on('change', function(){
-    table.draw();
 });
 
 //select all
@@ -77,14 +72,14 @@ $('#delete-selected').on('click', function(){
                     arraySelected.push(n.value);
                 })
                 $.ajax({
-                    url: 'student/delete-selected',
+                    url: 'teacher/delete-selected',
                     method: 'POST',
                     data: {id: arraySelected, _token: $('input[name=_token]').val()},
                     success: function(result){
                         table.draw()
                         Toast.fire({
                             icon: 'success',
-                            title: `Berhasil terhapus, ${result.count} siswa terhapus.`
+                            title: `Berhasil terhapus, ${result.count} guru terhapus.`
                         })
                     }
                 })

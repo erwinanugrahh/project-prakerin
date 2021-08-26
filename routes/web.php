@@ -30,9 +30,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('subject', SubjectController::class);
 
         Route::resource('teacher', TeacherController::class);
+        Route::post('teacher/delete-selected', 'TeacherController@delete_selected');
 
         Route::resource('student', StudentController::class);
-        Route::post('delete-selected', 'StudentController@delete_selected');
+        Route::post('student/delete-selected', 'StudentController@delete_selected');
 
         Route::resource('major', MajorController::class);
 
@@ -52,4 +53,4 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     });
 
     Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
-    });
+});

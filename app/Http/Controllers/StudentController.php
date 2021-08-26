@@ -134,11 +134,12 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        $name = $student->name;
         $student->user->delete();
 
         $student->delete();
 
-        return redirect()->route('student.index')->with('success', 'Siswa berhasil dihapus');
+        return request()->ajax()?response()->json(['message'=>"Siswa $name berhasil dihapus"]):redirect()->route('student.index')->with('success', 'Siswa berhasil dihapus');
     }
 
     public function delete_selected(Request $request)

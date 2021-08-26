@@ -7,6 +7,7 @@ use App\Models\Subject;
 use App\Models\Major;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class TeacherController extends Controller
 {
@@ -15,10 +16,29 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $model=Teacher::with('major')->select('teachers.*');
+
+        if($request['filter_major']!=null)
+        {
+            $model->where('major_id',$request['filter_major']);
+        }
+
+        $datatable = DataTables::of($model)
+        ->addColumn('checkbox', function($teacher){
+            return view('admin.teachers._checkbox', compact('teacher'));
+        })
+        ->addColumn('major_name', function(Teacher $teacher){
+            return $teacher->major->name;
+        })
+        ->addColumn('action',function($teacher){
+            return view('admin.teachers._action',compact('teacher'));
+        })
+        ->toJson();
+
         $teachers = Teacher::all();
-        return view('admin.teachers.index', compact('teachers'));
+        return $request->ajax()?$datatable:view('admin.teachers.index', compact('teachers'));
     }
 
     /**
@@ -29,7 +49,10 @@ class TeacherController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        $majorities = Major::all();
+        $majorities = Major::with('teacher')->get();
+        $majorities = $majorities->filter(function($item){
+            return is_null($item->teacher);
+        });
         return view('admin.teachers.create', compact('subjects','majorities'));
     }
 
@@ -58,7 +81,7 @@ class TeacherController extends Controller
 
         Teacher::create(collect($validate)->put('user_id', $user->id)->toArray());
 
-        return redirect()->route('teacher.index')->with('success', 'Siswa berhasil ditambahkan');
+        return redirect()->route('teacher.index')->with('success', 'Guru berhasil ditambahkan');
     }
 
     /**
@@ -117,7 +140,22 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
+        $name = $teacher->name;
         $teacher->user->delete();
         $teacher->delete();
+        return response()->json(['message'=>"Guru $name berhasil dihapus"]);
+    }
+
+    public function delete_selected(Request $request)
+    {
+        foreach($request->id as $id){
+            $teacher = Teacher::find($id);
+            $teacher->user->delete();
+            $teacher->delete();
+        }
+
+        return response()->json([
+            'count' => count($request->id)
+        ]);
     }
 }

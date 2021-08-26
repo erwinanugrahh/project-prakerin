@@ -93,6 +93,8 @@ class MajorController extends Controller
      */
     public function destroy(Major $major)
     {
+        $major->students->delete();
+        $major->teacher->delete();
         $major->delete();
 
         return back()->with('success', 'Kelas berhasil dihapus');
