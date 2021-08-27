@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('title') Halaman Siswa @endsection
+@section('page') Siswa @endsection
+@section('action') Indeks @endsection
 
+@section('content')
 <div class="product-list">
 
     <div class="row border-bottom mb-4">

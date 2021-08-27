@@ -15,7 +15,7 @@ class MajorController extends Controller
     public function index()
     {
         $majorities = Major::all();
-        return view('admin.major.index', compact('majorities'));
+        return request()->ajax()?response()->json(['data'=>$majorities]):view('admin.major.index', compact('majorities'));
     }
 
     /**
@@ -40,9 +40,9 @@ class MajorController extends Controller
             'name' => 'required'
         ]);
 
-        Major::create($validate);
+        $id = Major::create($validate)->id;
 
-        return back()->with('success', 'Kelas berhasi ditambahkan');
+        return $request->ajax()?response()->json(['id'=>$id]):back()->with('success', 'Kelas berhasil ditambahkan');
     }
 
     /**
@@ -82,7 +82,7 @@ class MajorController extends Controller
 
         $major->update($validate);
 
-        return redirect()->route('major.index')->with('success', 'Kelas berhasi diubah');
+        return $request->ajax()?response()->json(['oke'=>'oke']):redirect()->route('major.index')->with('success', 'Kelas berhasi diubah');
     }
 
     /**
@@ -93,10 +93,8 @@ class MajorController extends Controller
      */
     public function destroy(Major $major)
     {
-        $major->students->delete();
-        $major->teacher->delete();
         $major->delete();
 
-        return back()->with('success', 'Kelas berhasil dihapus');
+        return request()->ajax()?response()->json(['oke']):back()->with('success', 'Kelas berhasil dihapus');
     }
 }

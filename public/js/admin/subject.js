@@ -1,17 +1,26 @@
 //active
-$('#data-major').addClass('active').parent().parent().addClass('active');
+$('#data-subject').addClass('active').parent().parent().addClass('active');
 /*===========JsGrid field Validation ================================*/
 
-var data;
-$.ajax({
-    url: '',
-    async: false,
-    success: function(result){
-        data = result.data
-    }
-})
-var grid = $("#majorities_table").jsGrid({
-    height: "400px",
+var data = [];
+var reload = ()=>{
+    $.ajax({
+        url: '',
+        async: false,
+        success: function(result){
+            data = []
+            result.data.forEach(element => {
+                var subject = {id: element.id, 'Nama Mata Pelajaran':element.name}
+                data.push(subject)
+            });
+        }
+    })
+}
+
+reload()
+
+var grid = $("#subjects_table").jsGrid({
+    height: "463px",
     width: "100%",
     // filtering: true,
     editing: true,
@@ -19,7 +28,7 @@ var grid = $("#majorities_table").jsGrid({
     sorting: true,
     paging: true,
     autoload: true,
-    pageSize: 15,
+    pageSize: 8,
     pageButtonCount: 5,
     confirmDeleting: false,
 
@@ -28,15 +37,15 @@ var grid = $("#majorities_table").jsGrid({
 
     fields: [
         // { name: "id", width: 0},
-        { name: "name", type: "text", width: 150, validate: "required" },
-        { type: "control", width: 10 }
+        { name: "Nama Mata Pelajaran", as:"Nama Mata Pelajaran",type: "text", width: 150, validate: "required" },
+        { type: "control", width: 15 }
     ],
     onItemInserting: function(args) {
         $.ajax({
-            url: 'major/',
+            url: 'subject/',
             method: 'POST',
             data: {
-                name: args.item.name,
+                name: args.item["Nama Mata Pelajaran"],
                 _token: $('input[name=_token]').val()
             },
             success: function({id}){
@@ -44,24 +53,23 @@ var grid = $("#majorities_table").jsGrid({
                 args.grid.data[last_index].id = id
                 Toast.fire({
                     icon: 'success',
-                    title: 'Kelas / Jurusan berhasil ditambahkan'
+                    title: 'Mata Pelajaran berhasil ditambahkan'
                 })
             }
         })
-        $('#majorities_table').jsGrid("render");
     },
     onItemUpdated: function(args) {
         $.ajax({
-            url: 'major/'+args.item.id,
+            url: 'subject/'+args.item.id,
             method: 'PUT',
             data: {
-                name: args.item.name,
+                name: args.item['Nama Mata Pelajaran'],
                 _token: $('input[name=_token]').val()
             },
             success: function(){
                 Toast.fire({
                     icon: 'success',
-                    title: 'Kelas / Jurusan berhasil diedit'
+                    title: 'Mata Pelajaran berhasil diedit'
                 })
             }
         })
@@ -80,9 +88,9 @@ var grid = $("#majorities_table").jsGrid({
             }).then((result) => {
                 if (result.isConfirmed) {
                     args.item.deleteConfirmed = true;
-                    $('#majorities_table').jsGrid('deleteItem', args.item);
+                    $('#subjects_table').jsGrid('deleteItem', args.item);
                     $.ajax({
-                        url: 'major/'+args.item.id,
+                        url: 'subject/'+args.item.id,
                         method: 'DELETE',
                         data: {
                             name: args.item.name,
@@ -91,7 +99,7 @@ var grid = $("#majorities_table").jsGrid({
                         success: function(){
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Kelas / Jurusan berhasil dihapus'
+                                title: 'Mata Pelajaran berhasil dihapus'
                             })
                         }
                     })

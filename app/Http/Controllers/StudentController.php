@@ -137,8 +137,6 @@ class StudentController extends Controller
         $name = $student->name;
         $student->user->delete();
 
-        $student->delete();
-
         return request()->ajax()?response()->json(['message'=>"Siswa $name berhasil dihapus"]):redirect()->route('student.index')->with('success', 'Siswa berhasil dihapus');
     }
 
@@ -147,7 +145,6 @@ class StudentController extends Controller
         foreach($request->id as $id){
             $student = Student::find($id);
             $student->user->delete();
-            $student->delete();
         }
 
         return response()->json([

@@ -27,7 +27,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::get('/', 'DashboardController@admin');
 
-        Route::resource('subject', SubjectController::class);
+        Route::resource('subject', SubjectController::class)->except(['create','show','edit']);
+        Route::resource('major', MajorController::class);
 
         Route::resource('teacher', TeacherController::class);
         Route::post('teacher/delete-selected', 'TeacherController@delete_selected');
@@ -35,9 +36,12 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('student', StudentController::class);
         Route::post('student/delete-selected', 'StudentController@delete_selected');
 
-        Route::resource('major', MajorController::class);
-
         Route::resource('blogger', BloggerController::class);
+        Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
+
+        Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
+        Route::post('request_blog/send_result', 'BlogController@send_result');
+        Route::get('request_blog/{blog}/preview', 'BlogController@preview')->name('blog.preview');
     });
 
     Route::prefix('teacher')->middleware(['auth','role:admin,teacher'])->group(function(){

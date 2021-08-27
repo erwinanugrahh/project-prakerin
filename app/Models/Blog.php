@@ -15,4 +15,9 @@ class Blog extends Model
     {
         return 'slug';
     }
+
+    public function blogger()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

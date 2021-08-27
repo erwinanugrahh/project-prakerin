@@ -10,8 +10,8 @@
         <li class="child" id="data-blogger"><a href="{{ route('blogger.index') }}" class="ml-4">Data Blogger</a></li>
     </ul>
 </li>
-<li class="parent">
-    <a href="widgets.html" class=""><i class="fa fa-blog mr-3"></i>
+<li class="parent" id="request_blog">
+    <a href="{{ route('blog.request') }}" class=""><i class="fab fa-blogger-b mr-3"></i>
         <span class="none">Penyetujuan Blog </span>
     </a>
 </li>

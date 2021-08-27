@@ -100,7 +100,6 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        // $lesson->tasks->delete();
         $lesson->delete();
         return back()->with('success','Materi berhasil dihapus');
     }

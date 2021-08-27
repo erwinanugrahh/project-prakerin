@@ -1,5 +1,5 @@
 <div class="form-group floating-label">
-    <input class="form-control @error('nip') is-invalid @enderror" type="number" name="nip" value="{{ $teacher->nip??old('nip') }}" required>
+    <input class="form-control @error('nip') is-invalid @enderror" type="number" minlength="11" name="nip" value="{{ $teacher->nip??old('nip') }}" required>
     <label for="">NIP</label>
     @if ($errors->has('nip'))
         <div class="invalid-tooltip">

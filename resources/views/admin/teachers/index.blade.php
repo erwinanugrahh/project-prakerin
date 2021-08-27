@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Halaman ')
+@section('title') Halaman Guru @endsection
+@section('page') Guru @endsection
+@section('action') Indeks @endsection
 
 @section('content')
     <div class="product-list">

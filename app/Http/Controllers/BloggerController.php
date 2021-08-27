@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BloggerController extends Controller
 {
@@ -12,10 +13,28 @@ class BloggerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = User::where('role', 'blogger')->get();
-        return view('admin.blogger.index', compact('users'));
+
+        $model=User::where('role', 'blogger');
+
+        $datatable = DataTables::of($model)
+        ->addColumn('checkbox', function($blogger){
+            return view('admin.blogger._checkbox', compact('blogger'));
+        })
+        ->addColumn('blog_count', function($blogger){
+            return $blogger->blogs->count();
+        })
+        ->filterColumn('blog_count', function($query, $keyword){
+            return $query->whereRaw('LOWER(users.id) = ?', ["%{$keyword}%"]);
+        })
+        ->addColumn('action',function($blogger){
+            return view('admin.blogger._action',compact('blogger'));
+        })
+        ->toJson();
+
+        return $request->ajax()?$datatable:view('admin.blogger.index', compact('users'));
     }
 
     /**
@@ -83,14 +102,17 @@ class BloggerController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$blogger->email.',email',
             'password' => 'nullable|min:6',
-            'password_confirmation' => 'nullable|same:password'
+            'password_confirmation' => 'required_if:password,exist|same:password'
         ]);
         if(is_null($validate['password'])){
             unset($validate['password']);
+            $additional_message = 'tanpa mengubah password';
+        }else{
+            $additional_message = 'dengan mengubah password';
         }
         $blogger->update($validate);
 
-        return redirect()->route('blogger.index')->with('success','Blogger berhasil diubah');
+        return redirect()->route('blogger.index')->with('success','Blogger berhasil diubah, '.$additional_message);
     }
 
     /**
@@ -101,9 +123,21 @@ class BloggerController extends Controller
      */
     public function destroy(User $blogger)
     {
-        $blogger->blogs->delete();
+        $name = $blogger->name;
         $blogger->delete();
 
-        return back()->with('success', 'Blogger berhasil dihapus');
+        return request()->ajax()?response()->json(['message'=>"Blogger $name berhasil dihapus"]):back()->with('success', 'Blogger berhasil dihapus');
+    }
+
+    public function delete_selected(Request $request)
+    {
+        foreach($request->id as $id){
+            $user = User::find($id);
+            $user->delete();
+        }
+
+        return response()->json([
+            'count' => count($request->id)
+        ]);
     }
 }

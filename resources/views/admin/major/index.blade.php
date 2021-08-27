@@ -1,35 +1,17 @@
 @extends('layouts.admin')
 
+@section('title') Kelas Jurusan @endsection
+@section('page') Kelas Jurusan @endsection
+@section('action') Indeks @endsection
+
 @section('content')
-
     <!--Validation Scenario-->
-    <div class="mt-1 mb-4 p-3 button-container bg-white border shadow-sm">
-        <h6 class="mb-2">Validation Scenario</h6>
-
-        <div id="jsGrid3"></div>
+    <div class="row border-bottom mb-4">
+        <div class="col-sm-6 pt-2"><h6 class="mb-4 bc-header">Tabel Data Kelas / Jurusan</h6></div>
     </div>
+
+    <div id="majorities_table"></div>
     <!--/Validation Scenario-->
-
-    {{-- <form action="{{ route('major.store') }}" method="post">
-        @csrf
-        <input type="text" name="name" value="{{ old('name') }}">
-        <button>submit</button>
-    </form>
-
-    <ul>
-        @foreach ($majorities as $major)
-            <li>{{ $major->name }}
-                <a href="{{ route('major.edit', $major->id) }}">
-                    <button>Edit</button>
-                </a>
-                <form action="{{ route('major.destroy', $major->id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button>hapus</button>
-                </form>
-            </li>
-        @endforeach
-    </ul> --}}
 @endsection
 
 @push('css')

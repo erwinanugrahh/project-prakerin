@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Membuat blogger baru</title>
-</head>
-<body>
-    <h1>Form tambah blogger</h1>
-    <form action="{{ route('blogger.store') }}" method="post">
-        @csrf
-        @include('admin.blogger._form')
-        <button>Simpan</button>
-    </form>
-</body>
-</html>
+@extends('layouts.admin')
+
+@section('title') Halaman Blogger @endsection
+@section('page') Blogger @endsection
+@section('action') Tambah @endsection
+
+@section('content')
+    <div class="mt-4 mb-3 p-3 button-container bg-white border shadow-sm">
+        <h6 class="mb-3">Tambah Blogger</h6>
+        <form action="{{ route('blogger.store') }}" method="post" novalidate class="needs-validation">
+            @csrf
+            @include('admin.blogger._form')
+            <button class="btn btn-primary">Simpan</button>
+        </form>
+    </div>
+@endsection
+
+@push('js')
+    <script>
+        $('#data-major').addClass('active').parent().parent().addClass('active');
+    </script>
+@endpush

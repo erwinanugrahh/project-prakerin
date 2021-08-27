@@ -1,48 +1,56 @@
-<input type="hidden" value="role" name="role">
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-    </div>
-    <input type="text" name="name" value="{{ $blogger->name??old('name') }}" class="form-control mt-0 @error('name') is-invalid @enderror" placeholder="Nama Pengguna" aria-label="Username" aria-describedby="basic-addon1">
+<input required type="hidden" value="role" name="role">
+<div class="form-group floating-label">
+    <input required type="text" name="name" id="name" value="{{ $blogger->name??old('name') }}" class="form-control mt-0 @error('name') is-invalid @enderror">
+    <label for="">Nama Blogger</label>
     @error('name')
-        <span class="invalid-feedback" role="alert">
+        <span class="invalid-tooltip" role="alert">
             <strong>{{ $message }}</strong>
+        </span>
+    @else
+        <span class="invalid-tooltip" role="alert">
+            <strong>Nama Blogger harus diisi</strong>
         </span>
     @enderror
 </div>
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-    </div>
-    <input type="email" name="email" value="{{ $blogger->email??old('email') }}" class="form-control mt-0 @error('email') is-invalid @enderror" placeholder="Masukan Email" aria-label="email" aria-describedby="basic-addon1">
+<div class="form-group floating-label">
+    <input required type="email" name="email" id="email" value="{{ $blogger->email??old('email') }}" class="form-control mt-0 @error('email') is-invalid @enderror">
+    <label for="">Email Blogger</label>
     @error('email')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
+        <span class="invalid-tooltip" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @else
+        <span class="invalid-tooltip" role="alert">
+            <strong>Email Blogger harus diisi</strong>
+        </span>
      @enderror
 </div>
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-    </div>
-    <input type="password" name="password" class="form-control mt-0 @error('password') is-invalid @enderror" placeholder="Kata Sandi" aria-label="phone" aria-describedby="basic-addon1">
+<div class="form-group floating-label">
+    <input required type="password" name="password" id="password" class="form-control mt-0 @error('password') is-invalid @enderror">
+    <label for="">Kata Sandi</label>
     @error('password')
-        <span class="invalid-feedback" role="alert">
+        <span class="invalid-tooltip" role="alert">
             <strong>{{ $message }}</strong>
+        </span>
+    @else
+        <span class="invalid-tooltip" role="alert">
+            <strong>Kata Sandi Blogger harus diisi</strong>
         </span>
     @enderror
 </div>
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><i class="fa fa-check-circle"></i></span>
-    </div>
-    <input type="password_confirm" name="password_confirmation" class="form-control mt-0 @error('password') is-invalid @enderror" placeholder="Konfirmasi Kata Sandi" aria-label="Password" aria-describedby="basic-addon1">
+<div class="form-group floating-label">
+    <input required type="password" name="password_confirmation" id="password_confirmation" class="form-control mt-0 @error('password_confirmation') is-invalid @enderror">
+    <label for="">Konfirmasi Kata Sandi</label>
     @error('password_confirmation')
-        <span class="invalid-feedback" role="alert">
+        <span class="invalid-tooltip" role="alert">
             <strong>{{ $message }}</strong>
+        </span>
+    @else
+        <span class="invalid-tooltip" role="alert">
+            <strong>Konfirmasi Kata Sandi Blogger harus diisi</strong>
         </span>
     @enderror
 </div>

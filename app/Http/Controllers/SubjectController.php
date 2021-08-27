@@ -14,18 +14,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::all(); 
-        return view('admin.subjects.index', compact('subjects'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //  
+        $subjects = Subject::all();
+        return request()->ajax()?response()->json(['data'=>$subjects]):view('admin.subjects.index', compact('subjects'));
     }
 
     /**
@@ -36,32 +26,10 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        Subject::create([
-            'name' => $request->subject
-        ]);
-        return back();
-    }
+        $validate = $request->validate(['name'=>'required']);
+        $id = Subject::create($validate)->id;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subject $subject)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subject $subject)
-    {
-        return request()->ajax()? response()->json($subject):view('admin.subjects.edit', compact('subject'));
+        return $request->ajax()?response()->json(['id'=>$id]):back();
     }
 
     /**
@@ -73,11 +41,10 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        $subject->update([
-            'name' => $request->subject
-        ]);
+        $validate = $request->validate(['name'=>'required']);
+        $subject->update($validate);
 
-        return redirect()->route('subject.index');
+        return $request->ajax()?response()->json('oke'):redirect()->route('subject.index');
     }
 
     /**
@@ -89,6 +56,6 @@ class SubjectController extends Controller
     public function destroy(Subject $subject)
     {
         $subject->delete();
-        return back();
+        return request()->ajax()?response()->json(['oke']):back();
     }
 }
