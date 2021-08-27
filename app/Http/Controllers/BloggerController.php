@@ -62,6 +62,7 @@ class BloggerController extends Controller
             'password_confirmation' => 'required|same:password'
         ]);
         $validate['role'] = 'blogger';
+        $validate['password'] = bcrypt($validate['password']);
         User::create($validate);
 
         return redirect()->route('blogger.index')->with('success','Blogger berhasil ditambahkan');
@@ -108,6 +109,7 @@ class BloggerController extends Controller
             unset($validate['password']);
             $additional_message = 'tanpa mengubah password';
         }else{
+            $validate['password'] = bcrypt($validate['password']);
             $additional_message = 'dengan mengubah password';
         }
         $blogger->update($validate);
