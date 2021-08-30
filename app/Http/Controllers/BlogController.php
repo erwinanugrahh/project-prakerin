@@ -15,19 +15,50 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $blogs = Blog::where('user_id', auth()->user()->id)->get();
-        return view('blogger.index', compact('blogs'));
+
+        $model=Blog::query()->with('blogger');
+
+        if($request['filter_status']!=null)
+        {
+            $model->where('status',$request['filter_status']);
+        }
+
+        $datatable = DataTables::eloquent($model)
+        ->addColumn('checkbox', function($blog){
+            return "<div class=\"form-check-box cta\">
+                        <span class=\"color1\">
+                            <input type=\"checkbox\" id=\"order$blog->id\" value=\"$blog->id\" name=\"selected\">
+                            <label for=\"order$blog->id\"></label>
+                        </span>
+                    </div>";
+        })
+        ->editColumn('banner', function($blog){
+            return "<img src=\"images/banners/$blog->banner\" style=\"max-width: 100px; max-height: 100px\" alt=\"$blog->slug\">";
+        })
+        ->editColumn('status', function($blog){
+            return $blog->getStatus();
+        })
+        ->addColumn('action',function($blog){
+            return "<a href=\"".route('blog.show', $blog->slug)."\" class=\"btn btn-theme text-white\"><i class=\"fa fa-eye\"></i> </a>
+                    <a href=\"".route('blog.edit', $blog->slug)."\" class=\"btn btn-success text-white\"><i class=\"fa fa-pencil\"></i> </a>
+                    <button class=\"btn btn-danger delete\" data-id=\"blog/$blog->slug\"><i class=\"fas fa-trash\"></i></button>";
+        })
+        ->escapeColumns([])
+        ->toJson();
+
+        return $request->ajax()?$datatable:view('blogger.index', compact('blogs'));
     }
 
     public function request_blog(Request $request)
     {
         $model=Blog::where('status', 'pending')->with('blogger');
 
-        if($request['filter_major']!=null)
+        if($request['filter_blogger']!=null)
         {
-            $model->where('major_id',$request['filter_major']);
+            $model->where('user_id',$request['filter_blogger']);
         }
 
         $datatable = DataTables::of($model)
@@ -103,7 +134,6 @@ class BlogController extends Controller
         $fileName = "banner-".time().'.'.$request->file('banner')->getClientOriginalExtension();
         $request->file('banner')->move('images/banners/', $fileName);
 
-        $validate['slug'] = Str::slug($validate['title']);
         $validate['user_id'] = auth()->user()->id;
         $validate['banner'] = $fileName;
 
@@ -120,7 +150,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return view('blogger.show', compact('blog'));
     }
 
     /**
@@ -155,7 +185,7 @@ class BlogController extends Controller
             $request->file('banner')->move('images/banners/', $fileName);
             $validate['banner'] = $fileName;
         }
-
+        $validate['status'] = 'pending';
         $blog->update($validate);
 
         return redirect()->route('blog.index')->with('success', 'Blog berhasil diedit');
@@ -174,6 +204,18 @@ class BlogController extends Controller
         }
 
         $blog->delete();
-        return back()->with('success', 'Blog berhasil dihapus');
+        return request()->ajax()?response()->json(['message'=>'Blog berhasil dihapus']):back()->with('success', 'Blog berhasil dihapus');
+    }
+
+    public function delete_selected(Request $request)
+    {
+        foreach($request->id as $id){
+            $user = Blog::find($id);
+            $user->delete();
+        }
+
+        return response()->json([
+            'count' => count($request->id)
+        ]);
     }
 }

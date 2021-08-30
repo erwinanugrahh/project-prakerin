@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mengedit Blog</title>
-</head>
-<body>
-    <h1>Form mengedit blog</h1>
+@extends('layouts.admin', ['searchbar'=>false])
+
+@section('title') Halaman blog @endsection
+@section('page') blog @endsection
+@section('action') Tambah @endsection
+
+@section('content')
+    <h6 class="mb-3">Mengedit Blog {{ $blog->title }}</h6>
     <form action="{{ route('blog.update', $blog->slug) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         @include('blogger._form')
-        <button>Edit</button>
+        <button class="btn btn-primary" id="edit-btn">Edit</button>
     </form>
-</body>
-</html>
+@endsection
+
+@push('js')
+    <script>
+        $('#edit-btn').on('click', function(e){
+            e.preventDefault()
+            Swal.fire({
+                title: 'Apakah kamu ingin mengeditnya?',
+                text: "Jika blog diedit, maka statusnya akan pending kembali!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, edit!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit()
+                }
+            })
+        })
+    </script>
+@endpush

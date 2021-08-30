@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Lesson;
+use App\Models\LessonGroup;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -16,7 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         $major_id = auth()->user()->student->major_id;
-        $lessons = Lesson::where('major_id', $major_id)->get();
+        $lessons = LessonGroup::where('major_id', $major_id)->get();
         return view('student.task.index', compact('lessons'));
     }
 

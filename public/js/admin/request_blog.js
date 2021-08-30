@@ -56,7 +56,6 @@ function send_result(ids, action, additional){
         let blogger, title;
         blogger = additional[0]
         title = additional[1]
-        console.log(blogger, title);
         message = `Blog ${blogger} yang berjudul ${title} akan di${option[action]}`;
     }else{
         message = `${ids.length} blog ini akan di${option[action]}`;
@@ -73,7 +72,7 @@ function send_result(ids, action, additional){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'send_result',
+                url: 'request_blog/send_result',
                 method: 'POST',
                 data: {
                     _token: $('input[name=_token]').val(),

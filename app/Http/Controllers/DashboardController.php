@@ -37,7 +37,6 @@ class DashboardController extends Controller
 
     public function blogger()
     {
-        $blogs = Blog::where('user_id', auth()->user()->id)->get();
-        return view('blogger.index', compact('blogs'));
+        return view('blogger.dashboard');
     }
 }

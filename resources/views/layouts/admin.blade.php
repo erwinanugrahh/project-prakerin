@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="{{ url('admin/') }}/css/nice-select.css">
     <!--Bootstrap Calendar-->
     <link rel="stylesheet" href="{{ url('admin/') }}/js/calendar/bootstrap_calendar.css">
+    {{-- Select 2 --}}
+    <link rel="stylesheet" href="{{ url('plugins/select2/dist/css/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css"> --}}
+    {{-- <link rel="stylesheet" href="{{ url('plugins/select2/dist/css/select2-bootstrap4.min.css') }}"> --}}
 
     @stack('css')
 
@@ -283,6 +287,8 @@
     <script src="{{ url('admin/') }}/js/calendar/demo.js"></script>
     <!--Nice select-->
     <script src="{{ url('admin/') }}/js/jquery.nice-select.min.js"></script>
+    {{-- Select 2 --}}
+    <script src="{{ url('plugins/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!--Custom Js Script-->
     <script src="{{ url('admin/') }}/js/custom.js"></script>
@@ -293,6 +299,10 @@
         $("#productList").DataTable();
         //Nice select
         $('.bulk-actions').niceSelect();
+        //select2
+        $('.select2').select2({
+            theme: 'classic'
+        });
 
         const Toast = Swal.mixin({
             toast: true,

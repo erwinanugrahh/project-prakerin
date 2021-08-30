@@ -48,6 +48,9 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::get('/', 'DashboardController@teacher');
 
         Route::resource('lesson', LessonController::class);
+        Route::post('delete-selected', 'LessonController@delete_selected');
+        Route::get('lesson/task/{task}', 'LessonController@task')->name('lesson.task');
+        Route::post('lesson/task/{task}', 'LessonController@update_task')->name('lesson.task-update');
 
         Route::resource('absen', AbsenController::class)->only(['index','store']);
     });
@@ -57,4 +60,9 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     });
 
     Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
+    Route::post('blog/delete-selected', 'BlogController@delete_selected');
+});
+
+Route::group(['prefix' => 'filemanager'], function() {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });

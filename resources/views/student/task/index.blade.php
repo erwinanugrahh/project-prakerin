@@ -9,7 +9,7 @@
 <body>
     <ul>
         @foreach ($lessons as $lesson)
-            <li>{{ $lesson->title }} <a href="{{ route('task.show', $lesson->slug) }}">Detail</a></li>
+            <li>{{ $lesson->title }} <a href="{{ route('task.show', $lesson->lesson->slug??'') }}">Detail</a></li>
         @endforeach
     </ul>
 </body>

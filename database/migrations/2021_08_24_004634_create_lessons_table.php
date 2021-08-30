@@ -18,6 +18,7 @@ class CreateLessonsTable extends Migration
             $table->string('title', 100);
             $table->string('slug', 100);
             $table->longText('content');
+            $table->string('attachment', 100)->nullable();
             $table->integer('teacher_id');
             $table->integer('major_id');
             $table->timestamps();

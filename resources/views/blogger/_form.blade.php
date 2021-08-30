@@ -1,58 +1,30 @@
-<input type="file" name="banner" id="banner">
-<br>
-@error('banner')
-    {{ $message }} <br>
-@enderror
+<div class="form-group">
+    <label for="">Banner</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input @error('banner') is-invalid @enderror" name="banner" id="banner">
+        <label class="custom-file-label" for="banner">Pilih Banner</label>
+        @error('banner')
+            <i class="text-sm text-danger">{{ $message }}</i>
+        @enderror
+    </div>
+</div>
 
-<br>
-<label for="title">Judul Blog</label><br>
-<input type="text" name="title" id="title" value="{{ $blog->title??old('title') }}">
-<br>
-@error('title')
-    <i>{{ $message }}</i>
-@enderror
-<br>
+<div class="form-group">
+    <label for="">Judul</label>
+    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $blog->title??old('titile') }}">
+    @error('title')
+        <i class="text-sm text-danger">{{ $message }}</i>
+    @enderror
+</div>
+<div class="form-group">
+    <label for="">Konten</label>
+    <textarea name="content" id="content">{{ $blog->content??old('content') }}</textarea>
+    @error('content')
+        <i class="text-sm text-danger">{{ $message }}</i>
+    @enderror
+</div>
 
-<textarea class="form-control content" name="content">{{ $blog->content??old('content') }}</textarea>
-<br>
-@error('content')
-    <i>{{ $message }}</i>
-@enderror
-<br>
-
-
-<script src="{{ url('js/jquery.min.js') }}"></script>
-<script src="{{ url('plugins/tinymce/jquery.tinymce.min.js') }}"></script>
-<script src="{{ url('plugins/tinymce/tinymce.min.js') }}"></script>
-
-<script>
-    "use strict";
-
-    //text editor
-    tinymce.init({
-    selector: '.content',
-    setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });},
-    height: 700,
-    theme: 'silver',
-    plugins: [
-        'advlist autolink lists link image charmap hr anchor pagebreak',
-        'searchreplace wordcount visualblocks visualchars code fullscreen',
-        'insertdatetime media nonbreaking save table contextmenu directionality',
-        'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help','directionality',
-    ],
-    toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |ltr rtl',
-    toolbar2: 'link media image | forecolor backcolor emoticons | fontsizeselect | codesample help',
-    image_advtab: true,
-    templates: [
-        { title: 'Test template 1', content: 'Test 1' },
-        { title: 'Test template 2', content: 'Test 2' }
-    ],
-    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt 50pt',
-        content_css: [
-            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        ]
-    });
-</script>
+@push('js')
+    <script src="{{ url('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ url('js/blogger/blog.js') }}"></script>
+@endpush

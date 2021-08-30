@@ -1,46 +1,83 @@
 @extends('layouts.admin')
 
+@section('title') Halaman Absen @endsection
+@section('page') Absen @endsection
+@section('action') {{ teacher()->major->name }} @endsection
+
 @section('title','Absensi Siswa')
-    
+
 @section('content')
-    
-    @if (session()->has('success'))
-        {{ session()->get('success') }} <br>
-    @endif
-    <?php locale_set_default('Asia/Jakarta'); ?>
-    <p>Absen tanggal {{ date('d M Y') }}</p>
+    @php
+        use Carbon\Carbon;
+    @endphp
+    <div class="row border-bottom mb-4">
+        <div class="col-sm-6 pt-2"><h6 class="mb-4 bc-header">Absen tanggal {{ Carbon::now()->translatedFormat('j F Y') }}</h6></div>
+        <div class="col-sm-6 d-flex justify-content-end pb-3">
+            <select class="mr-3 shadow nice-select border-primary text-theme" id="filter-absen">
+                <option value="">Filter Absen</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Izin">Izin</option>
+                <option value="Sakit">Sakit</option>
+                <option value="Alfa">Alfa</option>
+                <option value="Belum Absen">Belum Absen</option>
+            </select>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
     <form action="{{ route('absen.store') }}" method="post">
         @csrf
-        <table border="1" width="100%">
-            <thead>
+        <table class="table table-bordered" width="100%" id="absens_table">
+            <thead class="bg-theme">
                 <tr>
-                    <td>No</td>
-                    <td>Nama</td>
-                    <td>Absen</td>
+                    <th style="width: 10px">No</th>
+                    <th>Nama</th>
+                    <th style="width: 120px"> Absen Hari Ini</th>
+                    <th style="width: 100px">Opsi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($students->sortBy('name') as $student)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $student->name }}</td>
                         <td>
-                            <select name="absen[{{ $student->id }}]" id="absen">
-                                <option value=""></option>
+                            {{ $student->name }}
+                            @error('absen.'.$student->id)
+                                <p class="error-absen">Absen {{ $student->name }} tidak boleh kosong</p>
+                            @enderror
+                        </td>
+                        <td>{!! $student->getAbsenToday(true) !!}</td>
+                        <td>
+                            <select name="absen[{{ $student->id }}]" id="absen" class="nice-select">
+                                <option value="">-- PILIH --</option>
                                 @foreach ($absens as $k => $v)
                                     <option value="{{ $k }}" {{ $student->getAbsenToday()==$k||old('absen.'.$student->id)==$k?'selected':'' }}>{{ $v }}</option>
                                 @endforeach
                             </select>
-                            @error('absen.'.$student->id)
-                                Absen {{ $student->name }} tidak boleh kosong
-                            @enderror
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <br>
-        <button>simpan</button>
+        <button class="btn btn-success">simpan</button>
     </form>
 
 @endsection
+
+@push('css')
+    <style>
+        .error-absen{
+            font-weight: bold;
+            color: red;
+            line-height: 1px;
+            font-style: italic;
+            font-size: 14px;
+        }
+    </style>
+@endpush
+
+@push('js')
+    <script src="{{ url('js/teacher/absen.js') }}"></script>
+@endpush

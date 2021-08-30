@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('lesson.store') }}" method="post">
+@extends('layouts.admin')
+
+@section('title') Halaman Materi @endsection
+@section('page') Materi @endsection
+@section('action') Tambah @endsection
+
+@section('content')
+    <form action="{{ route('lesson.store') }}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
         @csrf
         @include('teacher.lesson._form')
-        <button>Simpan</button>
     </form>
-</body>
-</html>
+@endsection

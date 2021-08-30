@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{ route('lesson.update', $lesson->slug) }}" method="post">
+@extends('layouts.admin')
+
+@section('title') Halaman Materi @endsection
+@section('page') Materi @endsection
+@section('action') Edit @endsection
+
+@section('content')
+    <form action="{{ route('lesson.update', $lesson->slug) }}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
         @csrf
         @method('put')
         @include('teacher.lesson._form')
-        <button>Simpan</button>
     </form>
-</body>
-</html>
+@endsection
+
+@push('js')
+    <script>
+        $.ajax({
+            url: '',
+            success: function(task) {
+                task.forEach((v,i)=>{
+                    $('.start_at')[i].value = v.start_at
+                    $('.end_at')[i].value = v.end_at
+                })
+            }
+        })
+    </script>
+@endpush

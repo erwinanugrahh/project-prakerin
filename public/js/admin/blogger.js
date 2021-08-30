@@ -2,7 +2,7 @@ ajax_url=''
 //active
 $('#data-blogger').addClass('active').parent().parent().addClass('active');
 
-//patients datatable
+//bloggers datatable
 var table=$('#bloggers_table').DataTable({
     // "processing": true,
     "serverSide": true,

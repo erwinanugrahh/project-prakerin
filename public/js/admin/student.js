@@ -2,7 +2,7 @@ ajax_url=''
 //active
 $('#data-student').addClass('active').parent().parent().addClass('active');
 
-//patients datatable
+//students datatable
 var table=$('#students_table').DataTable({
     // "processing": true,
     "serverSide": true,

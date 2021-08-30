@@ -18,6 +18,9 @@ class CreateTasksTable extends Migration
             $table->integer('lesson_id');
             $table->longText('content');
             $table->integer('student_id');
+            $table->integer('value')->default(0);
+            $table->text('description')->nullable();
+            $table->string('attachment', 100)->nullable();
             $table->timestamps();
         });
     }
