@@ -14,8 +14,8 @@ var table=$('#lessons_table').DataTable({
     fixedHeader: true,
     "columns": [
         {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
-        {data:"title",name:'teachers.nip',className:'align-middle',orderable:true,sortable:true},
-        {data:"content",name:'teachers.name',className:'align-middle'},
+        {data:"title",className:'align-middle',orderable:true,sortable:true},
+        {data:"content",className:'align-middle'},
         {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
     ],
     "language": {
