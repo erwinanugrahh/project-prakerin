@@ -45,12 +45,25 @@ class TaskController extends Controller
             'content' => 'required',
         ]);
 
-        Task::firstOrCreate([
-            'lesson_id' => $validate['lesson_id']
-        ],[
-            'content' => $validate['content'],
+        $task = Task::where([
+            'lesson_id'  => $validate['lesson_id'],
             'student_id' => student()->id
-        ])->update(['content'=>$validate['content']]);
+        ])->first();
+
+        if($request->hasFile('attachment')){
+            if(file_exists(base_path('public/images/attachments/'.($task->attachment??'no')))){
+                unlink(base_path('public/images/attachments/'.($task->attachment??'no')));
+            }
+            $fileName = 'attachment-'.time().'.'.$request->file('attachment')->getClientOriginalExtension();
+            $request->file('attachment')->move(base_path('public/images/attachments/'),$fileName);
+            $validate['attachment'] = $fileName;
+        }
+
+        if(is_null($task)){
+            Task::create($validate);
+        }else{
+            $task->update($validate);
+        }
 
         return redirect()->route('task.index')->with('success', 'Tugas berhasil diupload');
     }
@@ -65,39 +78,5 @@ class TaskController extends Controller
     {
         $myAnswer = $task->tasks->where('student_id', student()->id)->first();
         return view('student.task.show', compact('task', 'myAnswer'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Task $task)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Task $task)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Task $task)
-    {
-        //
     }
 }

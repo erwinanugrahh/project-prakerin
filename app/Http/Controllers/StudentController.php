@@ -17,16 +17,19 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $model=Student::query()->with('major');
+        $model=Student::with('major')->get();
 
         if($request['filter_major']!=null)
         {
-            $model->where('major_id',$request['filter_major']);
+            $model=$model->where('major_id',$request['filter_major']);
         }
 
-        $datatable = DataTables::eloquent($model)
+        $datatable = DataTables::collection($model)
         ->addColumn('checkbox', function($student){
             return view('admin.students._checkbox', compact('student'));
+        })
+        ->addColumn('major_name', function($student){
+            return $student->major->getMajor();
         })
         ->addColumn('action',function($student){
             return view('admin.students._action',compact('student'));

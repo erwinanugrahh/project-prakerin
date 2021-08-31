@@ -56,7 +56,7 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     });
 
     Route::prefix('student')->middleware(['auth','role:student'])->group(function(){
-        Route::resource('task', TaskController::class);
+        Route::resource('task', TaskController::class)->except(['edit', 'update', 'delete']);
     });
 
     Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);

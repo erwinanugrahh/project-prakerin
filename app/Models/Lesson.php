@@ -35,4 +35,14 @@ class Lesson extends Model
     {
         return $this->hasMany(LessonGroup::class, 'lesson_id', 'id');
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
+    }
+
+    public function getMyValue()
+    {
+        return $this->tasks->where('student_id', student()->id)->first()->value??0;
+    }
 }

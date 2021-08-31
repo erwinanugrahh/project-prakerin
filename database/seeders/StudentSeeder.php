@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Major;
 use App\Models\Student;
 use App\Models\User;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder
@@ -15,6 +17,24 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+        $faker = new Faker();
+        $majors = [
+            [1, 'RPL 2'],
+            [1, 'TKJ 1'],
+            [1, 'TKJ 2'],
+            [1, 'TKJ 3'],
+            [2, 'RPL 1'],
+            [2, 'RPL 2'],
+            [2, 'DPIB 1'],
+        ];
+        $major_ids = [1];
+        foreach($majors as $major){
+            $major_ids[] = Major::create([
+                'level' => $major[0],
+                'name' => $major[1]
+            ])->id;
+        }
+
         $students = [
             ['Hilmi Aidzil', 'hilmi@gmail.com'],
             ['Sadam Alzani', 'sadam@gmail.com'],
@@ -39,11 +59,11 @@ class StudentSeeder extends Seeder
 
             Student::create([
                 'user_id' => $user_id,
-                'nisn'=>'1010101'.$i++,
+                'nisn'=>'1010101032'.$i++,
                 'name' => $student[0],
                 'email' => $student[1],
                 'phone' => null,
-                'major_id' => 1,
+                'major_id' => $major_ids[array_rand($major_ids, 1)],
                 'address' => 'Tasikmalaya'
             ]);
         }

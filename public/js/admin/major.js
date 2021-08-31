@@ -2,14 +2,29 @@
 $('#data-major').addClass('active').parent().parent().addClass('active');
 /*===========JsGrid field Validation ================================*/
 
-var data;
+var data = [];
 $.ajax({
     url: '',
     async: false,
     success: function(result){
-        data = result.data
+        result.data.forEach(el => {
+            let major = {
+                id: el.id,
+                Tingkat: el.level,
+                Kelas: el.name
+            }
+            data.push(major)
+        });
     }
 })
+
+var level = [
+    {Name: "", Id: 0},
+    {Name: "X", Id: 1},
+    {Name: "XI", Id: 2},
+    {Name: "XII", Id: 3},
+]
+
 var grid = $("#majorities_table").jsGrid({
     height: "400px",
     width: "100%",
@@ -25,18 +40,18 @@ var grid = $("#majorities_table").jsGrid({
 
     //controller: db,
     data: data,
-
     fields: [
-        // { name: "id", width: 0},
-        { name: "name", type: "text", width: 150, validate: "required" },
-        { type: "control", width: 10 }
+        { name: "Tingkat", width: 20, type: "select", items: level, valueField: "Id", textField: "Name"},
+        { name: "Kelas", type: "text", width: 150, validate: "required" },
+        { type: "control", width: 30 }
     ],
     onItemInserting: function(args) {
         $.ajax({
             url: 'major/',
             method: 'POST',
             data: {
-                name: args.item.name,
+                name: args.item.Kelas,
+                level: args.item.Tingkat,
                 _token: $('input[name=_token]').val()
             },
             success: function({id}){
@@ -55,7 +70,8 @@ var grid = $("#majorities_table").jsGrid({
             url: 'major/'+args.item.id,
             method: 'PUT',
             data: {
-                name: args.item.name,
+                name: args.item.Kelas,
+                level: args.item.Tingkat,
                 _token: $('input[name=_token]').val()
             },
             success: function(){
@@ -85,7 +101,8 @@ var grid = $("#majorities_table").jsGrid({
                         url: 'major/'+args.item.id,
                         method: 'DELETE',
                         data: {
-                            name: args.item.name,
+                            name: args.item.Kelas,
+                            level: args.item.Tingkat,
                             _token: $('input[name=_token]').val()
                         },
                         success: function(){

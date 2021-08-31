@@ -20,4 +20,10 @@ class Major extends Model
     {
         return $this->hasOne(Teacher::class, 'major_id', 'id');
     }
+
+    public function getMajor()
+    {
+        $level = [1=>'X','XI','XII'];
+        return $level[$this->level].' '.$this->name;
+    }
 }

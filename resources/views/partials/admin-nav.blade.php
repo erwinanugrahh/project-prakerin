@@ -7,7 +7,6 @@
         <li class="child" id="data-subject"><a href="{{ route('subject.index') }}" class="ml-4">Data Mata Pelajaran</a></li>
         <li class="child" id="data-teacher"><a href="{{ route('teacher.index') }}" class="ml-4">Data Guru</a></li>
         <li class="child" id="data-student"><a href="{{ route('student.index') }}" class="ml-4">Data Siswa</a></li>
-        <li class="child" id="data-blogger"><a href="{{ route('blogger.index') }}" class="ml-4">Data Blogger</a></li>
     </ul>
 </li>
 <li class="parent" id="request_blog">

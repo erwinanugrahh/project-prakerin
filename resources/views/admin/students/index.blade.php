@@ -18,7 +18,7 @@
             <select class="shadow bulk-actions ml-3" id="filter_major">
                 <option value="" data-display="Filter Kelas">Tidak</option>
                 @foreach ($majorities as $major)
-                    <option value="{{ $major->id }}">{{ $major->name }}</option>
+                    <option value="{{ $major->id }}">{{ $major->getMajor() }}</option>
                 @endforeach
             </select>
 

@@ -37,6 +37,7 @@ class MajorController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
+            'level' => 'required',
             'name' => 'required'
         ]);
 
@@ -77,6 +78,7 @@ class MajorController extends Controller
     public function update(Request $request, Major $major)
     {
         $validate = $request->validate([
+            'level' => 'required',
             'name' => 'required'
         ]);
 

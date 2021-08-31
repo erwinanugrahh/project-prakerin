@@ -1,40 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=`">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Detail Task</title>
-</head>
-<body>
-    <h1>{{ $task->title }}</h1>
-    <h3>{!! $task->content !!}</h3>
+@extends('layouts.admin', ['noCard'=>true])
 
-    <form action="{{ route('task.store') }}" method="post">
-        @csrf
-        <input type="hidden" name="lesson_id" value="{{ $task->id }}">
-        <textarea class="form-control content" name="content">{{ $myAnswer->content??old('content') }}</textarea>
-        <br>
-        @error('content')
-        <i>{{ $message }}</i>
-        @enderror
-        <br>
+@section('title') Daftar Materi @endsection
+@section('page') Siswa @endsection
+@section('action') Materi @endsection
 
-        <button>Simpan</button>
-    </form>
+@push('css')
+    <style>
+        .card-header .fa {
+        transition: .3s transform ease-in-out;
+        }
+        .card-header .collapsed .fa {
+        transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url('css/custom-icon.css') }}">
+@endpush
 
+@section('content')
+    <div class="card my-3">
+        <h5 class="card-header bg-white">
+            <a class="d-block" data-toggle="collapse" href="#collapse-collapsed" aria-expanded="false" aria-controls="collapse-collapsed" id="heading-collapsed">
+                <i class="fa fa-chevron-down pull-right"></i>
+                {{ $task->title }}
+            </a>
+        </h5>
+        <div id="collapse-collapsed" class="collapse show" aria-labelledby="heading-collapsed">
+            <div class="card-body">
+                {!! $task->content !!}
+            </div>
+        </div>
+    </div>
 
+    @if (!is_null($task->attachment))
+    <div class="card my-3">
+        <h5 class="card-header bg-white">
+            <a class="d-block" data-toggle="collapse" href="#file-attachment" aria-expanded="false" aria-controls="file-attachment" id="heading-collapsed">
+                <i class="fa fa-chevron-down pull-right"></i>
+                File Tambahan
+            </a>
+        </h5>
+        <div id="file-attachment" class="collapse show" aria-labelledby="heading-collapsed">
+            <div class="card-body">
+                <a class="attachment" download="{{ $task->attachment }}" href="{{ url('images/attachments/'.$task->attachment) }}">{{ $task->attachment }}</a>
+            </div>
+        </div>
+    </div>
+    @endif
 
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('plugins/tinymce/jquery.tinymce.min.js') }}"></script>
+    <div class="card my-3">
+        <h5 class="card-header bg-white">
+            <a class="d-block" data-toggle="collapse" href="#form-task" aria-expanded="false" aria-controls="form-task" id="heading-collapsed">
+                <i class="fa fa-chevron-down pull-right"></i>
+                Penugasan
+            </a>
+        </h5>
+        <div id="form-task" class="collapse show" aria-labelledby="heading-collapsed">
+            <div class="card-body">
+                <form enctype="multipart/form-data" action="{{ route('task.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="lesson_id" value="{{ $task->id }}">
+                    <label for="">Deskripsi</label>
+                    <textarea class="form-control editor" name="content">{{ $myAnswer->content??old('content') }}</textarea>
+                    @error('content')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+
+                    <div class="form-group mt-3">
+                        <label for="">Upload Tugas</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="attachment" id="attachment">
+                            <label class="custom-file-label" for="banner">Pilih Lampiran</label>
+                            <small class="form-text text-muted">
+                                (Opsional) seperti dokumen, pdf, excel, presentasi, dll. (Maks upload 3mb)
+                            </small>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-theme">Simpan</button>
+                </form>
+
+                @if (!is_null($myAnswer)&&!is_null($myAnswer->attachment))
+                    <a class="attachment" download="{{ $myAnswer->attachment }}" href="{{ url('images/attachments/'.$myAnswer->attachment) }}">{{ $myAnswer->attachment }}</a>
+                @endif
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('js')
     <script src="{{ url('plugins/tinymce/tinymce.min.js') }}"></script>
 
     <script>
+        $('#task').addClass('active')
+
         "use strict";
 
         //text editor
         tinymce.init({
-        selector: '.content',
+        selector: '.editor',
         setup: function (editor) {
                 editor.on('change', function () {
                     editor.save();
@@ -60,9 +123,4 @@
             ]
         });
     </script>
-
-
-
-    </div>
-</body>
-</html>
+@endpush

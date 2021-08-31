@@ -28,4 +28,9 @@ class Teacher extends Model
     {
         return $this->hasMany(Lesson::class, 'teacher_id', 'id');
     }
+
+    public function getFullName()
+    {
+        return $this->name;
+    }
 }

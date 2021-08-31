@@ -19,7 +19,7 @@ var table=$('#students_table').DataTable({
         {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
         {data:"nisn",className:'align-middle',orderable:true,sortable:true},
         {data:"name",className:'align-middle'},
-        {data:"major.name",className:'align-middle',sortable:false},
+        {data:"major_name",className:'align-middle',sortable:false},
         {data:"address",className:'align-middle'},
         {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
     ],

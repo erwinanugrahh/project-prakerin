@@ -18,19 +18,14 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        $model=Teacher::with('major')->select('teachers.*');
+        $model=collect(Teacher::with('major')->select('teachers.*')->get());
 
-        if($request['filter_major']!=null)
-        {
-            $model->where('major_id',$request['filter_major']);
-        }
-
-        $datatable = DataTables::of($model)
+        $datatable = DataTables::collection($model)
         ->addColumn('checkbox', function($teacher){
             return view('admin.teachers._checkbox', compact('teacher'));
         })
         ->addColumn('major_name', function(Teacher $teacher){
-            return $teacher->major->name;
+            return $teacher->major->getMajor();
         })
         ->addColumn('action',function($teacher){
             return view('admin.teachers._action',compact('teacher'));

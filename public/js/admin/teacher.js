@@ -8,18 +8,15 @@ var table=$('#teachers_table').DataTable({
     "serverSide": true,
     "bSort" : true,
     "ajax": {
-        url: ajax_url,
-        data: function(data){
-            data.filter_major=$('#filter_major').val()
-        }
+        url: ajax_url
     },
     // orderCellsTop: true,
     fixedHeader: true,
     "columns": [
         {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
-        {data:"nip",name:'teachers.nip',className:'align-middle',orderable:true,sortable:true},
-        {data:"name",name:'teachers.name',className:'align-middle'},
-        {data:"major_name",name:'major.name',className:'align-middle'},
+        {data:"nip",className:'align-middle',orderable:true,sortable:true},
+        {data:"name",className:'align-middle'},
+        {data:"major_name",className:'align-middle'},
         {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
     ],
     "language": {

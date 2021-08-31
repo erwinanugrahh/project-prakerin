@@ -5,32 +5,7 @@
 @section('action') Detail @endsection
 
 @push('css')
-    <style>
-        a .attachment{
-            display:inline-block;
-            padding-top:100px;
-            background: red;
-            white-space: nowrap;
-        }
-        a[href$='.pdf'] {
-            display:inline-block;
-            padding-top:100px;
-            background: url('/icons/pdf.png')  center left no-repeat;
-            white-space: nowrap;
-        }
-        a[href$='.pptx'], a[href$='.ppt'] {
-            display:inline-block;
-            padding-top:130px;
-            background: url('/icons/pptx.png')  center left no-repeat;
-            white-space: nowrap;
-        }
-        a[href$='.doc'], a[href$='.docx'] {
-            display:inline-block;
-            padding-top:130px;
-            background: url('/icons/docx-file.png')  center left no-repeat;
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url('css/custom-icon.css') }}">
 @endpush
 
 @section('content')

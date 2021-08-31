@@ -16,7 +16,7 @@ class CreateLessonGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::table('lessons', function (Blueprint $table) {
             $table->dropForeign(['major_id']);
             $table->dropColumn('major_id');
         });

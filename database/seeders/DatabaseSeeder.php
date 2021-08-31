@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         foreach($users as $user){
             User::create($user);
         }
-        Major::create(['name' => 'X RPL 2']);
+        Major::create(['level'=>1,'name' => 'RPL 1']);
         Subject::create(['name'=>'Programan Web Pemrograman Bergerak']);
 
         $teacher = [
