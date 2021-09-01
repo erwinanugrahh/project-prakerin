@@ -32,7 +32,12 @@ let majorities = $('#majorities').val()
 majorities = JSON.parse(majorities);
 let dataMajor = {};
 majorities.forEach((v,i)=>{
-    dataMajor[v.id] = v.name
+    let level = {
+        1:'X',
+        2:'XI',
+        3:'XII'
+    }
+    dataMajor[v.id] = level[v.level]+' '+v.name
 })
 
 var currentTab = 0; // Current tab is set to be the first tab (0)

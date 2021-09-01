@@ -34,8 +34,7 @@ class Student extends Model
     public function getAbsenToday($withStyle = false)
     {
         $absenToday = date('Y-m-d');
-        $absen = $this->absens->where('created_at', '>=', $absenToday.' 00:00:00')
-                              ->where('created_at', '<=', $absenToday.' 99:99:99')->first();
+        $absen = $this->absens->whereBetween('created_at', [$absenToday.' 00:00:00',$absenToday.' 99:99:99'])->first();
         if($withStyle){
             $style = [
                 'H' => 'success','I'=>'info','S'=>'warning','A'=>'danger',''=>'secondary'
@@ -48,11 +47,17 @@ class Student extends Model
         }
     }
 
+    public function getDescriptionAbsenToday()
+    {
+        $absenToday = date('Y-m-d');
+        $absen = $this->absens->whereBetween('created_at', [$absenToday.' 00:00:00',$absenToday.' 99:99:99'])->first();
+        return $absen->description??old('description.'.$this->id);
+    }
+
     public function hasAbsenToday()
     {
         $absenToday = date('Y-m-d');
-        $absen = $this->absens->where('created_at', '>=', $absenToday.' 00:00:00')
-                              ->where('created_at', '<=', $absenToday.' 99:99:99')->first();
+        $absen = $this->absens->whereBetween('created_at', [$absenToday.' 00:00:00',$absenToday.' 99:99:99'])->first();
         return !is_null($absen);
     }
 
