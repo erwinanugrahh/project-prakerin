@@ -6,6 +6,7 @@ use App\Models\Task;
 use App\Models\Lesson;
 use App\Models\LessonGroup;
 use Illuminate\Http\Request;
+use App\Support\Collection;
 
 class TaskController extends Controller
 {
@@ -16,16 +17,26 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
+        // $collect = (new Collection(LessonGroup::all()->toArray()))->paginate(20);
         $major_id = auth()->user()->student->major_id;
-        $lessons = LessonGroup::where('major_id', $major_id);
+        $model = LessonGroup::with(['lesson','lesson.teacher'])->where('major_id', $major_id);
         if($request->has('search')){
-            $lessons = $lessons->whereHas('lesson', function($query)use($request){
+            $model = $model->whereHas('lesson', function($query)use($request){
                 return $query->where('title', 'like', "%{$request->search}%");
             });
         }
-        $lessons = $lessons->paginate(6);
+        $lessons = (new Collection($model->get()->map(function($item){
+            return [
+                'title' => $item->lesson->title,
+                'teacher' => $item->lesson->teacher->getFullName(),
+                'end_at' => $item->end_at,
+                'value' => $item->lesson->getMyValue(),
+                'href' => route('task.show', $item->lesson->slug)
+            ];
+        })->toArray()))->paginate(6);
+        // dd($lessons);
         $request->flash();
-        return view('student.task.index', compact('lessons'));
+        return $request->ajax()?$lessons:view('student.task.index', compact('lessons'));
     }
 
     /**
