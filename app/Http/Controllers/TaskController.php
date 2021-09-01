@@ -14,10 +14,17 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $major_id = auth()->user()->student->major_id;
-        $lessons = LessonGroup::where('major_id', $major_id)->get();
+        $lessons = LessonGroup::where('major_id', $major_id);
+        if($request->has('search')){
+            $lessons = $lessons->whereHas('lesson', function($query)use($request){
+                return $query->where('title', 'like', "%{$request->search}%");
+            });
+        }
+        $lessons = $lessons->paginate(6);
+        $request->flash();
         return view('student.task.index', compact('lessons'));
     }
 
