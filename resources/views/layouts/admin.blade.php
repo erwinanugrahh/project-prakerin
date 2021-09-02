@@ -124,7 +124,7 @@
     <script src="{{ url('admin/') }}/js/dataTables.bootstrap4.min.js"></script>
     <!--Bootstrap Calendar JS-->
     <script src="{{ url('admin/') }}/js/calendar/bootstrap_calendar.js"></script>
-    <script src="{{ url('admin/') }}/js/calendar/demo.js"></script>
+    {{-- <script src="{{ url('admin/') }}/js/calendar/demo.js"></script> --}}
     <!--Nice select-->
     <script src="{{ url('admin/') }}/js/jquery.nice-select.min.js"></script>
     {{-- Select 2 --}}

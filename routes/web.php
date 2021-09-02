@@ -32,9 +32,11 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         Route::resource('teacher', TeacherController::class);
         Route::post('teacher/delete-selected', 'TeacherController@delete_selected');
+        Route::post('teacher/import', 'TeacherController@import');
 
         Route::resource('student', StudentController::class);
         Route::post('student/delete-selected', 'StudentController@delete_selected');
+        Route::post('student/import', 'StudentController@import');
 
         // Route::resource('blogger', BloggerController::class);
         // Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
@@ -60,9 +62,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
     Route::prefix('student')->middleware(['auth','role:student'])->group(function(){
         Route::resource('task', TaskController::class)->except(['edit', 'update', 'delete']);
+        Route::get('absen', 'AbsenController@me')->name('absen.me');
     });
 
-    Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
+    Route::resource('blog', BlogController::class)->middleware(['auth']);
     Route::post('blog/delete-selected', 'BlogController@delete_selected');
 });
 
