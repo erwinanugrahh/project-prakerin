@@ -4,6 +4,10 @@
 @section('page') Blog @endsection
 @section('action') Preview @endsection
 
+@push('css')
+    {{-- <link rel="stylesheet" href="{{ url('plugins/ckeditor/contents.css') }}"> --}}
+@endpush
+
 @section('content')
     <h2>{{ $blog->title }}</h2>
     <hr>

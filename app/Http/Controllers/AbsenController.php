@@ -62,6 +62,12 @@ class AbsenController extends Controller
         return back()->with('success', 'Absen berhasil di'.$message);
     }
 
+    public function me()
+    {
+        $histories = Absen::select('absens.*')->where('student_id', student()->id)->get();
+        return view('student.absen', compact('histories'));
+    }
+
     public function history(Request $request)
     {
         $my_students_id = teacher()->students->pluck('id');

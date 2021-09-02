@@ -58,4 +58,18 @@ class HomeController extends Controller
         auth()->user()->update($validate);
         return back()->with('success','Password berhasil diubah');
     }
+
+    public function set_blogger(Request $request)
+    {
+        $blogger = $request->is_blogger;
+        if(student()){
+            student()->update(['is_blogger'=>$blogger]);
+        }else{
+            teacher()->update(['is_blogger'=>$blogger]);
+        }
+
+        $message = $blogger==1?'Berhasil mengaktifkan mode blogger':'Berhasil menonaktifkan mode blogger';
+        session()->flash('success', $message);
+        // return response()->json($message);
+    }
 }

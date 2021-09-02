@@ -4,6 +4,11 @@
 @section('page') Profile @endsection
 @section('action') Indeks @endsection
 
+@push('css')
+    <!--Switchery CSS-->
+    <link rel="stylesheet" href="{{ url('admin') }}/css/switchery.min.css">
+@endpush
+
 @section('content')
 <div class="row mt-3">
     <div class="col-sm-12">
@@ -57,8 +62,8 @@
             <div class="dropdown-divider"></div>
 
             <div class="mb-3">
-                <h6>Slogan</h6>
-                <p class="p-typo">For awesome buildings and drawing plans, i am the best you can call on</p>
+                <h6 class="mb-3">Blogger</h6>
+                <p class="p-typo"><input type="checkbox" class="js-single" {{ (student()->is_blogger??teacher()->is_blogger??null)?'checked':'' }} id="blog-mode" /><label for="blog-mode" class="pl-3 switch-label">Aktifkan Mode Blogger?</label></p>
                 <div class="text-right">
                     <button type="button" class="btn btn-theme">
                         <i class="fa fa-user-plus"></i> Follow
@@ -270,14 +275,14 @@
                                     <th scope="row">Email</th>
                                     <td>{{ auth()->user()->email }}</td>
                                 </tr>
-                                @if (!auth()->user()->role == 'admin')
+                                @if (!auth()->user()->role != 'admin')
                                 <tr>
                                     <th scope="row">No Telepon</th>
-                                    <td>{{ student()->phone??teacher()->phone }}</td>
+                                    <td>{{ student()->phone??teacher()->phone??'' }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Alamat</th>
-                                    <td>{{ student()->address??teacher()->address }}</td>
+                                    <td>{{ student()->address??teacher()->address??'' }}</td>
                                 </tr>
                                 @endif
                             </tbody>
@@ -325,17 +330,17 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        @if (!auth()->user()->role == 'admin')
+                        @if (!auth()->user()->role != 'admin')
                         <div class="form-group">
                             <label for="">No Telepon</label>
-                            <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" id="phone" value="{{ student()->phone ?? teacher()->phone }}">
+                            <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" id="phone" value="{{ student()->phone ?? teacher()->phone ??'' }}">
                             @error('phone')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ student()->address ?? teacher()->address }}">
+                            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ student()->address ?? teacher()->address??'' }}">
                             @error('address')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -369,73 +374,6 @@
                         </div>
                         <button class="btn btn-theme btn-block p-2 mb-1" type="submit">Edit Password</button>
                     </form>
-
-                    {{-- <div class="mb-5">
-                        <h6 class="mb-2">Skills</h6>
-
-                        <p class="mb-2 mt-3">Photoshop <span class="pull-right">70%</span></p>
-                        <div class="progress mb-4" style="height: 7px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="70" style="width: 70%"  aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <p class="mb-2">Illustrator <span class="pull-right">65%</span></p>
-                        <div class="progress mb-4" style="height: 7px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <p class="mb-2">Code Editor <span class="pull-right">85%</span></p>
-                        <div class="progress mb-4" style="height: 7px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-                        <p class="mb-2">Corel draw <span class="pull-right">55%</span></p>
-                        <div class="progress mb-4" style="height: 7px;">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div> --}}
-
-                    <div class="dropdown-divider mt-4"></div>
-
-                    {{-- <div class="mt-5 mb-4">
-                        <h6 class="mb-2">Projects</h6>
-                        <table class="table table-striped" id="project_table">
-                            <thead>
-                                <tr>
-                                    <th>Project name</th>
-                                    <th>Start date</th>
-                                    <th>Due date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Web design</td>
-                                    <td>13 Feb, 2018</td>
-                                    <td>10 June, 2018</td>
-                                    <td><span class="badge badge-success">Completed</span></td>
-                                </tr>
-                                <tr>
-                                    <td>App development</td>
-                                    <td>03 July, 2018</td>
-                                    <td>09 November, 2018</td>
-                                    <td><span class="badge badge-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>App prototyping</td>
-                                    <td>31 January, 2018</td>
-                                    <td>02 September, 2018</td>
-                                    <td><span class="badge badge-danger">Suspended</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Web development</td>
-                                    <td>23 October, 2018</td>
-                                    <td>15 December, 2018</td>
-                                    <td><span class="badge badge-info">Negotiations</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div> --}}
-
                 </div>
             </div>
         </div>
@@ -443,3 +381,9 @@
     <!--/User profile content-->
 </div>
 @endsection
+
+@push('js')
+    <!--Switchery JS-->
+    <script src="{{ url('admin') }}/js/switchery.min.js"></script>
+    <script src="{{ url('js/profile.js') }}"></script>
+@endpush

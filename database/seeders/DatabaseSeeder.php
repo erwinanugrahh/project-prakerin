@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Indra R',
                 'email' => 'indra@gmail.com',
                 'password' => bcrypt('123456'),
-                'role' => 'blogger'
+                'role' => 'student'
             ],
             [
                 'name' => 'Erwin A',
@@ -65,16 +65,28 @@ class DatabaseSeeder extends Seeder
             'major_id'   => 1
         ];
         $student = [
-            'user_id'  => 5,
-            'nisn'     => '12345678901',
-            'name'     => 'Nurfi',
-            'email'    => 'nurfi@gmail.com',
-            'phone'    => '08932352381',
-            'major_id' => 1,
-            'address'  => 'Tasimalaya'
+            [
+                'user_id'  => 2,
+                'nisn'     => '12345678911',
+                'name'     => 'Indra R',
+                'email'    => 'indra@gmail.com',
+                'phone'    => '089123452381',
+                'major_id' => 1,
+                'address'  => 'Tasimalaya'
+            ],
+            [
+                'user_id'  => 5,
+                'nisn'     => '12345678901',
+                'name'     => 'Nurfi',
+                'email'    => 'nurfi@gmail.com',
+                'phone'    => '08932352381',
+                'major_id' => 1,
+                'address'  => 'Tasimalaya'
+            ]
         ];
 
         Teacher::create($teacher);
-        Student::create($student);
+        Student::create($student[0]);
+        Student::create($student[1]);
     }
 }

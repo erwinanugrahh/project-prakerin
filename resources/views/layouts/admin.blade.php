@@ -131,8 +131,8 @@
     <script src="{{ url('plugins/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!--Custom Js Script-->
-    <script src="{{ url('admin/') }}/js/custom.js"></script>
     @stack('js')
+    <script src="{{ url('admin/') }}/js/custom.js"></script>
     <!--Custom Js Script-->
     <script>
         //Order list dataTable
@@ -175,7 +175,7 @@
                 confirmButtonText: 'Ya, Ganti sekarang'
             }).then((result) => {
                 if (result.isConfirmed) {
-                   window.location.href ='/profile'
+                   window.location.href ='/profile#custom-contact'
                 }
             })
         </script>

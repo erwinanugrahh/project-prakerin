@@ -25,9 +25,9 @@
 
         <table class="table table-bordered table-striped mt-3" id="blogs_table">
             <thead>
-                <tr>
+                <tr class="bg-theme">
                     <th style="width: 10px;" class="p-0 pr-4 align-middle">
-                        <div class="form-check-box cta">
+                        <div class="form-check-box white cta">
                             <span class="color1">
                                 <input type="checkbox" id="orderAll">
                                 <label for="orderAll"></label>

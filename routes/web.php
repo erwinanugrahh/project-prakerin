@@ -27,6 +27,7 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::view('/profile', 'auth.profile');
     Route::put('/profile/update-profile', 'HomeController@update_profile');
     Route::put('/profile/update-password', 'HomeController@update_password');
+    Route::post('/profile/set-blogger', 'HomeController@set_blogger');
 
     Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::get('/', 'DashboardController@admin');

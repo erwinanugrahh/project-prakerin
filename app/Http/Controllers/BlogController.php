@@ -19,14 +19,14 @@ class BlogController extends Controller
     {
         $blogs = Blog::where('user_id', auth()->user()->id)->get();
 
-        $model=Blog::query()->with('blogger');
+        $model=Blog::where('user_id', auth()->user()->id)->with('blogger');
 
         if($request['filter_status']!=null)
         {
             $model->where('status',$request['filter_status']);
         }
 
-        $datatable = DataTables::eloquent($model)
+        $datatable = DataTables::collection($model->get())
         ->addColumn('checkbox', function($blog){
             return "<div class=\"form-check-box cta\">
                         <span class=\"color1\">

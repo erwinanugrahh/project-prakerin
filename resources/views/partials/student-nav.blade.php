@@ -1,5 +1,5 @@
 <li class="parent" id="absen">
-    <a href="{{ route('task.index') }}" class=""><i class="fas fa-user-clock mr-3"></i>
+    <a href="{{ route('absen.me') }}" class=""><i class="fas fa-user-clock mr-3"></i>
         <span class="none">Absen Ku </span>
     </a>
 </li>

@@ -34,7 +34,6 @@ class TaskController extends Controller
                 'href' => route('task.show', $item->lesson->slug)
             ];
         })->toArray()))->paginate(6);
-        // dd($lessons);
         $request->flash();
         return $request->ajax()?$lessons:view('student.task.index', compact('lessons'));
     }

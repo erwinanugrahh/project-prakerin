@@ -46,6 +46,12 @@ $('#orderAll').on('click',function(){
     $('input[name=selected]').prop('checked',checked);
 });
 
+//select all
+$('#orderAllField').on('click',function(){
+    let checked = $(this).prop('checked');
+    $('.ids').prop('checked',checked);
+});
+
 $('#delete-selected').on('click', function(){
     let selected = $("input[name=selected]:checked");
     if(selected.length==0){
@@ -83,4 +89,91 @@ $('#delete-selected').on('click', function(){
             }
         })
     }
+})
+
+$('#import-data').on('change', function(){
+    var $formData = new FormData();
+    $formData.append('excel', $(this)[0].files[0])
+    $.ajax({
+        url: '/api/teacher/import',
+        method: 'post',
+        data: $formData,
+        headers: {'X-CSRF-TOKEN': $('input[name=_token]').val()},
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        success: function(result){
+            $('#preview_table').DataTable({
+                "bSort" : true,
+                data: result.data,
+                destroy: true,
+                "columns": [
+                    {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
+                    {data:0,className:'align-middle',orderable:true,sortable:true},
+                    {data:1,className:'align-middle'},
+                    {data:2,className:'align-middle'},
+                    {data:3,className:'align-middle'},
+                    {data:4,className:'align-middle'},
+                    {data:5,className:'align-middle'},
+                    {data:6,className:'align-middle'},
+                    {data:7,className:'align-middle'},
+                ],
+            })
+            $('#import').removeClass('disabled').attr('disabled',false)
+        },
+        error: function({responseJSON}){
+            $('#import').addClass('disabled').attr('disabled',true)
+            $('#preview_table').DataTable({
+                destroy:true,
+                data: []
+            })
+            Toast.fire({
+                icon: 'error',
+                title: responseJSON.errors.excel[0]
+            })
+        }
+    })
+})
+
+
+$('#formImport').on('submit', function(e){
+    e.preventDefault()
+    var $formData = new FormData();
+    $formData.append('excel', $('#import-data')[0].files[0])
+    $('.ids:checked').each(function(i, e){
+        $formData.append('selected[]', e.value)
+    })
+    $.ajax({
+        url: '/admin/teacher/import',
+        method: 'post',
+        data: $formData,
+        headers: {'X-CSRF-TOKEN': $('input[name=_token]').val()},
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        success: function(result){
+            Toast.fire({
+                icon: 'success',
+                title: result.message
+            })
+            $('#importData').modal('hide')
+            table.draw()
+        },
+        error: function({responseJSON}){
+            let html = '<ul>';
+            for(let i in responseJSON.errors){
+                responseJSON.errors[i].forEach(err=>{
+                    html += `<li><b>${err}</b></li>`
+                })
+            }
+            html += '</ul>'
+            Swal.fire({
+                title: 'Gagal diimport',
+                html,
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Oke'
+            })
+        }
+    })
 })
