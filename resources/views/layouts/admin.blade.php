@@ -163,6 +163,22 @@
                 title: '{{ session()->get("success") }}'
             })
         </script>
+    @elseif(session()->has('alert'))
+        <script>
+            Swal.fire({
+                title: 'Password anda masih default',
+                text: "Apakah ingin mengubahnya sekarang?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Ganti sekarang'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                   window.location.href ='/profile'
+                }
+            })
+        </script>
     @endif
     <script>
         $(document).on('click', '.delete', function(e){

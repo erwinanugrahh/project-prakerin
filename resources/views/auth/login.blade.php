@@ -41,9 +41,7 @@
 @endsection
 
 @section('another')
-    <h3 class="mb-4">Belum Punya Akun?</h3>
-    <p class="mb-4">Jika anda tidak bisa masuk karena tidak mempunyai akun , silahkan buat akun baru terlebih dahulu.</p>
-    <p class="text-center"><a href="{{ route('register') }}" class="btn btn-light">Buat akun baru</a></p>
+    Isian Naon Ieu?
 @endsection
 {{-- @section('content')
 <div class="container">
