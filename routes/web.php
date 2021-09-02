@@ -18,11 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+
+    Route::view('/profile', 'auth.profile');
+    Route::put('/profile/update-profile', 'HomeController@update_profile');
+    Route::put('/profile/update-password', 'HomeController@update_password');
 
     Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::get('/', 'DashboardController@admin');
