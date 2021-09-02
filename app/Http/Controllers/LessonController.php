@@ -108,7 +108,7 @@ class LessonController extends Controller
                 $model[] = collect([
                     'student' => $student,
                     'name' => $student->name,
-                    'major' => $majors->major->name,
+                    'major' => $majors->major->getMajor(),
                     'value' => $student->getTheTask($lesson)->value??0,
                     'done' => $student->haveDone($lesson),
                     'status_done' => $student->haveDone($lesson, false, $request->filter_status),

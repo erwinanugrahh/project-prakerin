@@ -15,8 +15,8 @@ var table=$('#tasks_table').DataTable({
     "columns": [
         {data:"DT_RowIndex",searchable:false,orderable:false,sortable:false,className:'text-center align-middle'},
         {data:"name",className:'align-middle'},
-        {data:"major"},
-        {data:"value"},
+        {data:"major",className:'align-middle'},
+        {data:"value",className:'align-middle text-center'},
         {data:"done",className:'align-middle',orderable:false,sortable:false},
         {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
     ],
