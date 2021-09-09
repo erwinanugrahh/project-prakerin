@@ -31,6 +31,6 @@ class Teacher extends Model
 
     public function getFullName()
     {
-        return $this->name;
+        return ($this->front_title.' '??'').$this->name.(' '.$this->front_title??'');
     }
 }

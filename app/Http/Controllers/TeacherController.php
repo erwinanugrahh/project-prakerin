@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\TeacherImport;
 use App\Models\Teacher;
 use App\Models\Subject;
 use App\Models\Major;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
 {
@@ -77,6 +81,86 @@ class TeacherController extends Controller
         Teacher::create(collect($validate)->put('user_id', $user->id)->toArray());
 
         return redirect()->route('teacher.index')->with('success', 'Guru berhasil ditambahkan');
+    }
+
+    public function preview(Request $request)
+    {
+        $validate = $request->validate([
+            'excel' => 'mimes:xlsx,xls,csv,ods'
+        ]);
+
+        $array = Excel::toCollection(new TeacherImport, $request->file('excel'));
+        foreach($array[0] as $i => $model){
+            $array[0][$i]['id'] = $i;
+        }
+        if(count($array[0][0])<8){
+            throw ValidationException::withMessages(['excel' => 'Format tidak sesuai dengan table']);
+        }
+        $datatable = DataTables::collection($array[0])
+            ->addColumn('checkbox', function($student){
+                return '
+                <div class="form-check-box cta">
+                    <span class="color1">
+                        <input type="checkbox" id="select'.$student['id'].'" value="'.$student['id'].'" class="ids" name="selected[]">
+                        <label for="select'.$student['id'].'"></label>
+                    </span>
+                </div>
+                ';
+            })
+            ->editColumn(4, function($teacher){
+                $hasAlready = User::where('email', $teacher[4])->first();
+                return $teacher[4].(is_null($hasAlready)?'':'<br><small class="text-danger">Email sudah terdaftar</small>');
+            })
+            ->escapeColumns([])
+            ->toJson();
+        return $datatable;
+    }
+
+    public function import(Request $request)
+    {
+        $validate = $request->validate([
+            'excel' => 'mimes:xlsx,xls,csv,ods',
+            'selected' => 'required|array|min:3'
+        ],[],[
+            'selected'=>'Pilihan'
+        ]);
+        $teachers = Excel::toCollection(new TeacherImport, $request->file('excel'))[0];
+        $success = 0;
+        $fails = 0;
+        foreach($teachers as $id => $teacher){
+            if(in_array($id, $validate['selected'])){
+                try{
+                    $user = User::create([
+                        'name' => $teacher[2],
+                        'email' => $teacher[4],
+                        'password' => bcrypt('passwordguru'),
+                        'role' => 'teacher'
+                    ]);
+                    if($user->exists){
+                        $major = Major::create([
+                            'level' => $teacher[5],
+                            'name' => $teacher[6]
+                        ]);
+                        $teacherM = Teacher::create([
+                            'user_id' => $user->id,
+                            'nip' => $teacher[0],
+                            'front_title' => $teacher[1],
+                            'name' => $teacher[2],
+                            'back_degree' => $teacher[3],
+                            'email' => $teacher[4],
+                            'address' => $teacher[7],
+                            'major_id' => $major->id,
+                            'subject_id'=>1
+                        ]);
+                        if($teacherM->exists) $success++;
+                        else $fails++;
+                    }else $fails++;
+                }catch(QueryException $exception){
+                    $fails++;
+                }
+            }
+        }
+        return response()->json(['message'=>"Data berhasil diimport. $success berhasil, $fails gagal"]);
     }
 
     /**

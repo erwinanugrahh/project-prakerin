@@ -124,15 +124,15 @@
     <script src="{{ url('admin/') }}/js/dataTables.bootstrap4.min.js"></script>
     <!--Bootstrap Calendar JS-->
     <script src="{{ url('admin/') }}/js/calendar/bootstrap_calendar.js"></script>
-    <script src="{{ url('admin/') }}/js/calendar/demo.js"></script>
+    {{-- <script src="{{ url('admin/') }}/js/calendar/demo.js"></script> --}}
     <!--Nice select-->
     <script src="{{ url('admin/') }}/js/jquery.nice-select.min.js"></script>
     {{-- Select 2 --}}
     <script src="{{ url('plugins/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!--Custom Js Script-->
-    <script src="{{ url('admin/') }}/js/custom.js"></script>
     @stack('js')
+    <script src="{{ url('admin/') }}/js/custom.js"></script>
     <!--Custom Js Script-->
     <script>
         //Order list dataTable
@@ -161,6 +161,22 @@
             Toast.fire({
                 icon: 'success',
                 title: '{{ session()->get("success") }}'
+            })
+        </script>
+    @elseif(session()->has('alert'))
+        <script>
+            Swal.fire({
+                title: 'Password anda masih default',
+                text: "Apakah ingin mengubahnya sekarang?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Ganti sekarang'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                   window.location.href ='/profile#custom-contact'
+                }
             })
         </script>
     @endif

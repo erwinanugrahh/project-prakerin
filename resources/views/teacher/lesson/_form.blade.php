@@ -4,7 +4,7 @@
         <label for="major_id">Untuk kelas</label>
         <select name="major_id[]" class="form-control select2 @error('major_id') is-invalid @enderror" id="major_id" required multiple>
             @foreach ($majorities as $major)
-            <option value="{{ $major->id }}" {{ isset($lesson)&&in_array($major->id, $lesson->majors->pluck('major_id')->toArray())?'selected':'' }}>{{ $major->name }}</option>
+            <option value="{{ $major->id }}" {{ isset($lesson)&&in_array($major->id, $lesson->majors->pluck('major_id')->toArray())?'selected':'' }}>{{ $major->getMajor() }}</option>
             @endforeach
         </select>
         <div class="invalid-tooltip">
@@ -64,6 +64,10 @@
 
 @push('css')
     <style>
+        .select2-selection__choice__remove{
+            background: transparent;
+            border: 0;
+        }
          /* Style the form */
         #regForm {
             background-color: #ffffff;

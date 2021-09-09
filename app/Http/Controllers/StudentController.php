@@ -7,6 +7,9 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use App\Imports\StudentImport;
+use Illuminate\Database\QueryException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
@@ -79,6 +82,88 @@ class StudentController extends Controller
         Student::create(collect($validate)->put('user_id', $user->id)->toArray());
 
         return redirect()->route('student.index')->with('success', 'Siswa berhasil ditambahkan');
+    }
+
+    public function preview(Request $request)
+    {
+        $validate = $request->validate([
+            'excel' => 'mimes:xlsx,xls,csv,ods'
+        ]);
+
+        $array = Excel::toCollection(new StudentImport, $request->file('excel'));
+        foreach($array[0] as $i => $model){
+            $array[0][$i]['id'] = $i;
+        }
+        $datatable = DataTables::collection($array[0])
+            ->addColumn('checkbox', function($student){
+                return '
+                <div class="form-check-box cta">
+                    <span class="color1">
+                        <input type="checkbox" id="order'.$student['id'].'" value="'.$student['id'].'" class="ids" name="selected[]">
+                        <label for="order'.$student['id'].'"></label>
+                    </span>
+                </div>
+                ';
+            })
+            ->addColumn('nisn', function($student){
+                return $student[0];
+            })
+            ->addColumn('name', function($student){
+                return $student[1];
+            })
+            ->addColumn('email', function($student){
+                $hasAlready = User::where('email', $student[2])->first();
+                return $student[2].(is_null($hasAlready)?'':'<br><small class="text-danger">Email sudah terdaftar</small>');
+            })
+            ->addColumn('address', function($student){
+                return $student[3];
+            })
+            ->removeColumn([0,1,2,3])
+            ->escapeColumns([])
+            ->toJson();
+        return $datatable;
+    }
+
+    public function import(Request $request)
+    {
+        $validate = $request->validate([
+            'excel' => 'mimes:xlsx,xls,csv,ods',
+            'major_id'=>'required',
+            'selected' => 'required|array|min:3'
+        ],[],[
+            'major_id'=>'Kelas',
+            'selected'=>'Pilihan'
+        ]);
+        $students = Excel::toCollection(new StudentImport, $request->file('excel'))[0];
+        $success = 0;
+        $fails = 0;
+        foreach($students as $id => $student){
+            if(in_array($id, $validate['selected'])){
+                try{
+                    $user = User::create([
+                        'name' => $student[1],
+                        'email' => $student[2],
+                        'password' => bcrypt('passwordsiswa'),
+                        'role' => 'student'
+                    ]);
+                    if($user->exists){
+                        $studentM = Student::create([
+                            'user_id' => $user->id,
+                            'nisn' => $student[0],
+                            'name' => $student[1],
+                            'email' => $student[2],
+                            'address' => $student[3],
+                            'major_id' => $validate['major_id']
+                        ]);
+                        if($studentM->exists) $success++;
+                        else $fails++;
+                    }else $fails++;
+                }catch(QueryException $exception){
+                    $fails++;
+                }
+            }
+        }
+        return response()->json(['message'=>"Data berhasil diimport. $success berhasil, $fails gagal"]);
     }
 
     /**

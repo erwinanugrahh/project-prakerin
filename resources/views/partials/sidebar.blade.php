@@ -31,6 +31,13 @@
                         @break
                     @default
                 @endswitch
+                @if ((student()->is_blogger??teacher()->is_blogger))
+                <li class="parent" id="blog">
+                    <a href="{{ route('blog.index') }}" class=""><i class="fab fa-blogger-b mr-3"></i>
+                        <span class="none">Blog </span>
+                    </a>
+                </li>
+                @endif
             </ul>
         </div>
         <!--Sidebar Naigation Menu-->

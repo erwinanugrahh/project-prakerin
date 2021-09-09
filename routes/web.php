@@ -18,11 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+
+    Route::view('/profile', 'auth.profile');
+    Route::put('/profile/update-profile', 'HomeController@update_profile');
+    Route::put('/profile/update-password', 'HomeController@update_password');
+    Route::post('/profile/set-blogger', 'HomeController@set_blogger');
 
     Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::get('/', 'DashboardController@admin');
@@ -32,12 +37,14 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         Route::resource('teacher', TeacherController::class);
         Route::post('teacher/delete-selected', 'TeacherController@delete_selected');
+        Route::post('teacher/import', 'TeacherController@import');
 
         Route::resource('student', StudentController::class);
         Route::post('student/delete-selected', 'StudentController@delete_selected');
+        Route::post('student/import', 'StudentController@import');
 
-        Route::resource('blogger', BloggerController::class);
-        Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
+        // Route::resource('blogger', BloggerController::class);
+        // Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');
@@ -53,13 +60,17 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::post('lesson/task/{task}', 'LessonController@update_task')->name('lesson.task-update');
 
         Route::resource('absen', AbsenController::class)->only(['index','store']);
+        Route::get('absen/history', 'AbsenController@history')->name('absen.history');
+        Route::get('absen/history/{date}/{filter}', 'AbsenController@history_show')->name('absen.history.detail');
+        Route::post('absen/history/{date}/{filter?}', 'AbsenController@history_export')->name('absen.history.export');
     });
 
     Route::prefix('student')->middleware(['auth','role:student'])->group(function(){
         Route::resource('task', TaskController::class)->except(['edit', 'update', 'delete']);
+        Route::get('absen', 'AbsenController@me')->name('absen.me');
     });
 
-    Route::resource('blog', BlogController::class)->middleware(['auth','role:admin,blogger']);
+    Route::resource('blog', BlogController::class)->middleware(['auth']);
     Route::post('blog/delete-selected', 'BlogController@delete_selected');
 });
 

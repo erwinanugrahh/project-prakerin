@@ -1,4 +1,4 @@
-$('#absen').addClass('active')
+$('#absen').addClass('active').parent().parent().addClass('active')
 $('.nice-select').niceSelect()
 
 var table = $('#absens_table').DataTable({

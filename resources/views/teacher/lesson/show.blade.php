@@ -29,7 +29,7 @@
         <select name="" id="filter_major" class="filter_select mb-3">
             <option value="" data-display="Filter Kelas"></option>
             @foreach ($lesson->majors as $major)
-                <option value="{{ $major->major->name }}">{{ $major->major->name }}</option>
+                <option value="{{ $major->major->getMajor() }}">{{ $major->major->getMajor() }}</option>
             @endforeach
         </select>
     </div>
@@ -37,7 +37,7 @@
 
         <table class="table table-bordered table-striped mt-3" id="tasks_table">
             <thead>
-                <tr>
+                <tr class="bg-theme">
                     <th style="width: 1%;">No</th>
                     <th style="width: 30%">Nama</th>
                     <th style="width: 30%">Kelas</th>
