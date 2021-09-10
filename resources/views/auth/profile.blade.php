@@ -268,17 +268,24 @@
                         <table class="table table-borderless table-striped m-0">
                             <tbody>
                                 <tr>
-                                    <th scope="row">Full Name</th>
+                                    <th scope="row">Nama Lengkap</th>
                                     <td>{{ auth()->user()->name }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Email</th>
                                     <td>{{ auth()->user()->email }}</td>
                                 </tr>
-                                @if (!auth()->user()->role != 'admin')
+                                @if (auth()->user()->role != 'admin')
                                 <tr>
                                     <th scope="row">No Telepon</th>
                                     <td>{{ student()->phone??teacher()->phone??'' }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jenis Kelamin</th>
+                                    <td>{{ student()->address??teacher()->address??'' }}</td>
+                                </tr><tr>
+                                    <th scope="row">TTL</th>
+                                    <td>{{ student()->address??teacher()->address??'' }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Alamat</th>
@@ -330,7 +337,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        @if (!auth()->user()->role != 'admin')
+                        @if (auth()->user()->role != 'admin')
                         <div class="form-group">
                             <label for="">No Telepon</label>
                             <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" id="phone" value="{{ student()->phone ?? teacher()->phone ??'' }}">

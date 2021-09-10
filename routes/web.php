@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
+Route::view('ppdb', 'ppdb');
+Route::put('ppdb', 'PpdbController@form');
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');

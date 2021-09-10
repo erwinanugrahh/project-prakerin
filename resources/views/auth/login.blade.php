@@ -11,8 +11,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
             </div>
-            <input type="text"  class="form-control mt-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" name="email" placeholder="Masukan Email" aria-label="Username" aria-describedby="basic-addon1">
-            @error('email')
+            <input type="text"  class="form-control mt-0 @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" placeholder="Masukan Email/NIP/NISN" aria-label="Username" aria-describedby="basic-addon1">
+            @error('code')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
