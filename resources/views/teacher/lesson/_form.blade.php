@@ -1,6 +1,6 @@
 <input type="hidden" id="majorities" value="{{ $majorities }}">
 <div class="tab">
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="major_id">Untuk kelas</label>
         <select name="major_id[]" class="form-control select2 @error('major_id') is-invalid @enderror" id="major_id" required multiple>
             @foreach ($majorities as $major)
@@ -16,7 +16,8 @@
         </div>
     </div>
 
-    <div class="classess"></div>
+    <div class="classess"></div> --}}
+    @livewire('lesson-class', ['classess'=>$classess])
 </div>
 
 <div class="tab">

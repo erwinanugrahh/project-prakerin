@@ -115,31 +115,31 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
-function set_input() {
-    $('.classess').empty()
-    let major_id=$('#major_id').val()
-    if(major_id!=null)
-    major_id.forEach(element => {
-        $('.classess').append(`
-        <div class="form-group form-row">
-            <div class="col-6">
-                <label for="">Kelas</label>
-                <input type="text" class="form-control" value="${dataMajor[element]}" readonly>
-            </div>
-            <div class="col-3">
-                <label for="">Dari jam</label>
-                <input type="time" name="start_at[]" class="form-control start_at" onfocus="this.classList.remove('invalid')">
-            </div>
-            <div class="col-3">
-                <label for="">Sampai Jam</label>
-                <input type="time" name="end_at[]" class="form-control end_at" onfocus="this.classList.remove('invalid')">
-            </div>
-        </div>
-        `)
-    });
-}
-set_input()
+// function set_input() {
+//     $('.classess').empty()
+//     let major_id=$('#major_id').val()
+//     if(major_id!=null)
+//     major_id.forEach(element => {
+//         $('.classess').append(`
+//         <div class="form-group form-row">
+//             <div class="col-6">
+//                 <label for="">Kelas</label>
+//                 <input type="text" class="form-control" value="${dataMajor[element]}" readonly>
+//             </div>
+//             <div class="col-3">
+//                 <label for="">Dari jam</label>
+//                 <input type="time" name="start_at[]" class="form-control start_at" onfocus="this.classList.remove('invalid')">
+//             </div>
+//             <div class="col-3">
+//                 <label for="">Sampai Jam</label>
+//                 <input type="time" name="end_at[]" class="form-control end_at" onfocus="this.classList.remove('invalid')">
+//             </div>
+//         </div>
+//         `)
+//     });
+// }
+// set_input()
 
-$('#major_id').on('change', function(e){
-    set_input()
-})
+// $('#major_id').on('change', function(e){
+//     set_input()
+// })
