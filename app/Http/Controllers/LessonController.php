@@ -174,7 +174,7 @@ class LessonController extends Controller
         $times = [];
         $classess = [];
         foreach($lesson->majors as $i => $major){
-            $classess[$i]['major_id'] = $major->id;
+            $classess[$i]['major_id'] = $major->major_id;
             $classess[$i]['start_at'] = substr($major->start_at, 11, 5);
             $classess[$i]['end_at'] = substr($major->end_at, 11, 5);
             $times[$i]['start_at'] = substr($major->start_at, 11, 5);
