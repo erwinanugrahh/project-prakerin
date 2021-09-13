@@ -53,7 +53,12 @@ class LessonController extends Controller
     public function create()
     {
         $majorities = Major::all();
-        return view('teacher.lesson.create', compact('majorities'));
+        $classess = [[
+            'major_id'=>0,
+            'start_at'=>'',
+            'end_at'=>'',
+        ]];
+        return view('teacher.lesson.create', compact('majorities', 'classess'));
     }
 
     /**
@@ -67,7 +72,7 @@ class LessonController extends Controller
         $validate = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'major_id' => 'array',
+            'major_id.*' => 'required',
             'start_at.*' => 'required',
             'end_at.*' => 'required'
         ]);
@@ -167,11 +172,16 @@ class LessonController extends Controller
         $majorities = Major::all();
         $lesson->majors;
         $times = [];
+        $classess = [];
         foreach($lesson->majors as $i => $major){
+            $classess[$i]['major_id'] = $major->major_id;
+            $classess[$i]['start_at'] = substr($major->start_at, 11, 5);
+            $classess[$i]['end_at'] = substr($major->end_at, 11, 5);
             $times[$i]['start_at'] = substr($major->start_at, 11, 5);
             $times[$i]['end_at'] = substr($major->end_at, 11, 5);
         }
-        return request()->ajax()?response()->json($times):view('teacher.lesson.edit', compact('majorities', 'lesson'));
+
+        return request()->ajax()?response()->json($times):view('teacher.lesson.edit', compact('majorities', 'lesson', 'classess'));
     }
 
     /**

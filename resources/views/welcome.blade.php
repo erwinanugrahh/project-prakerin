@@ -54,17 +54,17 @@
           <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
             <ul class="list-unstyled">
               <li>
-                <a title="Facebook" href="{{ url('user') }}/https://facebbok.com/themefisher.com">
+                <a title="Facebook" href="https://facebbok.com/erwinanugrah">
                   <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
                 </a>
-                <a title="Twitter" href="{{ url('user') }}/https://twitter.com/themefisher.com">
+                <a title="Twitter" href="https://twitter.com/erwinanugrahh">
                   <span class="social-icon"><i class="fab fa-twitter"></i></span>
                 </a>
-                <a title="Instagram" href="{{ url('user') }}/https://instagram.com/themefisher.com">
+                <a title="Instagram" href="https://instagram.com/indrabesset">
                   <span class="social-icon"><i class="fab fa-instagram"></i></span>
                 </a>
-                <a title="Linkdin" href="{{ url('user') }}/https://github.com/themefisher.com">
-                  <span class="social-icon"><i class="fab fa-github"></i></span>
+                <a title="Youtube" href="https://youtube.com/bryanx19">
+                  <span class="social-icon"><i class="fab fa-youtube"></i></span>
                 </a>
               </li>
             </ul>
@@ -154,11 +154,16 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Keahlian</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Keahlian <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('user') }}/news-left-sidebar.html">RPL</a></li>
+                            <li><a href="{{ url('user') }}/news-right-sidebar.html">TKJ</a></li>
+                            <li><a href="{{ url('user') }}/news-single.html">DPIB</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-                      <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ekstrakulikuler<i
+                      <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ekstrakulikuler <i
                           class="fa fa-angle-down"></i></a>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ url('user') }}/news-left-sidebar.html">Balap karung</a></li>
@@ -173,6 +178,14 @@
 
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Berita</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tentang</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kontak</a>
                     </li>
 
                     </li>
@@ -209,7 +222,7 @@
           <div class="container h-100">
             <div class="row align-items-center h-100">
               <div class="col-md-12 text-center">
-               
+
                 <h2 class="slide-title" data-animation-in="slideInLeft">Selamat Datang di</h2>
                 <h3 class="slide-sub-title" data-animation-in="slideInRight">SMK IDEAN TASIKMALAYA</h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
@@ -227,11 +240,11 @@
           <div class="container h-100">
             <div class="row align-items-center h-100">
               <div class="col-md-12">
-                  
+
                 <h2 class="slide-title-box" data-animation-in="slideInDown">Bingung menentukan Masa depan?</h2>
                 <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sangat sederhana</h3>
                 <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK SMK IDEAN</h3>
-                <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kegagalan Anda itu menentukan bagaimana Anda mencapai kesuksesan.</p>
+                <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kegagalan Anda untuk menentukan bagaimana Anda mencapai kesuksesan.</p>
                 <p data-animation-in="slideInRight">
                   <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Our Services</a>
                 </p>
