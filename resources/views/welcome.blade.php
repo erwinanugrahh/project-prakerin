@@ -57,10 +57,17 @@
                 <a title="Facebook" href="https://facebbok.com/erwinanugrah">
                   <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
                 </a>
+<<<<<<< HEAD
                 <a title="Twitter" href="https://twitter.com/erwinanugrahh">
                   <span class="social-icon"><i class="fab fa-twitter"></i></span>
                 </a>
                 <a title="Instagram" href="https://instagram.com/indrabesset">
+=======
+                <a title="Twitter" href="https://twitter.com/erwinanugrah">
+                  <span class="social-icon"><i class="fab fa-twitter"></i></span>
+                </a>
+                <a title="Instagram" href="https://instagram.com/instagram">
+>>>>>>> 3ba45dcf86a77d93ef3d0cacd9b9c1009f520e41
                   <span class="social-icon"><i class="fab fa-instagram"></i></span>
                 </a>
                 <a title="Youtube" href="https://youtube.com/bryanx19">
@@ -115,7 +122,7 @@
                     </div>
                   </li>
                   <li class="header-get-a-quote">
-                    <a class="btn btn-info" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
                   </li>
                 </ul><!-- Ul end -->
               </div><!-- header right end -->
@@ -177,7 +184,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Berita</a>
+                        <a href="#news" class="nav-link dropdown-toggle" data-toggle="dropdown">Berita</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -226,8 +233,8 @@
                 <h2 class="slide-title" data-animation-in="slideInLeft">Selamat Datang di</h2>
                 <h3 class="slide-sub-title" data-animation-in="slideInRight">SMK IDEAN TASIKMALAYA</h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                  <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Our Services</a>
-                  <a href="{{ url('user') }}/contact.html" class="slider btn btn-primary border">Contact Now</a>
+                  <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Selengkapnya</a>
+                  <a href="{{ url('user') }}/contact.html" class="slider btn btn-primary border">Kontak Kami</a>
                 </p>
               </div>
             </div>
@@ -242,11 +249,15 @@
               <div class="col-md-12">
 
                 <h2 class="slide-title-box" data-animation-in="slideInDown">Bingung menentukan Masa depan?</h2>
-                <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sangat sederhana</h3>
+                <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sederhana</h3>
                 <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK SMK IDEAN</h3>
+<<<<<<< HEAD
                 <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kegagalan Anda untuk menentukan bagaimana Anda mencapai kesuksesan.</p>
+=======
+                <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kebingungan anda itu untuk menentukan bagaimana anda mencapai kesuksesan.</p>
+>>>>>>> 3ba45dcf86a77d93ef3d0cacd9b9c1009f520e41
                 <p data-animation-in="slideInRight">
-                  <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Our Services</a>
+                  <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Selengkapnya</a>
                 </p>
               </div>
             </div>
@@ -263,9 +274,7 @@
                 <h3 class="slide-sub-title" data-animation-in="fadeIn">We believe sustainability</h3>
                 <p class="slider-description lead" data-animation-in="slideInRight">Ayo ! bangunlah impianmu atau orang lain akan mempekerjakanmu untuk membangun impian mereka</p>
                 <div data-animation-in="slideInLeft">
-                  <a href="{{ url('user') }}/contact.html" class="slider btn btn-primary" aria-label="contact-with-us">Get Free Quote</a>
-                  <a href="{{ url('user') }}/about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Learn
-                    more</a>
+                  <a href="{{ url('user') }}/about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -280,8 +289,8 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="ts-intro">
-              <h1 class="into-title">About Us</h1>
-              <h3 class="into-sub-title">We deliver landmark projects</h3>
+              <h1 class="into-title">Tentang kami</h1>
+              <h3 class="into-sub-title">SMK IDEAN TASIKMALAYA</h3>
               <p>We are rethoric question ran over her cheek When she reached the first hills of the Italic Mountains,
                 she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village
                 and the subline of her own road, the Line Lane.</p>
@@ -296,7 +305,7 @@
                     <i class="fas fa-trophy"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">We've Repution for Excellence</h3>
+                    <h3 class="service-box-title">Kami memiliki prestasi keunggulan</h3>
                   </div>
                 </div><!-- Service 1 end -->
               </div><!-- col end -->
@@ -340,7 +349,7 @@
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <h3 class="into-sub-title">Our Values</h3>
-            <p>Minim Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy
+            <p> Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy
               street art, tattooed beard literally.</p>
 
             <div class="accordion accordion-group" id="our-values-accordion">
@@ -353,7 +362,6 @@
                     </button>
                   </h2>
                 </div>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                   data-parent="#our-values-accordion">
                   <div class="card-body">
@@ -459,7 +467,7 @@
         <div class="row text-center">
           <div class="col-12">
             <h2 class="section-title">We Are Specialists In</h2>
-            <h3 class="section-sub-title">What We Do</h3>
+            <h3 class="section-sub-title">Program Keahlian</h3>
           </div>
         </div>
         <!--/ Title row end -->
@@ -471,8 +479,9 @@
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon1.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Home Construction</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Desain Pemodelan Infromasi Bangunan</a></h3>
+                <p>
+                  Desain Pemodelan dan Informasi Bangunan adalah jurusan yang mempelajari tentang perencanaan bangunan, pelaksanaan pembuatan gedung dan perbaikan gedung. Kegiatannya adalah belajar menggambar rumah, gedung dan apartemen, menghitung biaya bangunan, melaksankan pembangunan dan memelihara kontruksi bangunan. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 1 end -->
 
@@ -481,8 +490,8 @@
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Building Remodels</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Multimedia</a></h3>
+                <p>Multimedia merupakan salah satu kompetensi keahlian di SMK yang termasuk dalam rumpun bidang keahlian Teknik Komputer dan Informatika. Multimedia sendiri mempelajari tentang kombinasi atau penggabungan dari beberapa media seperti teks, audio, video, animasi, gambar yang disajikan dalam penggunaan komputer dengan bantuan tools dan link sehingga menghasilkan presentasi yang menarik. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 2 end -->
 
@@ -491,10 +500,20 @@
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Interior Design</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Otomatisasi Tata Kelola Perkantoran</a></h3>
+                <p>Otomatisasi & Tata Kelola Perkantoran atau biasa disingkat OTKP, dulu bernama Administrasi Perkantoran atau AP merupakan salah satu cabang bidang keahlian Bisnis dan Manajemen mempelajari tentang Pengetikan naskah atau dokumen, Penanganan telepon, Penataan dan pengelolaan surat atau dokumen, Penataan dan pengelolaan arsip, Penanganan perjalanan bisnis, Penanganan dana kas kecil, Penyiapan pertemuan atau rapat, Penanganan aplikasi, dan Penanganan informasi melalui internet. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 3 end -->
+
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Rekayasa Perangkat Lunak</a></h3>
+                <p>Rekayasa Perangkat Lunak merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              </div>
+            </div><!-- Service 4 end -->
 
           </div><!-- Col end -->
 
@@ -508,30 +527,40 @@
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Exterior Design</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Bisnis Sepeda Motor</a></h3>
+                <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
               </div>
-            </div><!-- Service 4 end -->
+            </div><!-- Service 5 end -->
 
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Renovation</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Elektronika Industri</a></h3>
+                <p>Mendidik tenaga kerja yang mampu bersaing baik tingkat nasional, regional, maupun global. Menciptakan tenaga yang mampu berwirausaha. Mendidik tenaga terampil yang mampu menciptakan lapangan kerja. Mengembangkan unit produksi yang professional. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
-            </div><!-- Service 5 end -->
+            </div><!-- Service 6 end -->
+
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Komputer Jaringan</a></h3>
+                <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              </div>
+            </div><!-- Service 7 end -->
 
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon6.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Safety Management</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Kendaraan Ringan Otomotif</a></h3>
+                <p>TekniK Kendaraan Ringan Otomotif bertujuan Mengembangkan dan mengaplikasikan dalam karyanya secara mandiri dan dapat mengisi lowongan pekerjaan di dunia usaha dan dunia industri sebagai tenaga kerja tingkat menengah yang handal. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
-            </div><!-- Service 6 end -->
+            </div><!-- Service 8 end -->
           </div><!-- Col end -->
         </div><!-- Content row end -->
 
@@ -544,7 +573,7 @@
         <div class="row text-center">
           <div class="col-lg-12">
             <h2 class="section-title">Work of Excellence</h2>
-            <h3 class="section-sub-title">Recent Projects</h3>
+            <h3 class="section-sub-title">Gallery</h3>
           </div>
         </div>
         <!--/ Title row end -->
@@ -553,7 +582,7 @@
           <div class="col-12">
             <div class="shuffle-btn-group">
               <label class="active" for="all">
-                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
+                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Semua
               </label>
               <label for="commercial">
                 <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
@@ -865,7 +894,7 @@
         <div class="row text-center">
           <div class="col-12">
             <h2 class="section-title">Work of Excellence</h2>
-            <h3 class="section-sub-title">Recent Projects</h3>
+            <h3 class="section-sub-title">Berita terkini</h3>
           </div>
         </div>
         <!--/ Title row end -->
@@ -950,32 +979,31 @@
         <div class="container">
           <div class="row justify-content-between">
             <div class="col-lg-4 col-md-6 footer-widget footer-about">
-              <h3 class="widget-title">About Us</h3>
+              <h3 class="widget-title">Tentang Kami</h3>
               <img loading="lazy" width="200px" class="footer-logo" src="{{ url('user') }}/images/footer-logo.png" alt="Constra">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                labore et dolore magna aliqua.</p>
+              <p>SMK IDEAN Tasikmalaya merupakan salah satu lembaga pendidikan menengah kejuruan di Kabupaten Tasikmalaya Jawa Barat yang menyelenggarakan Program Pendidikan Kejuruan selama 3 Tahun.</p>
               <div class="footer-social">
                 <ul>
-                  <li><a href="{{ url('user') }}/https://facebook.com/themefisher" aria-label="Facebook"><i
+                  <li><a href="https://facebook.com/erwinanugrah" aria-label="Facebook"><i
                         class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="{{ url('user') }}/https://twitter.com/themefisher" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <li><a href="https://twitter.com/erwinanugrah" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                   </li>
-                  <li><a href="{{ url('user') }}/https://instagram.com/themefisher" aria-label="Instagram"><i
+                  <li><a href="https://instagram.com/indrabesset" aria-label="Instagram"><i
                         class="fab fa-instagram"></i></a></li>
-                  <li><a href="{{ url('user') }}/https://github.com/themefisher" aria-label="Github"><i class="fab fa-github"></i></a>
+                  <li><a href="https://youtube.com/bryanx19" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
                   </li>
                 </ul>
               </div><!-- Footer social end -->
             </div><!-- Col end -->
 
             <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
-              <h3 class="widget-title">Working Hours</h3>
+              <h3 class="widget-title">Waktu Sekolah</h3>
               <div class="working-hours">
-                We work 7 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
-                Hotline and Contact form.
-                <br><br> Monday - Friday: <span class="text-right">10:00 - 16:00 </span>
-                <br> Saturday: <span class="text-right">12:00 - 15:00</span>
-                <br> Sunday and holidays: <span class="text-right">09:00 - 12:00</span>
+                Waktu sekolah ialah 6 hari dari hari senin-sabtu, kecuali hari libur besar. Hubungi kami jika Anda memiliki keadaan darurat, seperti izin ataupun sakit.
+                <br><br> Senin - Selasa: <span class="text-right"> 07:00 - 15:00 </span>
+                <br> Rabu - Kamis: <span class="text-right"> 07:00 - 14:00 </span>
+                <br> Jum'at: <span class="text-right"> 07:00 - 11:00 </span>
+                <br> Sabtu: <span class="text-right"> 07:00 - 14:00 </span>
               </div>
             </div><!-- Col end -->
 
@@ -1001,7 +1029,7 @@
                 <span>Copyright &copy;
                   <script>
                     document.write(new Date().getFullYear())
-                  </script>, Designed &amp; Developed by <a href="{{ url('user') }}/https://themefisher.com">Themefisher</a>
+                  </script>, Designed &amp; Developed by <a href="https://instagram.com/indrabesset">BryanX</a>
                 </span>
               </div>
             </div>
