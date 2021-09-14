@@ -109,13 +109,13 @@
                   <li class="last">
                     <div class="info-box last">
                       <div class="info-box-content">
-                        <p class="info-box-title">Global Certificate</p>
-                        <p class="info-box-subtitle">ISO 9001:2017</p>
+                        <p class="info-box-title">Slogan</p>
+                        <p class="info-box-subtitle">SMK BISA !!</p>
                       </div>
                     </div>
                   </li>
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Masuk</a>
                   </li>
                 </ul><!-- Ul end -->
               </div><!-- header right end -->
@@ -265,11 +265,9 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="ts-intro">
-              <h1 class="into-title">Tentang kami</h1>
+              <h1 class="into-title">Tentang Kami</h1>
               <h3 class="into-sub-title">SMK IDEAN TASIKMALAYA</h3>
-              <p>We are rethoric question ran over her cheek When she reached the first hills of the Italic Mountains,
-                she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village
-                and the subline of her own road, the Line Lane.</p>
+              <p>SMK IDEAN Tasikmalaya merupakan salah satu lembaga pendidikan menengah kejuruan di Kabupaten Tasikmalaya Jawa Barat yang menyelenggarakan Program Pendidikan Kejuruan selama 3 Tahun.</p>
             </div><!-- Intro box end -->
 
             <div class="gap-20"></div>
@@ -281,7 +279,7 @@
                     <i class="fas fa-trophy"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">Kami memiliki prestasi keunggulan</h3>
+                    <h3 class="service-box-title">Kami memiliki prestasi</h3>
                   </div>
                 </div><!-- Service 1 end -->
               </div><!-- col end -->
@@ -292,7 +290,7 @@
                     <i class="fas fa-sliders-h"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">We Build Partnerships</h3>
+                    <h3 class="service-box-title">Kami mempunyai beberapa partner</h3>
                   </div>
                 </div><!-- Service 2 end -->
               </div><!-- col end -->
@@ -305,7 +303,7 @@
                     <i class="fas fa-thumbs-up"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">Guided by Commitment</h3>
+                    <h3 class="service-box-title">Kami disukai banyak orang</h3>
                   </div>
                 </div><!-- Service 1 end -->
               </div><!-- col end -->
@@ -316,7 +314,7 @@
                     <i class="fas fa-users"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">A Team of Professionals</h3>
+                    <h3 class="service-box-title">Kami memiliki Tim profesional</h3>
                   </div>
                 </div><!-- Service 2 end -->
               </div><!-- col end -->
@@ -324,9 +322,8 @@
           </div><!-- Col end -->
 
           <div class="col-lg-6 mt-4 mt-lg-0">
-            <h3 class="into-sub-title">Our Values</h3>
-            <p> Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy
-              street art, tattooed beard literally.</p>
+            <h3 class="into-sub-title">SEJARAH, VISI & MISI</h3>
+            <p>Kami disini akan menceritakan sedikit tentang Sejarah SMK ini dan kedua VISI MISI yang kami terapkan.</p>
 
             <div class="accordion accordion-group" id="our-values-accordion">
               <div class="card">
@@ -334,15 +331,14 @@
                   <h2 class="mb-0">
                     <button class="btn btn-block text-left" type="button" data-toggle="collapse"
                       data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Safety
+                      Sejarah
                     </button>
                   </h2>
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                   data-parent="#our-values-accordion">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
+                    Lembaga SMK IDEAN Tasikmalaya berdiri pada tahun 2021, tepatnya pada tanggal 26 Juli. Berdirinya SMK ini dikarenakan adanya siswa yang PKL yang ngarang dan menggunakan nama SMK IDEAN yang berarti SMK Indra, Devi, Erwin, Asep dan Nurfi.
                   </div>
                 </div>
               </div>
@@ -351,14 +347,13 @@
                   <h2 class="mb-0">
                     <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Customer Service
+                      Visi
                     </button>
                   </h2>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#our-values-accordion">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
+                    “Sebagai pusat pendidikan dan pelatihan yang menghasilkan Insan mandiri, terampil, handal yang selaras dengan kemajuan IPTEK dengan didasari IMTAQ dan dihiasi dengan Akhlaqul Karimah serta sanggup menghadapi tantangan global”.
                   </div>
                 </div>
               </div>
@@ -367,15 +362,20 @@
                   <h2 class="mb-0">
                     <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Integrity
+                      Misi
                     </button>
                   </h2>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                   data-parent="#our-values-accordion">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
+                    1. Meningkatkan profesionalisme dan akuntabilitas kinerja.
+                   <br> 2. Menumbuhkan semangat keunggulan dan kompetitif.
+                   <br> 3. Mewujudkan lingkungan pendidikan yang kondusif, penuh kreatifitas.
+                   <br> 4. Menyelenggarakan pendidikan yang aktif, efektif, efesien, berkualitas.
+                   <br> 5. Menghasilkan tenaga kerja profesional di bidang teknologi.
+                   <br> 6. Membekali peserta didik untuk mampu mengembangkan diri.
+                   <br> 7. Menanamkan sikap Akhlakul Karimah.
                   </div>
                 </div>
               </div>
@@ -452,92 +452,93 @@
           <div class="col-lg-4">
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon1.png" alt="service-icon">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Desain Pemodelan Infromasi Bangunan</a></h3>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">DPIB</a></h3>
                 <p>
-                  Desain Pemodelan dan Informasi Bangunan adalah jurusan yang mempelajari tentang perencanaan bangunan, pelaksanaan pembuatan gedung dan perbaikan gedung. Kegiatannya adalah belajar menggambar rumah, gedung dan apartemen, menghitung biaya bangunan, melaksankan pembangunan dan memelihara kontruksi bangunan. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+                  Desain Pemodelan dan Informasi Bangunan atau biasa disebut DPIB adalah jurusan yang mempelajari tentang perencanaan bangunan, pelaksanaan pembuatan gedung dan perbaikan gedung. Kegiatannya adalah belajar menggambar rumah, gedung dan apartemen, menghitung biaya bangunan, melaksankan pembangunan dan memelihara kontruksi bangunan. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 1 end -->
 
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Multimedia</a></h3>
-                <p>Multimedia merupakan salah satu kompetensi keahlian di SMK yang termasuk dalam rumpun bidang keahlian Teknik Komputer dan Informatika. Multimedia sendiri mempelajari tentang kombinasi atau penggabungan dari beberapa media seperti teks, audio, video, animasi, gambar yang disajikan dalam penggunaan komputer dengan bantuan tools dan link sehingga menghasilkan presentasi yang menarik. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">MM</a></h3>
+                <p>Multimedia atau juga disebut MM merupakan salah satu kompetensi keahlian di SMK yang termasuk dalam rumpun bidang keahlian Teknik Komputer dan Informatika. Multimedia sendiri mempelajari tentang kombinasi atau penggabungan dari beberapa media seperti teks, audio, video, animasi, gambar yang disajikan dalam penggunaan komputer dengan bantuan tools dan link sehingga menghasilkan presentasi yang menarik. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 2 end -->
 
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon1.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Otomatisasi Tata Kelola Perkantoran</a></h3>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">OTKP</a></h3>
                 <p>Otomatisasi & Tata Kelola Perkantoran atau biasa disingkat OTKP, dulu bernama Administrasi Perkantoran atau AP merupakan salah satu cabang bidang keahlian Bisnis dan Manajemen mempelajari tentang Pengetikan naskah atau dokumen, Penanganan telepon, Penataan dan pengelolaan surat atau dokumen, Penataan dan pengelolaan arsip, Penanganan perjalanan bisnis, Penanganan dana kas kecil, Penyiapan pertemuan atau rapat, Penanganan aplikasi, dan Penanganan informasi melalui internet. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 3 end -->
-
-            <div class="ts-service-box d-flex">
-              <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
-              </div>
-              <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Rekayasa Perangkat Lunak</a></h3>
-                <p>Rekayasa Perangkat Lunak merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-              </div>
-            </div><!-- Service 4 end -->
-
           </div><!-- Col end -->
 
-          <div class="col-lg-4 text-center">
+          {{-- <div class="col-lg-4 text-center">
             <img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/services/service-center.jpg" alt="service-avater-image">
-          </div><!-- Col end -->
+          </div><!-- Col end --> --}}
 
           <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Bisnis Sepeda Motor</a></h3>
-                <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">RPL</a></h3>
+                <p>Rekayasa Perangkat Lunak yang biasa disebut RPL merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
-            </div><!-- Service 5 end -->
-
-            <div class="ts-service-box d-flex">
-              <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
-              </div>
-              <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Elektronika Industri</a></h3>
-                <p>Mendidik tenaga kerja yang mampu bersaing baik tingkat nasional, regional, maupun global. Menciptakan tenaga yang mampu berwirausaha. Mendidik tenaga terampil yang mampu menciptakan lapangan kerja. Mengembangkan unit produksi yang professional. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-              </div>
-            </div><!-- Service 6 end -->
-
-            <div class="ts-service-box d-flex">
-              <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
-              </div>
-              <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Komputer Jaringan</a></h3>
-                <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-              </div>
-            </div><!-- Service 7 end -->
+            </div><!-- Service 4 end -->
 
             <div class="ts-service-box d-flex">
               <div class="ts-service-box-img">
                 <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon6.png" alt="service-icon">
               </div>
               <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Kendaraan Ringan Otomotif</a></h3>
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">TEKLIN</a></h3>
+                <p>Mendidik tenaga kerja yang mampu bersaing baik tingkat nasional, regional, maupun global. Menciptakan tenaga yang mampu berwirausaha. Mendidik tenaga terampil yang mampu menciptakan lapangan kerja. Mengembangkan unit produksi yang professional. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              </div>
+            </div><!-- Service 6 end -->
+
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact4.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">TKJ</a></h3>
+                <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              </div>
+            </div><!-- Service 7 end -->           
+          </div><!-- Col end -->
+
+          <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">TBSM</a></h3>
+                <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
+              </div>
+            </div><!-- Service 5 end -->
+            
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a href="{{ url('user') }}/#">TKRO</a></h3>
                 <p>TekniK Kendaraan Ringan Otomotif bertujuan Mengembangkan dan mengaplikasikan dalam karyanya secara mandiri dan dapat mengisi lowongan pekerjaan di dunia usaha dan dunia industri sebagai tenaga kerja tingkat menengah yang handal. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
               </div>
             </div><!-- Service 8 end -->
-          </div><!-- Col end -->
+
         </div><!-- Content row end -->
 
       </div>
@@ -555,28 +556,31 @@
         <!--/ Title row end -->
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-14">
             <div class="shuffle-btn-group">
               <label class="active" for="all">
                 <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Semua
               </label>
-              <label for="commercial">
-                <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
+              <label for="sekolah">
+                <input type="radio" name="shuffle-filter" id="sekolah" value="sekolah">Sekolah
               </label>
-              <label for="education">
-                <input type="radio" name="shuffle-filter" id="education" value="education">Education
+              <label for="fasilitas">
+                <input type="radio" name="shuffle-filter" id="fasilitas" value="fasilitas">Fasilitas
               </label>
-              <label for="government">
-                <input type="radio" name="shuffle-filter" id="government" value="government">Government
+              <label for="boarding">
+                <input type="radio" name="shuffle-filter" id="boarding" value="boarding">Boarding
               </label>
-              <label for="infrastructure">
-                <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Infrastructure
+              <label for="ekstrakulikuler">
+                <input type="radio" name="shuffle-filter" id="ekstrakulikuler" value="ekstrakulikuler">Ekstrakulikuler
               </label>
-              <label for="residential">
-                <input type="radio" name="shuffle-filter" id="residential" value="residential">Residential
+              <label for="kunjin">
+                <input type="radio" name="shuffle-filter" id="kunjin" value="kunjin">Kunjungan Industri
               </label>
-              <label for="healthcare">
-                <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Healthcare
+              <label for="studytour">
+                <input type="radio" name="shuffle-filter" id="studytour" value="studytour">Study Tour
+              </label>
+              <label for="prakerin">
+                <input type="radio" name="shuffle-filter" id="prakerin" value="prakerin">Prakerin
               </label>
             </div><!-- project filter end -->
 
@@ -584,106 +588,124 @@
             <div class="row shuffle-wrapper">
               <div class="col-1 shuffle-sizer"></div>
 
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
+              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;ekstrakulikuler&quot;,&quot;ekstrakulikuler&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project1.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project1.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/sekolah2.jpg" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url('user') }}/images/projects/sekolah2.jpg" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Capital Teltway Building</a>
+                        <a>Seni Budaya</a>
                       </h3>
-                      <p class="project-cat">Commercial, Interiors</p>
+                      <p class="project-cat">Ekstrakulikuler</p>
                     </div>
                   </div>
                 </div>
               </div><!-- shuffle item 1 end -->
 
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
+              {{-- <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;prakerin&quot;,&quot;prakerin&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project2.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project2.jpg" alt="project-img">
+                  <a class="gallery-popup" href="" aria-label="project-img">
+                    <img class="img-fluid" src="" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Ghum Touch Hospital</a>
+                        <a>Ghum Touch Hospital</a>
                       </h3>
-                      <p class="project-cat">Healthcare</p>
+                      <p class="project-cat">prakerin</p>
                     </div>
                   </div>
                 </div>
-              </div><!-- shuffle item 2 end -->
+              </div><!-- shuffle item 2 end --> --}}
 
               <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;commercial&quot;]">
+                data-groups="[&quot;sekolah&quot;,&quot;sekolah&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project3.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project3.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/sekolah2.jpg" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url('user') }}/images/projects/sekolah2.jpg" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">TNT East Facility</a>
+                        <a>Seni Budaya</a>
                       </h3>
-                      <p class="project-cat">Government</p>
+                      <p class="project-cat">Sekolah</p>
                     </div>
                   </div>
                 </div>
               </div><!-- shuffle item 3 end -->
 
               <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;education&quot;,&quot;infrastructure&quot;]">
+                data-groups="[&quot;fasilitas&quot;,&quot;fasilitas&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project4.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project4.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/fasilitas.jpg" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url('user') }}/images/projects/fasilitas.jpg" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Narriot Headquarters</a>
+                        <a>Lab RPL</a>
                       </h3>
-                      <p class="project-cat">Infrastructure</p>
+                      <p class="project-cat">Fasilitas</p>
                     </div>
                   </div>
                 </div>
               </div><!-- shuffle item 4 end -->
 
               <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;education&quot;]">
+              data-groups="[&quot;boarding&quot;,&quot;boarding&quot;]">
+              <div class="project-img-container">
+                <a class="gallery-popup" href="{{ url('user') }}/images/projects/boarding.jpg" aria-label="project-img">
+                  <img class="img-fluid" src="{{ url('user') }}/images/projects/boarding.jpg" alt="project-img">
+                  <span class="gallery-icon"><i class="fa fa-plus"></i></span>
+                </a>
+                <div class="project-item-info">
+                  <div class="project-item-info-content">
+                    <h3 class="project-item-title">
+                      <a>Hanoman - Curug Badak</a>
+                    </h3>
+                    <p class="project-cat">Boarding</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- shuffle item 4 end -->
+
+              <div class="col-lg-4 col-sm-6 shuffle-item"
+                data-groups="[&quot;kunjin&quot;,&quot;kunjin&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project5.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project5.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/kunjin.jpg" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url('user') }}/images/projects/kunjin.jpg" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Kalas Metrorail</a>
+                        <a>Bandung Technopark</a>
                       </h3>
-                      <p class="project-cat">Infrastructure</p>
+                      <p class="project-cat">Kunjungan Industri</p>
                     </div>
                   </div>
                 </div>
               </div><!-- shuffle item 5 end -->
 
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;residential&quot;]">
+              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;studytour&quot;]">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project6.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project6.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/studytour.jpg" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url('user') }}/images/projects/studytour.jpg" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Ancraft Avenue House</a>
+                        <a href="{{ url('user') }}/projects-single.html">Malioboro</a>
                       </h3>
-                      <p class="project-cat">Residential</p>
+                      <p class="project-cat">Study Tour</p>
                     </div>
                   </div>
                 </div>
@@ -706,23 +728,21 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <h3 class="column-title">Testimonials</h3>
+            <h3 class="column-title">Testimoni Alumni</h3>
 
             <div id="testimonial-slide" class="testimonial-slide">
               <div class="item">
                 <div class="quote-item">
                   <span class="quote-text">
-                    Question ran over her cheek When she reached the first hills of the Italic Mountains, she had a last
-                    view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the
-                    subline of her own road.
+                    Suatu kebanggaan tersendiri menjadi salah satu siswa di SMK IDEAN Tasikmalaya, selama menempuh pendidikan di sana saya diasah untuk menjadi manusia yang tangguh dalam segala hal. Oleh karena itu, saya bisa menghadapi kehidupan yang sesungguhnya dengan rasa penuh percaya diri karena telah dibekali dengan soft skill dan hard skill (programming) yang sangat baik.
                   </span>
 
                   <div class="quote-item-footer">
                     <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial1.png"
                       alt="testimonial">
                     <div class="quote-item-info">
-                      <h3 class="quote-author">Gabriel Denis</h3>
-                      <span class="quote-subtext">Chairman, OKT</span>
+                      <h3 class="quote-author">Indra Rusmana</h3>
+                      <span class="quote-subtext">Desainer - PT. Inovindo Digital Media</span>
                     </div>
                   </div>
                 </div><!-- Quote item end -->
@@ -732,17 +752,15 @@
               <div class="item">
                 <div class="quote-item">
                   <span class="quote-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris
-                    nisi aliquip consequat.
+                    Alhamdulillah selama saya mengikuti pembelajaran selama tiga tahun, belajar di SMK YPC sangat nyaman, lingkungan yang baik didukung dengan fasilitas lengkap dan guru yang profesional di bidangnya. Tidak lupa selama kami belajar di SMK IDEAN tidak hanya materi yang di ajarkan, tapi kami di beri bekal tentang akhlak sehingga Alhamdulillah akhlaklah yang membawaku kesuksesan di setiap pekerjaan. Jaya terus SMK IDEAN!!
                   </span>
 
                   <div class="quote-item-footer">
                     <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial2.png"
                       alt="testimonial">
                     <div class="quote-item-info">
-                      <h3 class="quote-author">Weldon Cash</h3>
-                      <span class="quote-subtext">CFO, First Choice</span>
+                      <h3 class="quote-author">Asep Dayen</h3>
+                      <span class="quote-subtext">Web Developer - PT. Klik Quick Indonesia</span>
                     </div>
                   </div>
                 </div><!-- Quote item end -->
@@ -752,17 +770,15 @@
               <div class="item">
                 <div class="quote-item">
                   <span class="quote-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris
-                    nisi ut commodo consequat.
+                    Bagi saya, Meraih Cita di SMK, Menggapai Asa di Tasikmalaya, meraih mimpi dan mengukir prestasi disana adalah hal yang membanggakan, setiap materi yang diberikan, disampaikan oleh guru-guru yang kompeten, siswa/i tidak hanya dibekali IPTEK (Ilmu Pengetahuan & Teknologi), namun lengkap dengan IMTAQ (Iman & Taqwa) saya Bangga menjadi Alumni SMK IDEAN Tasikmalaya.
                   </span>
 
                   <div class="quote-item-footer">
                     <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial3.png"
                       alt="testimonial">
                     <div class="quote-item-info">
-                      <h3 class="quote-author">Minter Puchan</h3>
-                      <span class="quote-subtext">Director, AKT</span>
+                      <h3 class="quote-author">Devi Mulyana</h3>
+                      <span class="quote-subtext">Programmer - PT. Vision Media Creative</span>
                     </div>
                   </div>
                 </div><!-- Quote item end -->
@@ -775,47 +791,47 @@
 
           <div class="col-lg-6 mt-5 mt-lg-0">
 
-            <h3 class="column-title">Happy Clients</h3>
+            <h3 class="column-title">Partnership</h3>
 
             <div class="row all-clients">
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client1.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client1.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 1 end -->
 
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client2.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client2.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 2 end -->
 
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client3.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client3.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 3 end -->
 
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client4.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client4.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 4 end -->
 
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client5.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client5.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 5 end -->
 
               <div class="col-sm-4 col-6">
                 <figure class="clients-logo">
-                  <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client6.png"
+                  <a target="_blank" href="https://youtube.com/bryanx19"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client6.png"
                       alt="clients-logo" /></a>
                 </figure>
               </div><!-- Client 6 end -->
@@ -961,12 +977,16 @@
               <div class="footer-social">
                 <ul>
                   <li><a href="https://facebook.com/erwinanugrah" aria-label="Facebook"><i
-                        class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="https://twitter.com/erwinanugrah" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        class="fab fa-facebook-f"></i></a>
+                  </li>
+                  <li><a href="https://twitter.com/erwinanugrah" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i></a>
                   </li>
                   <li><a href="https://instagram.com/indrabesset" aria-label="Instagram"><i
-                        class="fab fa-instagram"></i></a></li>
-                  <li><a href="https://youtube.com/bryanx19" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                        class="fab fa-instagram"></i></a>
+                  </li>
+                  <li><a href="https://youtube.com/bryanx19" aria-label="Youtube">
+                    <i class="fab fa-youtube"></i></a>
                   </li>
                 </ul>
               </div><!-- Footer social end -->
@@ -976,10 +996,10 @@
               <h3 class="widget-title">Waktu Sekolah</h3>
               <div class="working-hours">
                 Waktu sekolah ialah 6 hari dari hari senin-sabtu, kecuali hari libur besar. Hubungi kami jika Anda memiliki keadaan darurat, seperti izin ataupun sakit.
-                <br><br> Senin - Selasa: <span class="text-right"> 07:00 - 15:00 </span>
-                <br> Rabu - Kamis: <span class="text-right"> 07:00 - 14:00 </span>
-                <br> Jum'at: <span class="text-right"> 07:00 - 11:00 </span>
-                <br> Sabtu: <span class="text-right"> 07:00 - 14:00 </span>
+                <br><br> Senin - Selasa : <span class="text-right"> 07:00 - 15:00 </span>
+                <br> Rabu - Kamis : <span class="text-right"> 07:00 - 14:00 </span>
+                <br> Jum'at : <span class="text-right"> 07:00 - 11:00 </span>
+                <br> Sabtu : <span class="text-right"> 07:00 - 14:00 </span>
               </div>
             </div><!-- Col end -->
 
@@ -1010,7 +1030,7 @@
               </div>
             </div>
 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
               <div class="footer-menu text-center text-md-right">
                 <ul class="list-unstyled">
                   <li><a href="{{ url('user') }}/about.html">About</a></li>
@@ -1021,7 +1041,7 @@
                 </ul>
               </div>
             </div>
-          </div><!-- Row end -->
+          </div><!-- Row end --> --}}
 
           <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
             <button class="btn btn-primary" title="Back to Top">
