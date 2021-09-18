@@ -18,16 +18,16 @@
                 </li>
                 @switch(auth()->user()->role)
                     @case('admin')
-                        @include('partials.admin-nav')
+                        @include('partials.auth.admin-nav')
                         @break
                     @case('teacher')
-                        @include('partials.teacher-nav')
+                        @include('partials.auth.teacher-nav')
                         @break
                     @case('student')
-                        @include('partials.student-nav')
+                        @include('partials.auth.student-nav')
                         @break
                     @case('blogger')
-                        @include('partials.blogger-nav')
+                        @include('partials.auth.blogger-nav')
                         @break
                     @default
                 @endswitch

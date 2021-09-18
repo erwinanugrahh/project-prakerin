@@ -76,6 +76,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::post('blog/delete-selected', 'BlogController@delete_selected');
 });
 
+Route::view('blogs', 'blogs');
+
 Route::group(['prefix' => 'filemanager'], function() {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

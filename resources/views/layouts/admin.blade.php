@@ -66,13 +66,13 @@
 
     <div class="container-fluid">
 
-        @include('partials.header')
+        @include('partials.auth.header')
 
         <!--Main Content-->
 
         <div class="row main-content">
             <!--Sidebar left-->
-            @include('partials.sidebar')
+            @include('partials.auth.sidebar')
             <!--Sidebar left-->
 
             <!--Content right-->
