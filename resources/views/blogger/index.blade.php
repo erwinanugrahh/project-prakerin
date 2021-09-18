@@ -16,7 +16,7 @@
                 <option value="rejected">Ditolak</option>
             </select>
             <button id="delete-selected" class="pull-right mr-3 shadow btn btn-danger"><b>Hapus Terpilih</b></button>
-            <a href="{{ route('blog.create') }}" class="pull-right shadow btn btn-primary"><b>Tambah Blog</b></a>
+            <a href="{{ route('blog.create') }}" class="pull-right shadow btn btn-primary text-white"><b>Tambah Blog</b></a>
             <div class="clearfix"></div>
         </div>
     </div>

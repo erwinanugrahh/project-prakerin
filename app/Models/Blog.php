@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravelista\Comments\Commentable;
 
 class Blog extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Commentable;
 
     protected $guarded = ['id'];
 
@@ -26,6 +28,11 @@ class Blog extends Model
         ];
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
     public function blogger()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -40,5 +47,10 @@ class Blog extends Model
         ];
 
         return "<span class=\"badge badge-{$class_name[$this->status]}\">$this->status</span>";
+    }
+
+    public function getCreatedDate()
+    {
+        return Carbon::make($this->created_at)->translatedFormat('d F Y');
     }
 }

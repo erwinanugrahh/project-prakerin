@@ -2,7 +2,7 @@
     <div class="inner-sidebar mr-3">
         <!--Image Avatar-->
         <div class="avatar text-center">
-            <img src="{{ url('admin/') }}/img/client-img4.png" alt="" class="rounded-circle" />
+            <img src="{{ url(auth()->user()->avatar) }}" alt="" class="rounded-circle" />
             <p><strong>{{ auth()->user()->name }}</strong></p>
             <span class="text-primary small"><strong>{{ auth()->user()->role }}</strong></span>
         </div>

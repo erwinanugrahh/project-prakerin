@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('welcome');
+        $this->middleware('auth')->except('welcome', 'blog');
     }
 
     public function welcome()
@@ -39,15 +41,25 @@ class HomeController extends Controller
     public function update_profile(Request $request)
     {
         $validate = $request->validate([
+            'avatar'=>'mimes:png,jpg,jpeg|max:3070',
             'name' => 'required',
             'email' => 'required|unique:users,email,'.auth()->user()->id,
             'phone' => 'required|numeric|digits_between:9,13',
             'address' => 'required'
         ]);
 
-        if(auth()->user()->role == 'teacher')
+        if($request->hasFile('avatar')){
+            $file_name = 'avatar-'.time().'.'.$request->file('avatar')->getClientOriginalExtension();
+            if(auth()->user()->avatar!='/admin/img/default-avatar.png'&&file_exists(auth()->user()->avatar)){
+                unlink(auth()->user()->avatar);
+            }
+            $request->file('avatar')->move(public_path('images/avatars/'), $file_name);
+            $validate['avatar'] = '/images/avatars/'.$file_name;
+        }
+
+        if(teacher())
             teacher()->update($request->only('email', 'phone', 'address'));
-        else
+        else if(student())
             student()->update($request->only('email', 'phone', 'address'));
 
         auth()->user()->update($validate);
@@ -79,6 +91,43 @@ class HomeController extends Controller
 
         $message = $blogger==1?'Berhasil mengaktifkan mode blogger':'Berhasil menonaktifkan mode blogger';
         session()->flash('success', $message);
-        // return response()->json($message);
     }
+
+    public function set_about_me(Request $request)
+    {
+        $validate = $request->validate(['about'=>'required|max:150']);
+        auth()->user()->update($validate);
+        return back()->with('success', 'Tentang Saya berhasil diperbarui');
+    }
+
+    public function blog($category='', $blog='')
+    {
+        $search = request()->get('search');
+        $blogs = Blog::where('status', 'accepted');
+        if($search){
+            $blogs = $blogs->where(function($q) use ($search){
+                $q->where('title', 'LIKE', '%'.$search.'%')
+                  ->orWhere('content', 'LIKE', '%'.$search.'%')
+                  ->orWhereHas('category', function($q) use ($search){
+                      $q->where('name', 'LIKE', '%'.$search.'%');
+                  })
+                  ->orWhereHas('blogger', function($q) use ($search){
+                    $q->where('name', 'LIKE', '%'.$search.'%');
+                });
+            });
+        }
+        $mCategory = Category::where('slug',$category)->first();
+        if(!is_null($mCategory)){
+            $blogs = $blogs->where('category_id', $mCategory->id);
+            $mBlog = Blog::where('slug',$blog)->first();
+            if(!is_null($mBlog)){
+                $blog = $mBlog;
+                return view('show-blog', compact('blog'));
+            }else{
+                $blogs = $blogs->get();
+            }
+        }else $blogs = $blogs->get();
+        return view('blogs', compact('blogs'));
+    }
+
 }

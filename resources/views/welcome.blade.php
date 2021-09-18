@@ -526,17 +526,17 @@
           <div class="col-lg-4 col-md-6 mb-4">
               <div class="latest-post">
               <div class="latest-post-media">
-                  <a href="#" class="latest-post-img">
+                  <a href="{{ url("/blogs/{$blog->category->slug}/$blog->slug") }}" class="latest-post-img">
                   <img loading="lazy" class="img-fluid" src="{{ asset("images/banners/$blog->banner") }}" alt="img">
                   </a>
               </div>
               <div class="post-body">
                   <h4 class="post-title">
-                  <a href="#" class="d-inline-block">{{ $blog->title }}</a>
+                  <a href="{{ url("/blogs/{$blog->category->slug}/$blog->slug") }}" class="d-inline-block">{{ $blog->title }}</a>
                   </h4>
                   <div class="latest-post-meta">
                   <span class="post-item-date">
-                      <i class="fa fa-clock-o"></i> {{ Carbon\Carbon::make($blog->created_at)->translatedFormat('d F Y') }}
+                      <i class="fa fa-clock-o"></i> {{ $blog->getCreatedDate() }}
                   </span>
                   </div>
               </div>

@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="{{ url('user') }}/plugins/colorbox/colorbox.css">
   <!-- Template styles-->
   <link rel="stylesheet" href="{{ url('user') }}/css/style.css">
-
+  @livewireStyles
 </head>
 
 <body>
@@ -110,7 +110,7 @@
 
     <!-- Template custom -->
     <script src="{{ url('user') }}/js/script.js"></script>
-
+    @livewireScripts
   </div><!-- Body inner end -->
 </body>
 

@@ -126,6 +126,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
+            'category_id' => 'required',
             'title' => 'required',
             'banner' => 'required|mimes:png,jpg',
             'content' => 'required'
@@ -174,6 +175,7 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $validate = $request->validate([
+            'category_id' => 'required',
             'title' => 'required',
             'banner' => 'sometimes|mimes:png,jpg',
             'content' => 'required'

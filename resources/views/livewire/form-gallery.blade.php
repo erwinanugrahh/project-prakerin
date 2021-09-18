@@ -70,7 +70,7 @@
                         @enderror
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input @error('picture') is-invalid @enderror" name="picture" id="image" wire:model='picture'>
+                        <input accept="images/*" type="file" class="custom-file-input @error('picture') is-invalid @enderror" name="picture" id="image" wire:model='picture'>
                         <label class="custom-file-label" for="image">Choose file...</label>
                         @error('picture')
                             <div class="text-danger" style="line-height: normal">{{ $message }}</div>

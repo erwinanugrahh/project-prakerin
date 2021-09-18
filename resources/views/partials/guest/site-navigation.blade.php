@@ -61,10 +61,12 @@
         </div><!-- Search end -->
 
         <div class="search-block" style="display: none;">
-            <label for="search-field" class="w-100 mb-0">
-                <input type="text" class="form-control" id="search-field" placeholder="Type what you want and enter">
-            </label>
-            <span class="search-close">&times;</span>
+            <form action="" method="get">
+                <label for="search-field" class="w-100 mb-0">
+                    <input type="text" name="search" class="form-control" id="search-field" placeholder="Type what you want and enter">
+                </label>
+                <span class="search-close">&times;</span>
+            </form>
         </div><!-- Site search end -->
     </div>
     <!--/ Container end -->

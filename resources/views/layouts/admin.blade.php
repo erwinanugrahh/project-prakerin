@@ -140,7 +140,8 @@
         $('.bulk-actions').niceSelect();
         //select2
         $('.select2').select2({
-            theme: 'bootstrap4'
+            theme: 'bootstrap4',
+            width: '100%'
         });
 
         const Toast = Swal.mixin({

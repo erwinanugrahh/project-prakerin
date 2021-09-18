@@ -9,7 +9,7 @@
     <form action="{{ route('blog.update', $blog->slug) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
-        @include('blogger._form')
+        @include('blogger._form', ['blog'=>$blog,'imageUrl'=>'/images/banners/'.$blog->banner])
         <button class="btn btn-primary" id="edit-btn">Edit</button>
     </form>
 @endsection
