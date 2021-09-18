@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +14,16 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('welcome');
+    }
+
+    public function welcome()
+    {
+        $data['setting_web'] = setting('setting_web');
+        $data['about_us']= setting('about_us');
+        $data['category_gallery'] = setting('category_gallery')['items'];
+        $data['galleries'] = Gallery::all();
+        return view('welcome', $data);
     }
 
     /**

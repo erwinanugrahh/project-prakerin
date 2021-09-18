@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes(['register' => false]);
 
@@ -45,6 +43,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         // Route::resource('blogger', BloggerController::class);
         // Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
+
+        Route::resource('setting', SettingController::class);
+
+        Route::resource('gallery', GalleryController::class);
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');

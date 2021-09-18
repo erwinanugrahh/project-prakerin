@@ -107,7 +107,6 @@
     </div>
 
     <!--Page Wrapper-->
-
     <!-- Page JavaScript Files-->
     <script src="{{ url('admin/') }}/js/jquery.min.js"></script>
     <script src="{{ url('admin/') }}/js/jquery-1.12.4.min.js"></script>

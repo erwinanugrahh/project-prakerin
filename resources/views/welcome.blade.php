@@ -45,7 +45,7 @@
           <div class="col-lg-8 col-md-8">
             <ul class="top-info text-center text-md-left">
               <li><i class="fas fa-map-marker-alt"></i>
-                <p class="info-text">46462 Singaparna, Tasikmalaya</p>
+                <p class="info-text">{{ $setting_web['zip'].' '.$setting_web['address'] }}</p>
               </li>
             </ul>
           </div>
@@ -84,7 +84,11 @@
             <div class="row align-items-center">
               <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
                 <a class="d-block" href="{{ url('user') }}/index.html">
-                  <img loading="lazy" src="{{ url('user') }}/images/logo.png" alt="Constra">
+                    @if (file_exists(public_path('logo.png')))
+                    <img loading="lazy" src="{{ url('logo.png') }}" alt="Constra">
+                    @else
+                    <img loading="lazy" src="{{ url('user') }}/images/logo.png" alt="Constra">
+                    @endif
                 </a>
               </div><!-- logo end -->
 
@@ -94,7 +98,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                         <p class="info-box-title">Telepon</p>
-                        <p class="info-box-subtitle"><a href="{{ url('user') }}/tel: (+62)81234567890">(+62)81234567890</a></p>
+                        <p class="info-box-subtitle"><a href="{{ url('user') }}/tel: (+62)81234567890">{{ $setting_web['phone'] }}</a></p>
                       </div>
                     </div>
                   </li>
@@ -102,7 +106,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                         <p class="info-box-title">Email</p>
-                        <p class="info-box-subtitle"><a href="{{ url('user') }}/smkidean@gmail.com">smkidean@gmail.com</a></p>
+                        <p class="info-box-subtitle"><a href="{{ url('user') }}/smkidean@gmail.com">{{ $setting_web['email'] }}</a></p>
                       </div>
                     </div>
                   </li>
@@ -209,9 +213,9 @@
           <div class="container h-100">
             <div class="row align-items-center h-100">
               <div class="col-md-12 text-center">
-               
+
                 <h2 class="slide-title" data-animation-in="slideInLeft">Selamat Datang di</h2>
-                <h3 class="slide-sub-title" data-animation-in="slideInRight">SMK IDEAN TASIKMALAYA</h3>
+                <h3 class="slide-sub-title" data-animation-in="slideInRight">{{ $setting_web['website_name'] }}</h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
                   <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Our Services</a>
                   <a href="{{ url('user') }}/contact.html" class="slider btn btn-primary border">Contact Now</a>
@@ -227,7 +231,7 @@
           <div class="container h-100">
             <div class="row align-items-center h-100">
               <div class="col-md-12">
-                  
+
                 <h2 class="slide-title-box" data-animation-in="slideInDown">Bingung menentukan Masa depan?</h2>
                 <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sangat sederhana</h3>
                 <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK SMK IDEAN</h3>
@@ -268,67 +272,32 @@
           <div class="col-lg-6">
             <div class="ts-intro">
               <h1 class="into-title">About Us</h1>
-              <h3 class="into-sub-title">We deliver landmark projects</h3>
-              <p>We are rethoric question ran over her cheek When she reached the first hills of the Italic Mountains,
-                she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village
-                and the subline of her own road, the Line Lane.</p>
+              <h3 class="into-sub-title">{{ $about_us['about_us'] }}</h3>
+              <p>{{ $about_us['description'] }}</p>
             </div><!-- Intro box end -->
 
             <div class="gap-20"></div>
 
             <div class="row">
-              <div class="col-md-6">
-                <div class="ts-service-box">
-                  <span class="ts-service-icon">
-                    <i class="fas fa-trophy"></i>
-                  </span>
-                  <div class="ts-service-box-content">
-                    <h3 class="service-box-title">We've Repution for Excellence</h3>
-                  </div>
-                </div><!-- Service 1 end -->
-              </div><!-- col end -->
-
-              <div class="col-md-6">
-                <div class="ts-service-box">
-                  <span class="ts-service-icon">
-                    <i class="fas fa-sliders-h"></i>
-                  </span>
-                  <div class="ts-service-box-content">
-                    <h3 class="service-box-title">We Build Partnerships</h3>
-                  </div>
-                </div><!-- Service 2 end -->
-              </div><!-- col end -->
-            </div><!-- Content row 1 end -->
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="ts-service-box">
-                  <span class="ts-service-icon">
-                    <i class="fas fa-thumbs-up"></i>
-                  </span>
-                  <div class="ts-service-box-content">
-                    <h3 class="service-box-title">Guided by Commitment</h3>
-                  </div>
-                </div><!-- Service 1 end -->
-              </div><!-- col end -->
-
-              <div class="col-md-6">
-                <div class="ts-service-box">
-                  <span class="ts-service-icon">
-                    <i class="fas fa-users"></i>
-                  </span>
-                  <div class="ts-service-box-content">
-                    <h3 class="service-box-title">A Team of Professionals</h3>
-                  </div>
-                </div><!-- Service 2 end -->
-              </div><!-- col end -->
+                @foreach ($about_us['skills'] as $skill)
+                <div class="col-md-6">
+                  <div class="ts-service-box">
+                    <span class="ts-service-icon">
+                      <i class="{{ $skill['icon'] }}"></i>
+                    </span>
+                    <div class="ts-service-box-content">
+                      <h3 class="service-box-title">{{ $skill['title'] }}</h3>
+                    </div>
+                  </div><!-- Service 1 end -->
+                </div><!-- col end -->
+                @endforeach
             </div><!-- Content row 1 end -->
           </div><!-- Col end -->
 
           <div class="col-lg-6 mt-4 mt-lg-0">
-            <h3 class="into-sub-title">Our Values</h3>
-            <p>Minim Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy
-              street art, tattooed beard literally.</p>
+            <h3 class="into-sub-title">Visi & Misi</h3>
+            {{-- <p>Minim Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy
+              street art, tattooed beard literally.</p> --}}
 
             <div class="accordion accordion-group" id="our-values-accordion">
               <div class="card">
@@ -336,7 +305,7 @@
                   <h2 class="mb-0">
                     <button class="btn btn-block text-left" type="button" data-toggle="collapse"
                       data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Safety
+                      Visi
                     </button>
                   </h2>
                 </div>
@@ -344,8 +313,7 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                   data-parent="#our-values-accordion">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
+                      {{ $about_us['visi'] }}
                   </div>
                 </div>
               </div>
@@ -354,31 +322,13 @@
                   <h2 class="mb-0">
                     <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Customer Service
+                      Misi
                     </button>
                   </h2>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#our-values-accordion">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header p-0 bg-transparent" id="headingThree">
-                  <h2 class="mb-0">
-                    <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse"
-                      data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Integrity
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                  data-parent="#our-values-accordion">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia aute, non cupidata
+                    {{ $about_us['misi'] }}
                   </div>
                 </div>
               </div>
@@ -531,7 +481,7 @@
         <div class="row text-center">
           <div class="col-lg-12">
             <h2 class="section-title">Work of Excellence</h2>
-            <h3 class="section-sub-title">Recent Projects</h3>
+            <h3 class="section-sub-title">Galeri</h3>
           </div>
         </div>
         <!--/ Title row end -->
@@ -540,136 +490,38 @@
           <div class="col-12">
             <div class="shuffle-btn-group">
               <label class="active" for="all">
-                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
+                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Tampilkan Semua
               </label>
-              <label for="commercial">
-                <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
-              </label>
-              <label for="education">
-                <input type="radio" name="shuffle-filter" id="education" value="education">Education
-              </label>
-              <label for="government">
-                <input type="radio" name="shuffle-filter" id="government" value="government">Government
-              </label>
-              <label for="infrastructure">
-                <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Infrastructure
-              </label>
-              <label for="residential">
-                <input type="radio" name="shuffle-filter" id="residential" value="residential">Residential
-              </label>
-              <label for="healthcare">
-                <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Healthcare
-              </label>
+              @foreach ($category_gallery as $category)
+                <label for="{{ $category }}">
+                    <input type="radio" name="shuffle-filter" id="{{ $category }}" value="{{ $category }}">{{ $category }}
+                </label>
+              @endforeach
             </div><!-- project filter end -->
 
 
             <div class="row shuffle-wrapper">
               <div class="col-1 shuffle-sizer"></div>
 
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
+              @foreach ($galleries as $gallery)
+              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="{{ json_encode(explode(',',$gallery->categories)) }}">
                 <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project1.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project1.jpg" alt="project-img">
+                  <a class="gallery-popup" href="{{ url("storage/galleries/$gallery->picture") }}" aria-label="project-img">
+                    <img class="img-fluid" src="{{ url("storage/galleries/$gallery->picture") }}" alt="project-img">
                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                   </a>
                   <div class="project-item-info">
                     <div class="project-item-info-content">
                       <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Capital Teltway Building</a>
+                        <a href="javascript:void(0)">{{ $gallery->title }}</a>
                       </h3>
-                      <p class="project-cat">Commercial, Interiors</p>
+                      <p class="project-cat">{{ str_replace(',',', ',$gallery->categories) }}</p>
                     </div>
                   </div>
                 </div>
               </div><!-- shuffle item 1 end -->
+              @endforeach
 
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project2.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project2.jpg" alt="project-img">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Ghum Touch Hospital</a>
-                      </h3>
-                      <p class="project-cat">Healthcare</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 2 end -->
-
-              <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;commercial&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project3.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project3.jpg" alt="project-img">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">TNT East Facility</a>
-                      </h3>
-                      <p class="project-cat">Government</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 3 end -->
-
-              <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;education&quot;,&quot;infrastructure&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project4.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project4.jpg" alt="project-img">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Narriot Headquarters</a>
-                      </h3>
-                      <p class="project-cat">Infrastructure</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 4 end -->
-
-              <div class="col-lg-4 col-sm-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;education&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project5.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project5.jpg" alt="project-img">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Kalas Metrorail</a>
-                      </h3>
-                      <p class="project-cat">Infrastructure</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 5 end -->
-
-              <div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;residential&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url('user') }}/images/projects/project6.jpg" aria-label="project-img">
-                    <img class="img-fluid" src="{{ url('user') }}/images/projects/project6.jpg" alt="project-img">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url('user') }}/projects-single.html">Ancraft Avenue House</a>
-                      </h3>
-                      <p class="project-cat">Residential</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 6 end -->
             </div><!-- shuffle end -->
           </div>
 
