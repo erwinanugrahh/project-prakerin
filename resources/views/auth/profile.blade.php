@@ -7,6 +7,11 @@
 @push('css')
     <!--Switchery CSS-->
     <link rel="stylesheet" href="{{ url('admin') }}/css/switchery.min.css">
+    <style>
+        .form-group{
+            margin-bottom: 0px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -15,7 +20,7 @@
         <!--User profile header-->
         <div class="mt-1 mb-3 button-container bg-white border shadow-sm">
             <div class="profile-bg p-5">
-                <img src="{{ url('admin') }}/img/jd-150.png" height="125px" width="125px" class="rounded-circle shadow profile-img" />
+                <img src="{{ url(auth()->user()->avatar) }}" height="125px" width="125px" class="rounded-circle shadow profile-img" />
             </div>
             <div class="profile-bio-main container-fluid">
                 <div class="row">
@@ -61,6 +66,7 @@
 
             <div class="dropdown-divider"></div>
 
+            @if (auth()->user()->role!='admin')
             <div class="mb-3">
                 <h6 class="mb-3">Blogger</h6>
                 <p class="p-typo"><input type="checkbox" class="js-single" {{ (student()->is_blogger??teacher()->is_blogger??null)?'checked':'' }} id="blog-mode" /><label for="blog-mode" class="pl-3 switch-label">Aktifkan Mode Blogger?</label></p>
@@ -70,39 +76,29 @@
                     </button>
                 </div>
             </div>
-
             <div class="dropdown-divider"></div>
+            @endif
 
             <div class="profile-gallery">
 
                 <div class="mt-3 mb-3">
-                    <h6>Gallery</h6>
+                    <h6>Tentang Saya</h6>
 
-                    <div class="card-group">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/7.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/gallery-img2.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/gallery-img3.jpg" alt="Card image cap">
-                        </div>
+                    <div id="edit-about-me" class="d-none">
+                        <form action="{{ url('profile/set_about_me') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <textarea name="about" id="about" cols="30" rows="6" class="form-control">{{ auth()->user()->about }}</textarea>
+                            </div>
+                            <button class="btn btn-success mt-2">Submit</button>
+                        </form>
                     </div>
-                    <div class="card-group">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/7.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/gallery-img2.jpg" alt="Card image cap">
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="{{ url('admin') }}/img/gallery-img3.jpg" alt="Card image cap">
-                        </div>
+                    <div id="show-about-me">
+                        <p>{{ auth()->user()->about }}</p>
                     </div>
 
                     <div class="form-group text-right mt-2">
-                        <a href="#" class="btn btn-theme text-white">View all</a>
+                        <button id="edit_about" class="btn btn-theme text-white">Edit</button>
                     </div>
                 </div>
 
@@ -125,16 +121,8 @@
                                 <i class="fa fa-linkedin"></i>
                             </button>
                         </div>
-
-                        <!--<button type="button" class="btn btn-secondary">
-                            <i class="fa fa-user-plus"></i> Follow
-                        </button>-->
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
@@ -149,11 +137,11 @@
                     <a class="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#custom-home" role="tab" aria-controls="nav-home" aria-selected="true">
                             <i class="fa fa-list-ul"></i> Blog Saya
                     </a>
-                    <a class="nav-item nav-link" id="nav-profile" data-toggle="tab" href="#custom-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
-                        <i class="fa fa-file-text-o"></i> Info Pribadi
-                    </a>
-                    <a class="nav-item nav-link" id="nav-contact" data-toggle="tab" href="#custom-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    <a class="nav-item nav-link" id="nav-profile" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
                         <i class="fa fa-user"></i> Edit Profile
+                    </a>
+                    <a class="nav-item nav-link" id="nav-contact" data-toggle="tab" href="#change-password" role="tab" aria-controls="nav-contact" aria-selected="false">
+                        <i class="fa fa-key"></i> Ganti Katasandi
                     </a>
                 </div>
             </nav>
@@ -263,59 +251,26 @@
                 <!--/Feed tab-->
 
                 <!--Personal info tab-->
-                <div class="tab-pane fade p-4" id="custom-profile" role="tabpanel" aria-labelledby="nav-profile">
-                    <div class="table-responsive mb-4">
-                        <table class="table table-borderless table-striped m-0">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Full Name</th>
-                                    <td>{{ auth()->user()->name }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Email</th>
-                                    <td>{{ auth()->user()->email }}</td>
-                                </tr>
-                                @if (!auth()->user()->role != 'admin')
-                                <tr>
-                                    <th scope="row">No Telepon</th>
-                                    <td>{{ student()->phone??teacher()->phone??'' }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Alamat</th>
-                                    <td>{{ student()->address??teacher()->address??'' }}</td>
-                                </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-
-
-
-                    {{-- <div class="mt-4 mb-4">
-                        <h6 class="mb-2">Biography</h6>
-                        <p class="p-typo">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-                        </p>
-                        <p class="p-typo">
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                        <p class="p-typo">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-                        </p>
-                    </div> --}}
-
-                </div>
-                <!--/Personal info tab-->
-
-                <!--Resume tab-->
-                <div class="tab-pane fade pl-4 pr-4" id="custom-contact" role="tabpanel" aria-labelledby="nav-contact">
+                <div class="tab-pane fade pl-4 pr-4" id="edit-profile" role="tabpanel" aria-labelledby="nav-contact">
 
                     <h5>Form Edit Profile</h5>
-                    <form action="{{ url('profile/update-profile') }}" method="post">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ url(auth()->user()->avatar) }}" id="preview-avatar" height="125px" width="125px" class="rounded-circle shadow" />
+                    </div>
+
+                    <form action="{{ url('profile/update-profile') }}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
+                        <div class="form-group">
+                            <label for="">Avatar</label>
+                            <div class="custom-file">
+                                <input accept="image/*" type="file" class="custom-file-input @error('avatar') is-invalid @enderror" name="avatar" id="avatar">
+                                <label class="custom-file-label" for="avatar">Pilih Avatar</label>
+                                @error('avatar')
+                                    <i class="text-sm text-danger">{{ $message }}</i>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="">Nama</label>
                             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
@@ -330,7 +285,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        @if (!auth()->user()->role != 'admin')
+                        @if (auth()->user()->role != 'admin')
                         <div class="form-group">
                             <label for="">No Telepon</label>
                             <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" id="phone" value="{{ student()->phone ?? teacher()->phone ??'' }}">
@@ -340,17 +295,18 @@
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address" value="{{ student()->address ?? teacher()->address??'' }}">
+                            <textarea class="form-control @error('address') is-invalid @enderror" type="text" name="address" id="address">{{ student()->address ?? teacher()->address??'' }}</textarea>
                             @error('address')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         @endif
-                        <button class="btn btn-theme btn-block p-2 mb-1" type="submit">Edit Profile</button>
+                        <button class="btn btn-theme btn-block p-2 mb-1 mt-3" type="submit">Edit Profile</button>
                     </form>
+                </div>
 
-                    <div class="dropdown-divider mt-4 mb-4"></div>
-
+                <!--/Personal info tab-->
+                <div class="tab-pane fade p-4" id="change-password" role="tabpanel" aria-labelledby="nav-profile">
                     <h5>Form Ganti Password</h5>
                     <form action="{{ url('profile/update-password') }}" method="post">
                         @method('put')
@@ -372,9 +328,10 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button class="btn btn-theme btn-block p-2 mb-1" type="submit">Edit Password</button>
+                        <button class="btn btn-theme btn-block p-2 mb-1 mt-3" type="submit">Edit Password</button>
                     </form>
                 </div>
+                <!--Resume tab-->
             </div>
         </div>
     </div>
@@ -386,4 +343,18 @@
     <!--Switchery JS-->
     <script src="{{ url('admin') }}/js/switchery.min.js"></script>
     <script src="{{ url('js/profile.js') }}"></script>
+    <script>
+        $('#edit_about').on('click', ()=>{
+            $('#show-about-me').toggleClass('d-none')
+            $('#edit-about-me').toggleClass('d-none')
+        })
+
+        $('#avatar').on('change', function(event){
+            var output = document.getElementById('preview-avatar');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        })
+    </script>
 @endpush

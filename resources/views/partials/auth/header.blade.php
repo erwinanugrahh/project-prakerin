@@ -4,7 +4,13 @@
     <!--Logo-->
     <div class="col-sm-3 pl-0 text-center header-logo">
        <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
-            <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-xing"></i>{{ auth()->user()->role }}</a></h3>
+            <h3 class="logo"><a href="#" class="text-secondary logo">
+                @if (file_exists(public_path('logo.png')))
+                    <img src="{{ url('logo.png') }}" alt="" style="max-width: 100px; max-height: 30px" srcset="">
+                @else
+                    <i class="fa fa-xing"></i>{{ auth()->user()->role }}</a>
+                @endif
+            </h3>
        </div>
     </div>
     <!--Logo-->
@@ -134,7 +140,7 @@
                 @endif
                 <div class="mr-4">
                     <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ url('admin/') }}/img/profile.jpg" alt="Adam" class="rounded-circle" width="40px" height="40px">
+                        <img src="{{ url(auth()->user()->avatar) }}" alt="Adam" class="rounded-circle" width="40px" height="40px">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ url('profile') }}"><i class="fa fa-user pr-2"></i> Profile</a>

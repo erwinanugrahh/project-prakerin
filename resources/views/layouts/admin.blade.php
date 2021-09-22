@@ -52,7 +52,7 @@
             color: royalblue;
         }
     </style>
-    @livewireStyles
+
     <title>Dashboard</title>
   </head>
   <body>
@@ -66,13 +66,13 @@
 
     <div class="container-fluid">
 
-        @include('partials.header')
+        @include('partials.auth.header')
 
         <!--Main Content-->
 
         <div class="row main-content">
             <!--Sidebar left-->
-            @include('partials.sidebar')
+            @include('partials.auth.sidebar')
             <!--Sidebar left-->
 
             <!--Content right-->
@@ -107,7 +107,6 @@
     </div>
 
     <!--Page Wrapper-->
-
     <!-- Page JavaScript Files-->
     <script src="{{ url('admin/') }}/js/jquery.min.js"></script>
     <script src="{{ url('admin/') }}/js/jquery-1.12.4.min.js"></script>
@@ -141,7 +140,8 @@
         $('.bulk-actions').niceSelect();
         //select2
         $('.select2').select2({
-            theme: 'bootstrap4'
+            theme: 'bootstrap4',
+            width: '100%'
         });
 
         const Toast = Swal.mixin({
@@ -210,6 +210,5 @@
             })
         })
     </script>
-    @livewireScripts
   </body>
 </html>

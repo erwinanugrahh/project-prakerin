@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes(['register' => false]);
 
+Route::view('ppdb', 'ppdb');
+Route::put('ppdb', 'PpdbController@form');
+Route::redirect('home', 'dashboard');
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
@@ -28,6 +29,7 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::put('/profile/update-profile', 'HomeController@update_profile');
     Route::put('/profile/update-password', 'HomeController@update_password');
     Route::post('/profile/set-blogger', 'HomeController@set_blogger');
+    Route::post('/profile/set_about_me', 'HomeController@set_about_me');
 
     Route::prefix('admin')->middleware(['auth','role:admin'])->group(function(){
         Route::get('/', 'DashboardController@admin');
@@ -45,6 +47,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         // Route::resource('blogger', BloggerController::class);
         // Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
+
+        Route::resource('setting', SettingController::class);
+
+        Route::resource('gallery', GalleryController::class);
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');
@@ -72,7 +78,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
     Route::resource('blog', BlogController::class)->middleware(['auth']);
     Route::post('blog/delete-selected', 'BlogController@delete_selected');
+
 });
+Route::get('blogs/{category?}/{blog?}', [App\Http\Controllers\HomeController::class,'blog']);
+
 
 Route::group(['prefix' => 'filemanager'], function() {
     \UniSharp\LaravelFilemanager\Lfm::routes();

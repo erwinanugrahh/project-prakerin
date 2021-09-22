@@ -126,6 +126,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
+            'tags' => 'required',
+            'category_id' => 'required',
             'title' => 'required',
             'banner' => 'required|mimes:png,jpg',
             'content' => 'required'
@@ -174,13 +176,18 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $validate = $request->validate([
+            'tags' => 'required',
+            'category_id' => 'required',
             'title' => 'required',
             'banner' => 'sometimes|mimes:png,jpg',
             'content' => 'required'
         ]);
-
+        $blog->views()->delete();
+        $blog->comments()->delete();
         if($request->hasFile('banner')){
-            unlink(base_path('public/images/banners/'.$blog->banner));
+            if(file_exists(base_path('public/images/banners/'.$blog->banner))){
+                unlink(base_path('public/images/banners/'.$blog->banner));
+            }
             $fileName = "banner-".time().'.'.$request->file('banner')->getClientOriginalExtension();
             $request->file('banner')->move('images/banners/', $fileName);
             $validate['banner'] = $fileName;
