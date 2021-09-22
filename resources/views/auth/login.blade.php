@@ -11,8 +11,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
             </div>
-            <input type="text"  class="form-control mt-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" name="email" placeholder="Masukan Email" aria-label="Username" aria-describedby="basic-addon1">
-            @error('email')
+            <input type="text"  class="form-control mt-0 @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" placeholder="Masukan Email/NIP/NISN" aria-label="Username" aria-describedby="basic-addon1">
+            @error('code')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -41,7 +41,13 @@
 @endsection
 
 @section('another')
-    Isian Naon Ieu?
+<div class="row">
+    <div class="row justify-content-center">
+        <h3 class="mb-4">Welcome back</h3>
+        <p class="mb-4 p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.</p>
+        <p class="text-center"><a href="{{ '/' }}" class="btn btn-light">Previous page</a></p>
+    </div>
+</div>
 @endsection
 {{-- @section('content')
 <div class="container">

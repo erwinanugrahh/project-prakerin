@@ -18,6 +18,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes(['register' => false]);
 
+Route::view('ppdb', 'ppdb');
+Route::put('ppdb', 'PpdbController@form');
 Route::redirect('home', 'dashboard');
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){

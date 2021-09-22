@@ -285,7 +285,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        @if (!auth()->user()->role != 'admin')
+                        @if (auth()->user()->role != 'admin')
                         <div class="form-group">
                             <label for="">No Telepon</label>
                             <input class="form-control @error('phone') is-invalid @enderror" type="number" name="phone" id="phone" value="{{ student()->phone ?? teacher()->phone ??'' }}">

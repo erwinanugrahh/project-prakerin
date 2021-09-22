@@ -52,7 +52,7 @@
             color: royalblue;
         }
     </style>
-    @livewireStyles
+
     <title>Dashboard</title>
   </head>
   <body>
@@ -210,6 +210,5 @@
             })
         })
     </script>
-    @livewireScripts
   </body>
 </html>

@@ -19,7 +19,6 @@
         </div>
       </div>
     </div>
-
     <div class="banner-carousel-item" style="background-image: url(user/images/confi.png">
       <div class="slider-content text-left">
         <div class="container h-100">
@@ -57,7 +56,6 @@
     </div>
   </div>
   <!-- Action end -->
-
   <section id="ts-features" class="ts-features">
     <div class="container">
       <div class="row">
@@ -69,7 +67,7 @@
           </div><!-- Intro box end -->
 
           <div class="gap-20"></div>
-
+          
           <div class="row">
               @foreach ($about_us['skills'] as $skill)
               <div class="col-md-6">
@@ -130,7 +128,6 @@
       </div><!-- Row end -->
     </div><!-- Container end -->
   </section><!-- Feature are end -->
-
   <section id="facts" class="facts-area dark-bg">
     <div class="container">
       <div class="facts-wrapper">
@@ -174,7 +171,6 @@
               <h3 class="ts-facts-title">Countries Experience</h3>
             </div>
           </div><!-- Col end -->
-
         </div> <!-- Facts end -->
       </div>
       <!--/ Content row end -->
@@ -283,7 +279,6 @@
           </div><!-- Service 8 end -->
         </div><!-- Col end -->
       </div><!-- Content row end -->
-
     </div>
     <!--/ Container end -->
   </section><!-- Service end -->
@@ -297,7 +292,6 @@
         </div>
       </div>
       <!--/ Title row end -->
-
       <div class="row">
         <div class="col-12">
             <div class="shuffle-btn-group">
@@ -333,7 +327,6 @@
                     </div>
                 </div><!-- shuffle item 1 end -->
                 @endforeach
-
             </div><!-- shuffle end -->
         </div>
 
@@ -382,7 +375,6 @@
                   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris
                   nisi aliquip consequat.
                 </span>
-
                 <div class="quote-item-footer">
                   <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial2.png"
                     alt="testimonial">
@@ -409,6 +401,7 @@
                   <div class="quote-item-info">
                     <h3 class="quote-author">Minter Puchan</h3>
                     <span class="quote-subtext">Director, AKT</span>
+                    
                   </div>
                 </div>
               </div><!-- Quote item end -->
@@ -485,7 +478,6 @@
             <h4>(+9) 847-291-4353</h4>
           </div>
         </div><!-- Col end -->
-
         <div class="col-md-8">
           <div class="ts-newsletter row align-items-center">
             <div class="col-md-5 newsletter-introtext">
