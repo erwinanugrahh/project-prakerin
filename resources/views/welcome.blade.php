@@ -57,17 +57,6 @@
                 <a title="Facebook" href="https://facebbok.com/erwinanugrah">
                   <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
                 </a>
-<<<<<<< HEAD
-                <a title="Twitter" href="https://twitter.com/erwinanugrahh">
-                  <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                </a>
-                <a title="Instagram" href="https://instagram.com/indrabesset">
-=======
-                <a title="Twitter" href="https://twitter.com/erwinanugrah">
-                  <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                </a>
-                <a title="Instagram" href="https://instagram.com/instagram">
->>>>>>> 3ba45dcf86a77d93ef3d0cacd9b9c1009f520e41
                   <span class="social-icon"><i class="fab fa-instagram"></i></span>
                 </a>
                 <a title="Youtube" href="https://youtube.com/bryanx19">
@@ -251,11 +240,7 @@
                 <h2 class="slide-title-box" data-animation-in="slideInDown">Bingung menentukan Masa depan?</h2>
                 <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sederhana</h3>
                 <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK SMK IDEAN</h3>
-<<<<<<< HEAD
                 <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kegagalan Anda untuk menentukan bagaimana Anda mencapai kesuksesan.</p>
-=======
-                <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kebingungan anda itu untuk menentukan bagaimana anda mencapai kesuksesan.</p>
->>>>>>> 3ba45dcf86a77d93ef3d0cacd9b9c1009f520e41
                 <p data-animation-in="slideInRight">
                   <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Selengkapnya</a>
                 </p>

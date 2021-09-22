@@ -31,11 +31,9 @@
                         @break
                     @default
                 @endswitch
-<<<<<<< HEAD
-                @if ((student()->is_blogger??teacher()->is_blogger??''))
-=======
+
                 @if (auth()->user()->role!='admin'&&(student()->is_blogger??teacher()->is_blogger))
->>>>>>> 35dfcf55ce083d34bb638b1b6d9195dbc890307b
+
                 <li class="parent" id="blog">
                     <a href="{{ route('blog.index') }}" class=""><i class="fab fa-blogger-b mr-3"></i>
                         <span class="none">Blog </span>
