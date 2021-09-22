@@ -5,7 +5,7 @@
             <div class="col-lg-4 col-md-6 footer-widget footer-about">
                 <h3 class="widget-title">Tentang Kami</h3>
                 <img loading="lazy" width="200px" class="footer-logo" src="{{ url('user') }}/images/footer-logo.png" alt="Constra">
-                <p>SMK IDEAN Tasikmalaya merupakan salah satu lembaga pendidikan menengah kejuruan di Kabupaten Tasikmalaya Jawa Barat yang menyelenggarakan Program Pendidikan Kejuruan selama 3 Tahun.</p>
+                <p>{{ setting('about_us')['description'] }}</p>
                 <div class="footer-social">
                 <ul>
                     <li><a href="https://facebook.com/erwinanugrah" aria-label="Facebook"><i

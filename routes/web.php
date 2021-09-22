@@ -50,6 +50,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         Route::resource('setting', SettingController::class);
 
+        Route::resource('testimonial', TestimonialController::class);
+
         Route::resource('gallery', GalleryController::class);
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');

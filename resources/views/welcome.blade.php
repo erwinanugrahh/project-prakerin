@@ -56,7 +56,7 @@
     </div>
   </div>
   <!-- Action end -->
-  <section id="ts-features" class="ts-features">
+  <section id="about-us" class="about-us">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -67,7 +67,7 @@
           </div><!-- Intro box end -->
 
           <div class="gap-20"></div>
-          
+
           <div class="row">
               @foreach ($about_us['skills'] as $skill)
               <div class="col-md-6">
@@ -128,7 +128,7 @@
       </div><!-- Row end -->
     </div><!-- Container end -->
   </section><!-- Feature are end -->
-  <section id="facts" class="facts-area dark-bg">
+  <section id="projects" class="projects-area dark-bg">
     <div class="container">
       <div class="facts-wrapper">
         <div class="row">
@@ -178,7 +178,7 @@
     <!--/ Container end -->
   </section><!-- Facts end -->
 
-  <section id="ts-service-area" class="ts-service-area pb-0">
+  <section id="program-keahlian" class="program-keahlian pb-0">
     <div class="container">
       <div class="row text-center">
         <div class="col-12">
@@ -283,7 +283,7 @@
     <!--/ Container end -->
   </section><!-- Service end -->
 
-  <section id="project-area" class="project-area solid-bg">
+  <section id="gallery" class="gallery solid-bg">
     <div class="container">
       <div class="row text-center">
         <div class="col-lg-12">
@@ -345,69 +345,26 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <h3 class="column-title">Testimonials</h3>
+          <h3 class="column-title">Testimoni Alumni</h3>
 
           <div id="testimonial-slide" class="testimonial-slide">
-            <div class="item">
-              <div class="quote-item">
-                <span class="quote-text">
-                  Question ran over her cheek When she reached the first hills of the Italic Mountains, she had a last
-                  view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the
-                  subline of her own road.
-                </span>
+              @foreach (App\Models\Testimonial::all() as $testimonial)
+              <div class="item">
+                <div class="quote-item">
+                  <span class="quote-text">{{ $testimonial->quote }}</span>
 
-                <div class="quote-item-footer">
-                  <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial1.png"
-                    alt="testimonial">
-                  <div class="quote-item-info">
-                    <h3 class="quote-author">Gabriel Denis</h3>
-                    <span class="quote-subtext">Chairman, OKT</span>
+                  <div class="quote-item-footer">
+                    <img loading="lazy" class="testimonial-thumb" src="{{ asset('storage/testimonials/'.$testimonial->photo) }}"
+                      alt="testimonial">
+                    <div class="quote-item-info">
+                      <h3 class="quote-author">{{ $testimonial->name }}</h3>
+                      <span class="quote-subtext">{{ $testimonial->title.', '.$testimonial->company }}</span>
+                    </div>
                   </div>
-                </div>
-              </div><!-- Quote item end -->
-            </div>
-            <!--/ Item 1 end -->
-
-            <div class="item">
-              <div class="quote-item">
-                <span class="quote-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris
-                  nisi aliquip consequat.
-                </span>
-                <div class="quote-item-footer">
-                  <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial2.png"
-                    alt="testimonial">
-                  <div class="quote-item-info">
-                    <h3 class="quote-author">Weldon Cash</h3>
-                    <span class="quote-subtext">CFO, First Choice</span>
-                  </div>
-                </div>
-              </div><!-- Quote item end -->
-            </div>
-            <!--/ Item 2 end -->
-
-            <div class="item">
-              <div class="quote-item">
-                <span class="quote-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitoa tion ullamco laboris
-                  nisi ut commodo consequat.
-                </span>
-
-                <div class="quote-item-footer">
-                  <img loading="lazy" class="testimonial-thumb" src="{{ url('user') }}/images/clients/testimonial3.png"
-                    alt="testimonial">
-                  <div class="quote-item-info">
-                    <h3 class="quote-author">Minter Puchan</h3>
-                    <span class="quote-subtext">Director, AKT</span>
-                    
-                  </div>
-                </div>
-              </div><!-- Quote item end -->
-            </div>
-            <!--/ Item 3 end -->
-
+                </div><!-- Quote item end -->
+              </div>
+              <!--/ Item end -->
+              @endforeach
           </div>
           <!--/ Testimonial carousel end-->
         </div><!-- Col end -->
@@ -547,3 +504,18 @@
   </section>
   <!--/ News end -->
 @endsection
+
+@push('js')
+<script>
+    $('.halaman-scroll').on('click', function(e){
+        console.log('oke');
+        var tujuan = $(this).attr('href');
+        var element = $(tujuan);
+        $('html, body').animate({
+            scrollTop: element.offset().top-10
+        });
+        $('#navbar-collapse').removeClass('show')
+        e.preventDefault();
+    });
+</script>
+@endpush

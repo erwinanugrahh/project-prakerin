@@ -25,6 +25,8 @@ if(!function_exists('setting')){
                 'website_name'=>'SMK IDEAN TASIKMALAYA',
                 'phone'=>'+628979394991',
                 'website_for'=>'smk',
+                'open_ppdb'=>false,
+                'open_announcement_ppdb'=>false,
                 'email'=>'jangebe91@gmail.com',
                 'zip'=>46462,
                 'address'=>'Singaparna, Tasikmalaya'

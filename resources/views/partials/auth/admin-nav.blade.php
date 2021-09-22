@@ -14,6 +14,11 @@
         <span class="none">Penyetujuan Blog </span>
     </a>
 </li>
+<li class="parent {{ request()->routeIs('testimonial.*')?'active':'' }}">
+    <a href="{{ route('testimonial.index') }}" class=""><i class="fas fa-users mr-3"></i>
+        <span class="none">Testimoni Alumni</span>
+    </a>
+</li>
 <li class="parent {{ request()->routeIs('gallery.*')?'active':'' }}">
     <a href="{{ route('gallery.index') }}" class=""><i class="fas fa-images mr-3"></i>
         <span class="none">Galeri</span>

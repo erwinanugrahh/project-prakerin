@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('student/import', [App\Http\Controllers\StudentController::class, 'preview']);
 Route::post('teacher/import', [App\Http\Controllers\TeacherController::class, 'preview']);
+Route::get('get_testimonials', [App\Http\Controllers\TestimonialController::class, 'ajax']);
+Route::post('testimonial/delete-selected', [App\Http\Controllers\TestimonialController::class, 'delete_selected']);
