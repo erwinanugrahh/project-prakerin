@@ -111,6 +111,7 @@
     <!-- Template custom -->
     <script src="{{ url('user') }}/js/script.js"></script>
     @livewireScripts
+    @stack('js')
   </div><!-- Body inner end -->
 </body>
 

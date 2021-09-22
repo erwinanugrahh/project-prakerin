@@ -144,3 +144,12 @@
     </div><!-- Conatiner end -->
   </section><!-- Main container end -->
 @endsection
+
+@push('js')
+<script>
+    $('.halaman-scroll').on('click', function(){
+        var tujuan = $(this).attr('href');
+        window.location.href = '/'+tujuan
+    })
+</script>
+@endpush

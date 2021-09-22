@@ -13,7 +13,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
 
                         <li class="nav-item dropdown">
-                        <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profil</a>
+                        <a href="#about-us" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Profil</a>
                         {{-- <i class="fa fa-angle-down"></i> --}}
 
                         {{-- <ul class="dropdown-menu" role="menu">
@@ -24,13 +24,14 @@
                         </ul> --}}
                         </li>
 
+                        @if (setting('setting_web')['website_for']=='smk')
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Keahlian</a>
+                            <a href="#program-keahlian" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Keahlian</a>
                         </li>
+                        @endif
 
                         <li class="nav-item dropdown">
-                        <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ekstrakulikuler<i
-                            class="fa fa-angle-down"></i></a>
+                        <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Ekstrakulikuler <i class="fa fa-angle-down pl-2"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('user') }}/news-left-sidebar.html">Balap karung</a></li>
                             <li><a href="{{ url('user') }}/news-right-sidebar.html">Balap Sendok</a></li>
@@ -39,15 +40,15 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Gallery</a>
+                            <a href="#gallery" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Gallery</a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a href="#news" class="nav-link dropdown-toggle" data-toggle="dropdown">Berita</a>
+                            <a href="#news" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Berita</a>
                         </li>
 
-                        </li>
-                        <li class="nav-item"><a class="nav-item dropdown-toggle"></a></li>
+                        <li class="nav-item"><a class="nav-item dropdown-toggle halaman-scroll"></a></li>
+
                     </ul>
                     </div>
                 </nav>
