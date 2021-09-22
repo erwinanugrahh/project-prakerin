@@ -2,7 +2,7 @@
     <div class="inner-sidebar mr-3">
         <!--Image Avatar-->
         <div class="avatar text-center">
-            <img src="{{ url('admin/') }}/img/client-img4.png" alt="" class="rounded-circle" />
+            <img src="{{ url(auth()->user()->avatar) }}" alt="" class="rounded-circle" />
             <p><strong>{{ auth()->user()->name }}</strong></p>
             <span class="text-primary small"><strong>{{ auth()->user()->role }}</strong></span>
         </div>
@@ -18,16 +18,16 @@
                 </li>
                 @switch(auth()->user()->role)
                     @case('admin')
-                        @include('partials.admin-nav')
+                        @include('partials.auth.admin-nav')
                         @break
                     @case('teacher')
-                        @include('partials.teacher-nav')
+                        @include('partials.auth.teacher-nav')
                         @break
                     @case('student')
-                        @include('partials.student-nav')
+                        @include('partials.auth.student-nav')
                         @break
                     @case('blogger')
-                        @include('partials.blogger-nav')
+                        @include('partials.auth.blogger-nav')
                         @break
                     @default
                 @endswitch

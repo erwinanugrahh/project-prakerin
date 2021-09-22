@@ -23,7 +23,12 @@ class Major extends Model
 
     public function getMajor()
     {
-        $level = [1=>'X','XI','XII'];
+        $levels = [
+            'smp'=>[1=>'VII','VIII','IX'],
+            'smk'=>[1=>'X','XI','XII']
+        ];
+        $levelSetting = setting('setting_web', ['website_for'=>'smk'])['website_for'];
+        $level = $levels[$levelSetting];
         return $level[$this->level].' '.$this->name;
     }
 }

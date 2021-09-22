@@ -14,3 +14,13 @@
         <span class="none">Penyetujuan Blog </span>
     </a>
 </li>
+<li class="parent {{ request()->routeIs('gallery.*')?'active':'' }}">
+    <a href="{{ route('gallery.index') }}" class=""><i class="fas fa-images mr-3"></i>
+        <span class="none">Galeri</span>
+    </a>
+</li>
+<li class="parent {{ request()->routeIs('setting.*')?'active':'' }}">
+    <a href="{{ route('setting.index') }}" class=""><i class="fa fa-gears mr-3"></i>
+        <span class="none">Pengaturan</span>
+    </a>
+</li>

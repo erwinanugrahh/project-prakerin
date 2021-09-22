@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "cviebrock/eloquent-sluggable": "^8.0",
+        "cyrildewit/eloquent-viewable": "^6.0",
         "doctrine/dbal": "^3.1",
         "fakerphp/faker": "^1.15",
         "fruitcake/laravel-cors": "^2.0",
@@ -14,6 +15,7 @@
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "laravelista/comments": "^4.5",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
         "unisharp/laravel-filemanager": "^2.2",
