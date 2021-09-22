@@ -4,15 +4,18 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravelista\Comments\Commentable;
 
-class Blog extends Model
+class Blog extends Model implements Viewable
 {
-    use HasFactory, Sluggable, Commentable;
+    use HasFactory, Sluggable, Commentable, InteractsWithViews;
 
     protected $guarded = ['id'];
+    protected $removeViewsOnDelete = true;
 
     public function getRouteKeyName()
     {

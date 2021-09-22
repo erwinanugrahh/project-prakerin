@@ -18,7 +18,8 @@
                         <i class="far fa-folder-open"></i><a href="#"> {{ $blog->category->name }}</a>
                     </span>
                     <span class="post-meta-date"><i class="far fa-calendar"></i> {{ $blog->getCreatedDate() }}</span>
-                    <span class="post-comment"><i class="far fa-comment"></i> 03
+                    <span class="post-meta-date"><i class="far fa-eye"></i> {{ views($blog)->count() }}</span>
+                    <span class="post-comment"><i class="far fa-comment"></i> {{ $blog->comments->count() }}
                         <a href="javascript:void(0)" class="comments-link">Komentar</a>
                     </span>
                 </div>

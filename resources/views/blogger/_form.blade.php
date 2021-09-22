@@ -45,10 +45,24 @@
     @enderror
 </div>
 
+<div class="form-group">
+    <label for="tags">Tags</label>
+    <input type="text" name="tags" id="tags" value="{{ old('tags', $blog->tags??'') }}" class="form-control @error('tags') is-invalid @enderror">
+    @error('tags')
+        <div class="text-sm text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+@push('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-tagsinput.css') }}">
+@endpush
+
 @push('js')
     <script src="{{ url('plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ url('js/blogger/blog.js') }}"></script>
+    <script src="{{ asset('admin/js/bootstrap-tagsinput.min.js') }}"></script>
     <script>
+        $('#tags').tagsinput()
         $('#banner').on('change', function(event){
             var output = document.getElementById('image');
             output.src = URL.createObjectURL(event.target.files[0]);

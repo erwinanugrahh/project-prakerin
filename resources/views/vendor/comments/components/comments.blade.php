@@ -15,7 +15,7 @@
     <div id="comments" class="comments-area">
         <h3 class="comments-heading">{{ $comments->count() }} Komentar</h3>
 
-        <ul class="comments-list">
+        <ul class="comments-list my-0 py-0">
         @php
             $comments = $comments->sortBy('created_at');
 

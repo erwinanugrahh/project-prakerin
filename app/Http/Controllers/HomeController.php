@@ -122,6 +122,7 @@ class HomeController extends Controller
             $mBlog = Blog::where('slug',$blog)->first();
             if(!is_null($mBlog)){
                 $blog = $mBlog;
+                views($blog)->cooldown(10)->record();
                 return view('show-blog', compact('blog'));
             }else{
                 $blogs = $blogs->get();

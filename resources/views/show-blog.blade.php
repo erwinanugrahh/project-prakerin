@@ -44,8 +44,9 @@
                     <i class="far fa-folder-open"></i><a href="#"> {{ $blog->category->name }}</a>
                   </span>
                   <span class="post-meta-date"><i class="far fa-calendar"></i> {{ $blog->getCreatedDate() }}</span>
-                  <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
-                      class="comments-link">Comments</a></span>
+                  <span class="post-meta-date"><i class="far fa-eye"></i> {{ views($blog)->count() }}</span>
+                  <span class="post-comment"><i class="far fa-comment"></i> {{ $blog->comments->count() }}<a href="#"
+                      class="comments-link">Komentar</a></span>
                 </div>
                 <h2 class="entry-title">
                   {{ $blog->title }}
@@ -57,11 +58,6 @@
               </div>
 
               <div class="tags-area d-flex align-items-center justify-content-between">
-                <div class="post-tags">
-                  <a href="#">Construction</a>
-                  <a href="#">Safety</a>
-                  <a href="#">Planning</a>
-                </div>
                 <div class="share-items">
                   <ul class="post-social-icons list-unstyled">
                     <li class="social-icons-head">Share:</li>
@@ -71,6 +67,13 @@
                     <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                   </ul>
                 </div>
+                @if ($blog->tags!='')
+                <div class="post-tags">
+                    @foreach (explode(',', $blog->tags) as $tag)
+                    <a href="/blogs?tag={{ $tag }}">{{ $tag }}</a>
+                    @endforeach
+                </div>
+                @endif
               </div>
 
             </div><!-- post-body end -->
@@ -78,12 +81,11 @@
 
           <div class="author-box d-nlock d-sm-flex">
             <div class="author-img mb-4 mb-md-0">
-              <img loading="lazy" src="/user/images/news/avator1.png" alt="author">
+              <img loading="lazy" src="{{ $blog->blogger->avatar }}" alt="author">
             </div>
             <div class="author-info">
               <h3>{{ $blog->blogger->name }}<span>{{ $blog->blogger->role }}</span></h3>
-              <p class="mb-2">Lisicing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad vene minim
-                veniam, quis nostrud exercitation nisi ex ea commodo.</p>
+              <p class="mb-2">{{ $blog->blogger->about }}</p>
               <p class="author-url mb-0">Website: <span><a href="#">http://www.example.com</a></span></p>
             </div>
           </div> <!-- Author box end -->
