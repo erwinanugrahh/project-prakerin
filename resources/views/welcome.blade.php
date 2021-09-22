@@ -67,7 +67,7 @@
           </div><!-- Intro box end -->
 
           <div class="gap-20"></div>
-          
+
           <div class="row">
               @foreach ($about_us['skills'] as $skill)
               <div class="col-md-6">
@@ -195,9 +195,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon1.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Desain Pemodelan Infromasi Bangunan</a></h3>
-              <p>
-                Desain Pemodelan dan Informasi Bangunan adalah jurusan yang mempelajari tentang perencanaan bangunan, pelaksanaan pembuatan gedung dan perbaikan gedung. Kegiatannya adalah belajar menggambar rumah, gedung dan apartemen, menghitung biaya bangunan, melaksankan pembangunan dan memelihara kontruksi bangunan. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              <h3 class="service-box-title"><a>AKL</a></h3>
+              <p>Akutansi Blabla bla atau juga disebut AKL<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
             </div>
           </div><!-- Service 1 end -->
 
@@ -206,8 +205,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Multimedia</a></h3>
-              <p>Multimedia merupakan salah satu kompetensi keahlian di SMK yang termasuk dalam rumpun bidang keahlian Teknik Komputer dan Informatika. Multimedia sendiri mempelajari tentang kombinasi atau penggabungan dari beberapa media seperti teks, audio, video, animasi, gambar yang disajikan dalam penggunaan komputer dengan bantuan tools dan link sehingga menghasilkan presentasi yang menarik. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+                <h3 class="service-box-title"><a>DPIB</a></h3>
+                <p>Desain Pemodelan Insprastruktur Bangunan atau juga disebut DPIB<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
             </div>
           </div><!-- Service 2 end -->
 
@@ -216,26 +215,16 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Otomatisasi Tata Kelola Perkantoran</a></h3>
-              <p>Otomatisasi & Tata Kelola Perkantoran atau biasa disingkat OTKP, dulu bernama Administrasi Perkantoran atau AP merupakan salah satu cabang bidang keahlian Bisnis dan Manajemen mempelajari tentang Pengetikan naskah atau dokumen, Penanganan telepon, Penataan dan pengelolaan surat atau dokumen, Penataan dan pengelolaan arsip, Penanganan perjalanan bisnis, Penanganan dana kas kecil, Penyiapan pertemuan atau rapat, Penanganan aplikasi, dan Penanganan informasi melalui internet. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+              <h3 class="service-box-title"><a>OTKP</a></h3>
+              <p>Otomatisasi & Tata Kelola Perkantoran atau biasa disingkat OTKP adalah<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
             </div>
           </div><!-- Service 3 end -->
 
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Rekayasa Perangkat Lunak</a></h3>
-              <p>Rekayasa Perangkat Lunak merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 4 end -->
-
         </div><!-- Col end -->
 
-        <div class="col-lg-4 text-center">
+        {{-- <div class="col-lg-4 text-center">
           <img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/services/service-center.jpg" alt="service-avater-image">
-        </div><!-- Col end -->
+        </div><!-- Col end --> --}}
 
         <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
           <div class="ts-service-box d-flex">
@@ -243,7 +232,7 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Bisnis Sepeda Motor</a></h3>
+              <h3 class="service-box-title"><a>TBSM</a></h3>
               <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
             </div>
           </div><!-- Service 5 end -->
@@ -253,30 +242,53 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Elektronika Industri</a></h3>
+              <h3 class="service-box-title"><a>TEKLIN</a></h3>
               <p>Mendidik tenaga kerja yang mampu bersaing baik tingkat nasional, regional, maupun global. Menciptakan tenaga yang mampu berwirausaha. Mendidik tenaga terampil yang mampu menciptakan lapangan kerja. Mengembangkan unit produksi yang professional. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
             </div>
           </div><!-- Service 6 end -->
 
           <div class="ts-service-box d-flex">
             <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Komputer Jaringan</a></h3>
-              <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 7 end -->
-
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon6.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a href="{{ url('user') }}/#">Teknik Kendaraan Ringan Otomotif</a></h3>
+              <h3 class="service-box-title"><a>TKRO</a></h3>
               <p>TekniK Kendaraan Ringan Otomotif bertujuan Mengembangkan dan mengaplikasikan dalam karyanya secara mandiri dan dapat mengisi lowongan pekerjaan di dunia usaha dan dunia industri sebagai tenaga kerja tingkat menengah yang handal. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
             </div>
           </div><!-- Service 8 end -->
+        </div>
+
+          <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title"><a>MM</a></h3>
+                <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
+              </div>
+            </div><!-- Service 5 end -->
+
+            <div class="ts-service-box d-flex">
+                <div class="ts-service-box-img">
+                  <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
+                </div>
+                <div class="ts-service-box-info">
+                  <h3 class="service-box-title"><a>RPL</a></h3>
+                  <p>Rekayasa Perangkat Lunak merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+                </div>
+              </div><!-- Service 4 end -->
+
+              <div class="ts-service-box d-flex">
+                <div class="ts-service-box-img">
+                  <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
+                </div>
+                <div class="ts-service-box-info">
+                  <h3 class="service-box-title"><a>TKJ</a></h3>
+                  <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
+                </div>
+              </div><!-- Service 7 end -->
+
         </div><!-- Col end -->
       </div><!-- Content row end -->
     </div>
@@ -401,7 +413,7 @@
                   <div class="quote-item-info">
                     <h3 class="quote-author">Minter Puchan</h3>
                     <span class="quote-subtext">Director, AKT</span>
-                    
+
                   </div>
                 </div>
               </div><!-- Quote item end -->

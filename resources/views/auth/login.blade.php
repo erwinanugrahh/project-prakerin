@@ -44,8 +44,8 @@
 <div class="row">
     <div class="row justify-content-center">
         <h3 class="mb-4">Welcome back</h3>
-        <p class="mb-4 p-4">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.</p>
-        <p class="text-center"><a href="{{ '/' }}" class="btn btn-light">Previous page</a></p>
+        <p class="mb-4 p-4">Kembali ke halaman sebelumnya gak nich?</p>
+        <p class="text-center"><a href="{{ '/' }}" class="btn btn-light">Kembali</a></p>
     </div>
 </div>
 @endsection

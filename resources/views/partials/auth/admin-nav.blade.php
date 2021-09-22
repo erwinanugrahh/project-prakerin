@@ -19,6 +19,11 @@
         <span class="none">Galeri</span>
     </a>
 </li>
+<li class="parent {{ request()->routeIs('desc_major.*')?'active':'' }}">
+    <a href="{{ route('desc_major.index') }}" class=""><i class="fas fa-book mr-3"></i>
+        <span class="none">Program Keahlian</span>
+    </a>
+</li>
 <li class="parent {{ request()->routeIs('setting.*')?'active':'' }}">
     <a href="{{ route('setting.index') }}" class=""><i class="fa fa-gears mr-3"></i>
         <span class="none">Pengaturan</span>

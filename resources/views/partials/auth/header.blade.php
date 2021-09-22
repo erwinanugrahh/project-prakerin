@@ -80,7 +80,7 @@
                 <!--Notication icon-->
 
                 <!--Inbox icon-->
-                <span class="menu-icon inbox">
+                {{-- <span class="menu-icon inbox">
                     <a class="" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope"></i>
                         <span class="badge badge-danger">4</span>
@@ -123,11 +123,11 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-center link-all" href="#">View all messages</a>
                     </div>
-                </span>
+                </span> --}}
                 <!--Inbox icon-->
-                <span class="menu-icon">
+                {{-- <span class="menu-icon">
                     <i class="fa fa-th-large"></i>
-                </span>
+                </span> --}}
             </div>
             <!--Menu Icons-->
 
@@ -144,10 +144,6 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ url('profile') }}"><i class="fa fa-user pr-2"></i> Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-th-list pr-2"></i> Tasks</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-book pr-2"></i> Projects</a>
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="{{ route('logout') }}"

@@ -52,6 +52,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
 
         Route::resource('gallery', GalleryController::class);
 
+        Route::resource('desc_major', DescMajorController::class);
+
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');
         Route::get('request_blog/{blog}/preview', 'BlogController@preview')->name('blog.preview');
