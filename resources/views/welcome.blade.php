@@ -27,7 +27,7 @@
 
               <h2 class="slide-title-box" data-animation-in="slideInDown">Bingung menentukan Masa depan?</h2>
               <h3 class="slide-title" data-animation-in="fadeIn">Pilihan anda sederhana</h3>
-              <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK SMK IDEAN</h3>
+              <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK {{ $setting_web['website_name'] }}</h3>
               <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kebingungan anda itu untuk menentukan bagaimana anda mencapai kesuksesan.</p>
               <p data-animation-in="slideInRight">
                 <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Selengkapnya</a>

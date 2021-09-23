@@ -92,10 +92,10 @@
                     <div class="col-sm-8">
                         <span>&copy; All rights reserved 2021 designed by <a class="text-info" href="http://instagram.com/indrabesset">Bryan X</a></span>
                     </div>
-                    <div class="col-sm-4 text-right">
+                    {{-- <div class="col-sm-4 text-right">
                         <a href="#" class="ml-2">Contact Us</a>
                         <a href="#" class="ml-2">Support</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <!--Footer-->
 

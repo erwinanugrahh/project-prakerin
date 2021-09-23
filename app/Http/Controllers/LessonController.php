@@ -6,8 +6,10 @@ use App\Models\Lesson;
 use App\Models\LessonGroup;
 use App\Models\Major;
 use App\Models\Task;
+use App\Notifications\NewLessonNotify;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -85,14 +87,26 @@ class LessonController extends Controller
             }
         }
 
-        $lesson_id = Lesson::create($validate)->id;
+        $lesson = Lesson::create($validate);
         foreach($request->major_id as $i => $id){
             LessonGroup::create([
-                'lesson_id'=>$lesson_id,
+                'lesson_id'=>$lesson->id,
                 'major_id'=>$id,
                 'start_at'=> Carbon::parse(date('Y-m-d ').$request->start_at[$i])->format('Y-m-d H:i:s'),
                 'end_at'=> Carbon::parse(date('Y-m-d ').$request->end_at[$i])->format('Y-m-d H:i:s')
             ]);
+            foreach(Major::find($id)->students as $student){
+                $data = [
+                    'lesson_id'=>$lesson->id,
+                    'icon'=>'fas fa-book',
+                    'color'=>'bg-success',
+                    'title'=>$lesson->title,
+                    'text'=>Str::limit($lesson->content, 50),
+                    'url'=>route('task.show', $lesson->slug)
+                ];
+                // Notification::route('mail', $student->email)->notifyNow(new NewLessonNotify($lesson, $data));
+                $student->user->notifyNow(new NewLessonNotify($lesson, $data));
+            }
         }
 
         return redirect()->route('lesson.index')->with('success', 'Materi berhasi ditambahkan');
@@ -146,6 +160,7 @@ class LessonController extends Controller
 
     public function task(Task $task)
     {
+        auth()->user()->notifications->where('data.task_id', $task->id)->markAsRead();
         return view('teacher.lesson.task', compact('task'));
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin', ['noCard'=>true])
 
 @section('title') Halaman Darhboard @endsection
 @section('page') Dashboard @endsection
@@ -8,7 +8,7 @@
 <div class="row">
     <!--Visitors statistics card-->
     <div class="col-sm-4 custom-card">
-        <div class="mt-1 mb-3 button-container p-3 bg-white border shadow lh-sm">
+        <div class="mt-1 mb-3 button-container p-3 bg-white border lh-sm">
             <div class="text-center mb-3">
                 <h5 class="mb-0 mt-2"><small>Total User</small></h5>
                 <h2>2,367</h2>
@@ -31,11 +31,11 @@
             <div class="row mx-2">
                 <div class="col-sm-6 col-12">
                     <h5>1,507</h5>
-                    <span class="text-muted small"><strong>Laki-laki</strong></span>
+                    <span class="text-muted small"><strong>Guru</strong></span>
                 </div>
                 <div class="col-sm-6 col-12 text-right">
                     <h5>854</h5>
-                    <span class="text-muted small"><strong>Perempuan</strong></span>
+                    <span class="text-muted small"><strong>Siswa</strong></span>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
 
     <!--Transaction statistics card-->
     <div class="col-sm-4 custom-card">
-        <div class="mt-1 mb-3 button-container p-3 bg-white border shadow lh-sm">
+        <div class="mt-1 mb-3 button-container p-3 bg-white border lh-sm">
             <div class="text-center mb-3">
                 <h5 class="mb-0 mt-2"><small>Total Blog</small></h5>
                 <h2>15,367</h2>
@@ -81,9 +81,9 @@
 
     <!--Tasks statistics card-->
     <div class="col-sm-4 custom-card">
-        <div class="mt-1 mb-3 button-container p-3 bg-white border shadow lh-sm">
+        <div class="mt-1 mb-3 button-container p-3 bg-white border lh-sm">
             <div class="text-center mb-3">
-                <h5 class="mb-0 mt-2"><small>Tugas</small></h5>
+                <h5 class="mb-0 mt-2"><small>Total Kelas</small></h5>
                 <h2>585</h2>
             </div>
 
@@ -105,11 +105,11 @@
             <div class="row mx-2">
                 <div class="col-sm-6 col-12">
                     <h5>490</h5>
-                    <span class="text-muted small"><strong>Selesai</strong></span>
+                    <span class="text-muted small"><strong>Naon</strong></span>
                 </div>
                 <div class="col-sm-6 col-12 text-right">
                     <h5>95</h5>
-                    <span class="text-muted small"><strong>Pending</strong></span>
+                    <span class="text-muted small"><strong>Naon</strong></span>
                 </div>
             </div>
         </div>

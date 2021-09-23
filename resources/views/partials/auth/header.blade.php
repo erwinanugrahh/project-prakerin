@@ -30,104 +30,36 @@
                 <div class="menu-icon">
                     <a class="" href="#" onclick="toggle_dropdown(this); return false" role="button" class="dropdown-toggle">
                         <i class="fa fa-bell"></i>
-                        <span class="badge badge-danger">5</span>
+                        @if (auth()->user()->unreadNotifications->count()>0)
+                            <span class="badge badge-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
+                        @endif
                     </a>
                     <div class="dropdown dropdown-left bg-white shadow border">
-                        <a class="dropdown-item" href="#"><strong>Notifications</strong></a>
+                        <a class="dropdown-item" href="#"><strong>Notifikasi</strong></a>
+                        @foreach (auth()->user()->unreadNotifications as $notification)
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ $notification->data['url'] }}" class="dropdown-item">
                             <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-primary">
-                                    <i class="fa fa-bookmark"></i>
+                                <div class="align-self-center mr-3 rounded-circle notify-icon {{ $notification->data['color']??'bg-primary' }}">
+                                    <i class="{{ $notification->data['icon']??'fa fa-bookmark' }}"></i>
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="mt-0"><strong>Meeting</strong></h6>
-                                    <p>You have a meeting by 8:00</p>
-                                    <small class="text-success">09:23am</small>
+                                    <h6 class="mt-0"><strong>{{ $notification->data['title']??'Pesan notifikasi' }}</strong></h6>
+                                    <p>{{ strip_tags($notification->data['text']??'Text notifikasi') }}</p>
+                                    <small class="text-success">{{ $notification->created_at->diffForHumans() }}</small>
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-secondary">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Events</strong></h6>
-                                    <p>Launching new programme</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-warning">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Personnel</strong></h6>
-                                    <p>New employee arrival</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-center link-all" href="#">See all notifications ></a>
+                        @endforeach
+                        @if (auth()->user()->unreadNotifications->count()>6)
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-center link-all" href="#">Lihat semua notifikasi ></a>
+                        @elseif(auth()->user()->unreadNotifications->count()<1)
+                            <div class="dropdown-item text-warning">Tidak ada notifikasi</div>
+                        @endif
                     </div>
                 </div>
                 <!--Notication icon-->
-
-                <!--Inbox icon-->
-                {{-- <span class="menu-icon inbox">
-                    <a class="" href="#" role="button" id="dropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-envelope"></i>
-                        <span class="badge badge-danger">4</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left mt-10 animated zoomInDown" aria-labelledby="dropdownMenuLink3">
-                        <a class="dropdown-item" href="#"><strong>Unread messages</strong></a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <img class="align-self-center mr-3 rounded-circle" src="{{ url('admin/') }}/img/profile.jpg" width="50px" height="50px" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
-                                    <p>How are you?</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <img class="align-self-center mr-3 rounded-circle" src="{{ url('admin/') }}/img/profile.jpg" width="50px" height="50px" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
-                                    <p>How are you?</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <div class="media">
-                                <img class="align-self-center mr-3 rounded-circle" src="{{ url('admin/') }}/img/profile.jpg" width="50px" height="50px" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mt-0"><strong>Adam Abdulrahman</strong></h6>
-                                    <p>How are you?</p>
-                                    <small class="text-success">09:23am</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-center link-all" href="#">View all messages</a>
-                    </div>
-                </span> --}}
-                <!--Inbox icon-->
-                {{-- <span class="menu-icon">
-                    <i class="fa fa-th-large"></i>
-                </span> --}}
             </div>
             <!--Menu Icons-->
 
