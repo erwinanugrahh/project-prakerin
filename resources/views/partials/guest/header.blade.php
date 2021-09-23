@@ -33,8 +33,8 @@
                         <li class="last">
                             <div class="info-box last">
                                 <div class="info-box-content">
-                                    <p class="info-box-title">Global Certificate</p>
-                                    <p class="info-box-subtitle">ISO 9001:2017</p>
+                                    <p class="info-box-title">Slogan</p>
+                                    <p class="info-box-subtitle">SMK Bisaa!</p>
                                 </div>
                             </div>
                         </li>

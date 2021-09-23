@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Lesson;
 use App\Models\LessonGroup;
+use App\Notifications\TaskFinished;
 use Illuminate\Http\Request;
 use App\Support\Collection;
+use Illuminate\Support\Facades\Notification;
 
 class TaskController extends Controller
 {
@@ -45,7 +47,6 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $tasks = Task::all();
         return view('student.task.create');
     }
 
@@ -76,10 +77,21 @@ class TaskController extends Controller
             $validate['attachment'] = $fileName;
         }
 
+        $newTask = Task::updateOrCreate([
+            'lesson_id'=>$validate['lesson_id'],
+            'student_id'=>student()->id
+        ],$validate);
+
         if(is_null($task)){
-            Task::create($validate);
-        }else{
-            $task->update($validate);
+            $data = [
+                'task_id'=>$newTask->id,
+                'icon' => 'fas fa-user',
+                'color' => 'bg-info',
+                'title'=>'Tugas '.auth()->user()->name,
+                'text'=>\Str::limit(strip_tags($validate['content']), 50),
+                'url'=>url('teacher/lesson/task/'.$newTask->id)
+            ];
+            $newTask->lesson->teacher->user->notify(new TaskFinished($data));
         }
 
         return redirect()->route('task.index')->with('success', 'Tugas berhasil diupload');
@@ -93,6 +105,7 @@ class TaskController extends Controller
      */
     public function show(Lesson $task)
     {
+        auth()->user()->notifications->where('data.lesson_id', $task->id)->markAsRead();
         $myAnswer = $task->tasks->where('student_id', student()->id)->first();
         return view('student.task.show', compact('task', 'myAnswer'));
     }
