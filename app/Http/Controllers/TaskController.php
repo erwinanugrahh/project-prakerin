@@ -19,7 +19,6 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        // $collect = (new Collection(LessonGroup::all()->toArray()))->paginate(20);
         $major_id = auth()->user()->student->major_id;
         $model = LessonGroup::with(['lesson','lesson.teacher'])->where('major_id', $major_id);
         if($request->has('search')){

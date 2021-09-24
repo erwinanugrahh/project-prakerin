@@ -54,6 +54,7 @@
     </style>
 
     <title>Dashboard</title>
+    @livewireStyles
   </head>
   <body>
     <div class="loader-wrapper">
@@ -210,5 +211,6 @@
             })
         })
     </script>
+    @livewireScripts
   </body>
 </html>

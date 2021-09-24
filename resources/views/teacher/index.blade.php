@@ -14,8 +14,8 @@
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="media-body pl-2">
-                        <h3 class="mt-0 mb-0"><strong>1500</strong></h3>
-                        <p><small class="text-muted bc-description">Total Siswa</small></p>
+                        <h3 class="mt-0 mb-0"><strong>{{ $students->count() }}</strong></h3>
+                        <p><small class="text-muted bc-description">Total Murid</small></p>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <div class="media-body pl-2">
-                        <h3 class="mt-0 mb-0"><strong>3.1M</strong></h3>
+                        <h3 class="mt-0 mb-0"><strong>{{ $blogs->count() }}</strong></h3>
                         <p><small class="text-muted bc-description">Total Blog Dilihat</small></p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <i class="fa fa-tasks"></i>
                     </div>
                     <div class="media-body pl-2">
-                        <h3 class="mt-0 mb-0"><strong>1022</strong></h3>
+                        <h3 class="mt-0 mb-0"><strong>{{ $lessons->count() }}</strong></h3>
                         <p><small class="text-muted bc-description">Total Tugas yang diberikan</small></p>
                     </div>
                 </div>

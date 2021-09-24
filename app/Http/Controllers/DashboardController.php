@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Lesson;
+use App\Models\LessonGroup;
+use App\Models\Major;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -22,17 +27,26 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        return view('admin.index');
+        $users = User::where('role', '!=', 'admin')->get();
+        $blogs = Blog::all();
+        $majors = Major::all();
+        return view('admin.index', compact('users', 'blogs', 'majors'));
     }
 
     public function teacher()
     {
-        return view('teacher.index');
+        $students = teacher()->students;
+        $blogs = Blog::with('views')->where('user_id', auth()->user()->id);
+        $lessons = Lesson::where('teacher_id', teacher()->id)->get();
+        return view('teacher.index', compact('students','blogs','lessons'));
     }
 
     public function student()
     {
-        return view('student.index');
+        $major_id = auth()->user()->student->major_id;
+        $tasks = LessonGroup::with(['lesson','lesson.tasks'])->where('major_id', $major_id);
+        $blogs = Blog::with('views')->where('user_id', auth()->user()->id);
+        return view('student.index', compact('tasks', 'blogs'));
     }
 
     public function blogger()
