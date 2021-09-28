@@ -171,7 +171,9 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-
+        $teacher->subject;
+        $teacher->major_name = $teacher->major->getMajor();
+        return request()->ajax()? response()->json(array_merge($teacher->toArray(), ['fullName'=>$teacher->getFullName()])):abort(403);
     }
 
     /**

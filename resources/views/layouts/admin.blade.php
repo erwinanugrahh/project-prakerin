@@ -51,6 +51,9 @@
         .child.active>a{
             color: royalblue;
         }
+        .sidebar .sidebar-menu li a{
+            pointer-events: initial;
+        }
     </style>
 
     <title>Dashboard</title>

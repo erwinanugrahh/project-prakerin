@@ -125,6 +125,7 @@
     </div>
 </div>
 
+@include('admin.students._modal')
 @endsection
 
 @push('js')

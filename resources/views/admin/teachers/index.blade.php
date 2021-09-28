@@ -108,6 +108,7 @@
             </div>
         </div>
     </div>
+    @include('admin.teachers._modal')
 @endsection
 
 @push('js')

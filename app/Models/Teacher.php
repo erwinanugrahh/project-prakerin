@@ -14,6 +14,11 @@ class Teacher extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id', 'id');
+    }
+
     public function major()
     {
         return $this->belongsTo(Major::class, 'major_id', 'id');
