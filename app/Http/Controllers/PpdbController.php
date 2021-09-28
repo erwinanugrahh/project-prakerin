@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ppdb;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,7 @@ class PpdbController extends Controller
             'parents_phone' => 'required'
         ]);
 
-        return back()->with('success', 'Form berhasil dikirimkan');
+
+        return redirect()->with('success', 'Jurusan berhasil ditambahkan');
     }
 }

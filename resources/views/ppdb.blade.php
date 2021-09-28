@@ -78,9 +78,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="exampleFormControlSelect1" class="control-label col-sm-2">Pilih Jurusan</label>
+                <label for="" class="control-label col-sm-2">Pilih Jurusan</label>
                 <div class="col-sm-10">
-                    <select name="major" class="form-control" id="exampleFormControlSelect1">
+                    <select name="major" class="form-control" id="">
                         <option></option>
                         <option>RPL</option>
                         <option>TKJ</option>
