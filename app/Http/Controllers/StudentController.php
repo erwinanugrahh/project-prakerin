@@ -174,7 +174,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        $student->major_name = $student->major->getMajor();
+        return request()->ajax()? response()->json($student->toArray()):abort(403);
     }
 
     /**

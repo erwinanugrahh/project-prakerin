@@ -177,3 +177,24 @@ $('#formImport').on('submit', function(e){
         }
     })
 })
+
+
+$(document).on('click', '.detail',function(){
+    let teacher_id = $(this).data('id');
+    $.ajax({
+        url: '/api/teacher/'+teacher_id,
+        method: 'post',
+        success: function(data){
+            $('#name').text(data.name);
+            $('#nip').text(data.nip);
+            $('#nama-lengkap').text(data.fullName);
+            $('#email').text(data.email);
+            $('#phone').text(data.phone);
+            $('#address').text(data.address);
+            $('#subject-name').text(data.subject.name);
+            $('#major-name').text(data.major_name);
+            $('#is-blogger').html(data.is_blogger==1?'<span class="badge badge-success">Ya</span>':'<span class="badge badge-warning">Bukan</span>');
+            $('#detail-guru-modal').modal('show')
+        }
+    })
+})

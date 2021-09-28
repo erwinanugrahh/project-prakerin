@@ -1,7 +1,4 @@
 <div>
-    {{-- @if (session()->has('success'))
-        <div class="alert alert-success mt-2">{{ session('success') }}</div>
-    @endif --}}
     <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
         <h6 class="mb-2">Kategori</h6>
         <label for="">Nama Kategori</label>
@@ -22,7 +19,7 @@
                 </form>
             </div>
             <div class="col-12 col-md-6">
-                <div class="accordion" id="accordionExample" wire:ignore>
+                <div class="accordion" id="accordionExample">
                     <div class="card shadow">
                         <div class="card-header accordion-header p-1" id="headingOne">
                             <h5 class="mb-0 panel-title">
@@ -110,7 +107,6 @@
         })
         function openImage(index=0){
             let pictures = $('#galleryCard')[0]
-            console.log(pictures);
             let dynamicEl = []
             for(let i in pictures.children){
                 if(!isNaN(i))
