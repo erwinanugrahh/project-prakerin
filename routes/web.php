@@ -72,6 +72,9 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::get('lesson/task/{task}', 'LessonController@task')->name('lesson.task');
         Route::post('lesson/task/{task}', 'LessonController@update_task')->name('lesson.task-update');
 
+        Route::get('naik-kelas', 'StudentController@naik_kelas');
+        Route::post('naik-kelas', 'StudentController@naik_kelas_store');
+
         Route::resource('absen', AbsenController::class)->only(['index','store']);
         Route::get('absen/history', 'AbsenController@history')->name('absen.history');
         Route::get('absen/history/{date}/{filter}', 'AbsenController@history_show')->name('absen.history.detail');

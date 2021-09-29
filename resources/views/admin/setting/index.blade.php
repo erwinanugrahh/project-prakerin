@@ -4,6 +4,10 @@
 @section('page') Dashboard @endsection
 @section('action') Admin @endsection
 
+@push('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/switchery.min.css') }}">
+@endpush
+
 @section('content')
 <div class="accordion mt-3" id="accordionExample">
     <div class="card shadow">
@@ -112,29 +116,44 @@
         </div>
     </div>
 
-    @if ($setting_web['website_for']=='smk')
     <div class="card shadow">
         <div class="card-header accordion-header p-1" id="headingThree">
             <h5 class="mb-0 panel-title">
                 <button class="btn btn-link accordion-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Program Keahlian
+                Penerimaan Peserta Didik Baru (PPDB)
                 </button>
             </h5>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body p-3 text-justify accordion-body">
-                <form action="{{ route('setting.store') }}" method="post">
-                    @csrf
-
-                </form>
+                <div class="form-group form-row">
+                    <div class="col-4">
+                        <div class="col-12">
+                            <input type="checkbox" id="kenaikan-kelas" {{ setting('setting_ppdb')['kenaikan_kelas']=="true"?'checked':'' }}/>
+                            <label class="">Kenaikan Kelas</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-12">
+                            <input type="checkbox" id="open-pengumuman" {{ setting('setting_ppdb')['open_pengumuman']=="true"?'checked':'' }} />
+                            <label for="open-pengumuman" class="">Open Pengumuman PPDB</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="col-12">
+                            <input type="checkbox" id="open-ppdb" {{ setting('setting_ppdb')['open_ppdb']=="true"?'checked':'' }}/>
+                            <label class="">Open PPDB</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    @endif
 </div>
 @endsection
 
 @push('js')
+    <script src="{{ asset('admin/js/switchery.min.js') }}"></script>
     <script>
         $('#image').change(function(){
 
@@ -156,5 +175,41 @@
                 $('#max-length-element').text(300 - len);
             }
         };
+
+        var elem = document.querySelector('#open-ppdb');
+        var switchery = new Switchery(elem);
+        new Switchery(document.querySelector('#open-pengumuman'))
+        new Switchery(document.querySelector('#kenaikan-kelas'))
+
+        function set_switchery(){
+            if($('#open-pengumuman').is(':checked'))
+                switchery.enable();
+            else{
+                if ($(elem).is(':checked')){
+                    $(elem).parent().find('.switchery').trigger('click');
+                }
+                switchery.disable();
+            }
+        }
+        set_switchery()
+        $('.switchery').prev().on('change', function(){
+            if(this.id == 'open-pengumuman'){
+                set_switchery();
+            }
+            let kenaikan_kelas = $('#kenaikan-kelas').is(':checked')
+            let open_pengumuman = $('#open-pengumuman').is(':checked')
+            let open_ppdb = $('#open-ppdb').is(':checked')
+            $.ajax({
+                url: '/api/set-ppdb',
+                method: 'post',
+                data: {
+                    key: 'setting_ppdb',
+                    open_pengumuman, open_ppdb, kenaikan_kelas
+                },
+                success: function(result){
+                    console.log(result);
+                }
+            })
+        })
     </script>
 @endpush

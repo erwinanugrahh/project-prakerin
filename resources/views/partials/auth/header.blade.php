@@ -67,7 +67,7 @@
             <div class="col-sm-8 col-4 text-right flex-header-menu justify-content-end">
                 @if (!isset($searchbar))
                 <div class="search-rounded mr-3">
-                    <input type="text" class="form-control search-box" placeholder="Enter keywords.." />
+                    <input type="text" class="form-control search-box" id="search" placeholder="Enter keywords.." />
                 </div>
                 @endif
                 <div class="mr-4">

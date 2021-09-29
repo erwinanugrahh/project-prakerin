@@ -47,6 +47,12 @@ if(!function_exists('setting')){
             'category_gallery' =>[
                 'key' => 'category_gallery',
                 'items' => ['Bangunan','Ekstrakulikuler']
+            ],
+            'setting_ppdb'=>[
+                'key'=>'setting_ppdb',
+                'kenaikan_kelas'=>false,
+                'open_pengumuman'=>false,
+                'open_ppdb'=>false
             ]
         ];
         $data = Setting::find($key);

@@ -7,6 +7,13 @@
         <li class="child" id="history-absen"><a href="{{ route('absen.history') }}" class="ml-4">Histori Absen</a></li>
     </ul>
 </li>
+@can('kenaikan-kelas')
+<li class="parent {{ request()->is('teacher/naik-kelas')?'active':'' }}">
+    <a href="{{ url('teacher/naik-kelas') }}" class=""><i class="fa fa-book mr-3"></i>
+        <span class="none">Kenaikan Kelas </span>
+    </a>
+</li>
+@endcan
 <li class="parent" id="lesson">
     <a href="{{ route('lesson.index') }}" class=""><i class="fa fa-book mr-3"></i>
         <span class="none">Materi </span>
