@@ -56,6 +56,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('gallery', GalleryController::class);
 
         Route::resource('skill', SkillController::class);
+        Route::get('get_skills', 'SkillController@ajax');
+        Route::post('skill/delete-selected', 'SkillController@delete_selected');
 
         Route::get('ppdb', 'PpdbController@penyetujuan')->name('ppdb.penyetujuan');
 

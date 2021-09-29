@@ -19,6 +19,24 @@ class SkillController extends Controller
         return view('admin.skill.index');
     }
 
+    public function ajax()
+    {
+        $model = Skill::query();
+        $datatable = DataTables::of($model)
+        ->addColumn('checkbox', function($skill){
+            return view('admin.skill._checkbox', compact('skill'));
+        })
+        ->editColumn('logo', function($skill){
+            return '<img src="'.$skill->logo.'" class="img-thumbnail w-10" />';
+        })
+        ->addColumn('action', function($skill){
+            return view('admin.skill._action', compact('skill'));
+        })
+        ->escapeColumns([''])
+        ->toJson();
+        return $datatable;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +77,7 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-
+        return response()->json($skill->toArray());
     }
 
     /**
@@ -111,12 +129,20 @@ class SkillController extends Controller
 
     public function destroy(Skill $skill)
     {
-        dd($skill);
         $logo = explode('/', ltrim($skill->logo, '/'))[2];
-        if(base_path('storage/app/public/skill-logo/'.$logo)){
+        if(file_exists(base_path('storage/app/public/skill-logo/'.$logo))){
             unlink(base_path('storage/app/public/skill-logo/'.$logo));
         }
         $skill->delete();
-        return response()->json(['message'=>'Testimoni berhasi dihapus']);
+        return response()->json(['message'=>'Jurusan berhasi dihapus']);
+    }
+
+    public function delete_selected(Request $request)
+    {
+        Skill::whereIn('id', $request->id)->delete();
+
+        return response()->json([
+            'count' => count($request->id)
+        ]);
     }
 }
