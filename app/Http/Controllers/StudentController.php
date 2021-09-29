@@ -13,6 +13,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:kenaikan-kelas', ['only'=>'naik_kelas']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -239,5 +243,42 @@ class StudentController extends Controller
         return response()->json([
             'count' => count($request->id)
         ]);
+    }
+
+    public function naik_kelas()
+    {
+        $major_now = teacher()->major;
+        $where = [
+            'level'=>$major_now->level+1,
+            'name'=>$major_now->name
+        ];
+        $major = Major::where($where)->first();
+        if(is_null($major)){
+            if($major_now->level!=3){
+                return abort(404, 'Kelas selanjutnya tidak ditemukan');
+            }
+        }
+        return view('teacher.naik-kelas', [
+            'students' => teacher()->students,
+            'major'=>$major
+        ]);
+    }
+
+    public function naik_kelas_store(Request $request)
+    {
+        $major_now = teacher()->major;
+        $where = [
+            'level'=>$major_now->level+1,
+            'name'=>$major_now->name
+        ];
+        $major = Major::where($where)->first();
+        if(is_null($major)){
+            if($major_now->level!=3){
+                return abort(404, 'Kelas selanjutnya tidak ditemukan');
+            }
+        }
+        Student::whereIn('id',$request->id)->update(['major_id'=>$major->id]);
+        session()->flash('success', 'Siswa berhasil naik kelas');
+        return $request->ajax()?response()->json(['message'=>'oke']):back();
     }
 }

@@ -55,5 +55,6 @@
 @push('js')
     <script>
         $('#dashboard').addClass('active')
+        $('#search').parent().hide()
     </script>
 @endpush

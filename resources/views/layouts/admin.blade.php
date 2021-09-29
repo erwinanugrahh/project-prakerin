@@ -213,6 +213,9 @@
                 }
             })
         })
+        $('#search').on('keyup', function(){
+            table.search($(this).val()).draw()
+        })
     </script>
     @livewireScripts
   </body>

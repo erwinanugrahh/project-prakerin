@@ -108,7 +108,7 @@
 
             <div class="row mx-auto">
                 <div class="col-12 text-center">
-                    <h5>95</h5>
+                    <h5>{{ $majors->count() }}</h5>
                     <span class="text-muted small"><strong>Total Jurusan</strong></span>
                 </div>
             </div>
@@ -121,5 +121,6 @@
 @push('js')
     <script>
         $('#dashboard').addClass('active')
+        $('#search').parent().hide()
     </script>
 @endpush

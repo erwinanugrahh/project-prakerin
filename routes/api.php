@@ -23,3 +23,4 @@ Route::get('get_testimonials', [App\Http\Controllers\TestimonialController::clas
 Route::post('testimonial/delete-selected', [App\Http\Controllers\TestimonialController::class, 'delete_selected']);
 Route::post('teacher/{teacher}', [App\Http\Controllers\TeacherController::class, 'show']);
 Route::post('student/{student}', [App\Http\Controllers\StudentController::class, 'show']);
+Route::post('set-ppdb', [App\Http\Controllers\SettingController::class, 'store']);
