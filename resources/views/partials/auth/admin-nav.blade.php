@@ -17,6 +17,11 @@
         <span class="none">Penyetujuan Blog </span>
     </a>
 </li>
+<li class="parent {{ request()->routeIs('ppdb.*')?'active':'' }}">
+    <a href="{{ route('ppdb.penyetujuan') }}" class=""><i class="fab fa-wpforms mr-3"></i>
+        <span class="none">PPDB</span>
+    </a>
+</li>
 <li class="parent {{ request()->routeIs('testimonial.*')?'active':'' }}">
     <a href="{{ route('testimonial.index') }}" class=""><i class="fas fa-users mr-3"></i>
         <span class="none">Testimoni Alumni</span>

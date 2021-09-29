@@ -22,10 +22,15 @@
 <body>
 
     <div class="container">
-
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $err)
+                <li>{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
     <h3 class="mt-4"><strong>FORM PPDB</strong></h3>
         <form action="{{ url('ppdb') }}" method="post" class="form-horizontal mt-4 mb-5">
-            @method('put')
             @csrf
             <div class="form-group row">
                 <label class="control-label col-sm-2" for="input-1">Nama</label>
@@ -36,7 +41,7 @@
             <div class="form-group row">
                 <label class="control-label col-sm-2" for="input-2">NISN</label>
                 <div class="col-sm-10">
-                    <input name="nisn" type="text" class="form-control" id="input-2" />
+                    <input name="nisn" type="number" class="form-control" id="input-2" />
                 </div>
             </div>
             <div class="form-group row">
@@ -65,9 +70,9 @@
                 <label class="control-label col-sm-2" for="input-6">Anak Ke</label>
                 <div class="col-sm-10">
                     <div class="input-group">
-                        <input name="child" type="text" maxlength="5" class="form-control" id="input-6" />
+                        <input name="child" type="number" class="form-control" id="input-6" />
                         <label class="control-label pt-2 px-3">Dari</label>
-                        <input name="child_from" type="text" maxlength="5" class="form-control" id="input-6" />
+                        <input name="child_from" type="number" class="form-control" id="input-6" />
                     </div>
                 </div>
             </div>

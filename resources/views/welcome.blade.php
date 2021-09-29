@@ -202,7 +202,7 @@
 
           <div class="ts-service-box d-flex">
             <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon2.png" alt="service-icon">
+              <img loading="lazy" src="{{ url('user') }}/images/icon-image/dpib.png" alt="service-icon">
             </div>
             <div class="ts-service-box-info">
                 <h3 class="service-box-title"><a>DPIB</a></h3>

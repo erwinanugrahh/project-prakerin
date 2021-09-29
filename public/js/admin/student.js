@@ -8,7 +8,7 @@ var table=$('#students_table').DataTable({
     "serverSide": true,
     "bSort" : true,
     "ajax": {
-        url: ajax_url,
+        url: '',
         data: function(data){
             data.filter_major=$('#filter_major').val()
         }
@@ -25,7 +25,7 @@ var table=$('#students_table').DataTable({
     ],
     "language": {
         "sEmptyTable":     "No data available in table",
-        "sInfo":           "Showing"+" _START_ "+"to"+" _END_ "+"of"+" _TOTAL_ "+"records",
+        "sInfo":           "Tampil"+" _START_ "+"to"+" _END_ "+"of"+" _TOTAL_ "+"records",
         "sInfoEmpty":      "Showing"+" 0 "+"to"+" 0 "+"of"+" 0 "+"records",
         "sInfoFiltered":   "("+"filtered"+" "+"from"+" _MAX_ "+"total"+" "+"records"+"",
         "sInfoPostFix":    "",

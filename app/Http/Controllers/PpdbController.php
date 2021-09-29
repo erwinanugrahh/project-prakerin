@@ -13,6 +13,11 @@ class PpdbController extends Controller
         return view('ppdb');
     }
 
+    public function penyetujuan()
+    {
+        return view('admin.ppdb.index');
+    }
+
     public function form(Request $request)
     {
         $validate = $request->validate([
@@ -33,7 +38,7 @@ class PpdbController extends Controller
             'parents_phone' => 'required'
         ]);
 
-
-        return redirect()->with('success', 'Jurusan berhasil ditambahkan');
+        Ppdb::create($validate);
+        return back()->with('success', 'Jurusan berhasil ditambahkan');
     }
 }

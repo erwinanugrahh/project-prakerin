@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes(['register' => false]);
 
 Route::view('ppdb', 'ppdb');
-Route::put('ppdb', [\App\Http\Controllers\PpdbController::class, 'form']);
+Route::post('ppdb', [\App\Http\Controllers\PpdbController::class, 'form']);
 Route::redirect('home', 'dashboard');
 
 Route::group(['namespace'=>'App\Http\Controllers'], function(){
@@ -56,6 +56,8 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::resource('gallery', GalleryController::class);
 
         Route::resource('skill', SkillController::class);
+
+        Route::get('ppdb', 'PpdbController@penyetujuan')->name('ppdb.penyetujuan');
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');
