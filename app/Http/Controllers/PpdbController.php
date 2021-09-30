@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ppdb;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,11 @@ class PpdbController extends Controller
     public function index()
     {
         return view('ppdb');
+    }
+
+    public function penyetujuan()
+    {
+        return view('admin.ppdb.index');
     }
 
     public function form(Request $request)
@@ -32,6 +38,7 @@ class PpdbController extends Controller
             'parents_phone' => 'required'
         ]);
 
-        return back()->with('success', 'Form berhasil dikirimkan');
+        Ppdb::create($validate);
+        return back()->with('success', 'Jurusan berhasil ditambahkan');
     }
 }

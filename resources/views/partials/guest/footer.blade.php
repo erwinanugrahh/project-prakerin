@@ -4,7 +4,11 @@
             <div class="row justify-content-between">
             <div class="col-lg-4 col-md-6 footer-widget footer-about">
                 <h3 class="widget-title">Tentang Kami</h3>
-                <img loading="lazy" width="200px" class="footer-logo" src="{{ url('user') }}/images/footer-logo.png" alt="Constra">
+                @if (file_exists(public_path('logo.png')))
+                        <img loading="lazy" width="200px" class="footer-logo" src="{{ url('logo.png') }}" alt="Constra">
+                    @else
+                        <img loading="lazy" width="200px" class="footer-logo" src="{{ url('user') }}/images/logo.png" alt="Constra">
+                    @endif
                 <p>{{ setting('about_us')['description'] }}</p>
                 <div class="footer-social">
                 <ul>

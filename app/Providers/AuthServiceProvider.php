@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('kenaikan-kelas', function(){
+            return setting('setting_ppdb')['kenaikan_kelas']=="true";
+        });
         //
     }
 }

@@ -1,7 +1,27 @@
 @extends('layouts.guest')
 
 @section('content')
-    <!--/ Header end -->
+<style>
+    div#social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    div#social-links ul li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 10px;
+    }
+
+    div#social-links ul li a {
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 1px;
+        font-size: 30px;
+        color: #222;
+        background-color: #ccc;
+    }
+</style>
+<!--/ Header end -->
 <div id="banner-area" class="banner-area" style="background-image:url(/user/images/banner/banner1.jpg)">
     <div class="banner-text">
       <div class="container">
@@ -58,7 +78,8 @@
               </div>
 
               <div class="tags-area d-flex align-items-center justify-content-between">
-                <div class="share-items">
+                {!! Share::page(url('/blogs/'. $blog->slug), 'Blog '.$blog->title)->facebook()->twitter()->whatsapp()->linkedin() !!}
+                {{-- <div class="share-items">
                   <ul class="post-social-icons list-unstyled">
                     <li class="social-icons-head">Share:</li>
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -66,7 +87,7 @@
                     <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
                     <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                   </ul>
-                </div>
+                </div> --}}
                 @if ($blog->tags!='')
                 <div class="post-tags">
                     @foreach (explode(',', $blog->tags) as $tag)
