@@ -12,7 +12,7 @@
               <h3 class="slide-sub-title" data-animation-in="slideInRight">{{ $setting_web['website_name'] }}</h3>
               <p data-animation-in="slideInLeft" data-duration-in="1.2">
                 <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Selengkapnya</a>
-                <a href="{{ url('user') }}/contact.html" class="slider btn btn-primary border">Kontak Kami</a>
+                <a href="{{ url('/contact') }}" class="slider btn btn-primary border">Kontak Kami</a>
               </p>
             </div>
           </div>
