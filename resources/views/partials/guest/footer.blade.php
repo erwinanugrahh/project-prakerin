@@ -57,7 +57,7 @@
               <span>Copyright &copy;
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, Designed &amp; Developed by <a href="https://instagram.com/indrabesset">BryanX</a>
+                </script>, Designed &amp; Developed by <a href="https://instagram.com/indrabesset">SMK IDEAN</a>
               </span>
             </div>
           </div>

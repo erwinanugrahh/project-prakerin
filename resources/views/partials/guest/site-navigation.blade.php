@@ -46,6 +46,9 @@
                         <li class="nav-item dropdown">
                             <a href="#news" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Berita</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="{{ url('/ppdb') }}" class="nav-link dropdown-toggle">PPDB</a>
+                        </li>
 
                         <li class="nav-item"><a class="nav-item dropdown-toggle halaman-scroll"></a></li>
 
