@@ -101,8 +101,8 @@ Route::get('blogs/{category?}/{blog?}', [App\Http\Controllers\HomeController::cl
 
 Route::group(['prefix' => 'filemanager'], function() {
     \UniSharp\LaravelFilemanager\Lfm::routes();
-});\
+});
 
-Route::view('/ppdb', 'ppdb');
+Route::view('/ppdb', 'ppdb')->middleware('can:open-pengumuman');
 
 Route::view('/contact', 'contact');

@@ -21,6 +21,11 @@ class Major extends Model
         return $this->hasOne(Teacher::class, 'major_id', 'id');
     }
 
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class);
+    }
+
     public function getMajor()
     {
         $levels = [
@@ -29,6 +34,9 @@ class Major extends Model
         ];
         $levelSetting = setting('setting_web', ['website_for'=>'smk'])['website_for'];
         $level = $levels[$levelSetting];
+        if($levelSetting=='smk'){
+            return $level[$this->level].' '.$this->skill->name.' '.$this->name;
+        }
         return $level[$this->level].' '.$this->name;
     }
 }

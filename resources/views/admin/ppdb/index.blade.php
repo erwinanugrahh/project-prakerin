@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="row border-bottom mb-4">
+    <input type="hidden" id="is-smk" value="{{ \Gate::allows('smk') }}">
     <div class="col-sm-6 pt-2"><h6 class="mb-4 bc-header">Data Siswa</h6></div>
 
     <div class="col-sm-6 d-flex justify-content-end pb-3">
@@ -34,9 +35,12 @@
                         </span>
                     </div>
                 </th>
-                <th>Nama</th>
                 <th>NISN</th>
+                <th>Nama</th>
+                <th>Email</th>
+                @can('smk')
                 <th>Jurusan</th>
+                @endcan
                 <th style="width: 180px" class="text-center">Aksi</th>
             </tr>
         </thead>

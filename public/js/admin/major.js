@@ -3,13 +3,21 @@ $('#data-major').addClass('active').parent().parent().addClass('active');
 /*===========JsGrid field Validation ================================*/
 
 var data = [];
+var fields = [];
 $.ajax({
     url: '',
     async: false,
     success: function(result){
+        fields.push({name: "Tingkat", width: 20, type: "select", items: result.level, valueField: "Id", textField: "Name"})
+        if(result.is_smk){
+            fields.push({ name: "Jurusan", type: "select", items: result.skills, valueField: 'id', textField: 'name',validate: "required" })
+        }
+        fields.push({ name: "Kelas", type: "text", width: 150, validate: "required" })
+        fields.push({ type: "control", width: 30 })
         result.data.forEach(el => {
             let major = {
                 id: el.id,
+                Jurusan: el.skill?el.skill.id:'',
                 Tingkat: el.level,
                 Kelas: el.name
             }
@@ -17,13 +25,6 @@ $.ajax({
         });
     }
 })
-
-var level = [
-    {Name: "", Id: 0},
-    {Name: "X", Id: 1},
-    {Name: "XI", Id: 2},
-    {Name: "XII", Id: 3},
-]
 
 var grid = $("#majorities_table").jsGrid({
     height: "400px",
@@ -39,18 +40,15 @@ var grid = $("#majorities_table").jsGrid({
     confirmDeleting: false,
 
     //controller: db,
-    data: data,
-    fields: [
-        { name: "Tingkat", width: 20, type: "select", items: level, valueField: "Id", textField: "Name"},
-        { name: "Kelas", type: "text", width: 150, validate: "required" },
-        { type: "control", width: 30 }
-    ],
+    data,
+    fields,
     onItemInserting: function(args) {
         $.ajax({
             url: 'major/',
             method: 'POST',
             data: {
                 name: args.item.Kelas,
+                skill_id: args.item.Jurusan,
                 level: args.item.Tingkat,
                 _token: $('input[name=_token]').val()
             },
@@ -71,6 +69,7 @@ var grid = $("#majorities_table").jsGrid({
             method: 'PUT',
             data: {
                 name: args.item.Kelas,
+                skill_id: args.item.Jurusan,
                 level: args.item.Tingkat,
                 _token: $('input[name=_token]').val()
             },
@@ -102,6 +101,7 @@ var grid = $("#majorities_table").jsGrid({
                         method: 'DELETE',
                         data: {
                             name: args.item.Kelas,
+                            skill_id: args.item.Jurusan,
                             level: args.item.Tingkat,
                             _token: $('input[name=_token]').val()
                         },

@@ -14,7 +14,9 @@
     <p>Jenis Kelamin : {{ $ppdb->gender }}</p>
     <p>Anak ke : {{ $ppdb->child }} Dari : {{ $ppdb->child_from }}</p>
     <p>Alamat : {{ $ppdb->address }}</p>
-    <p>Jurusan : {{ $ppdb->major }}</p>
+    @can('smk')
+        <p>Jurusan : {{ $ppdb->skill->name??'' }}</p>
+    @endcan
     <p>No Telp : {{ $ppdb->phone }}</p>
     <p>Kode Pos : {{ $ppdb->zip }}</p>
     <p>Nama Orang Tua/Wali : {{ $ppdb->parents_name }}</p>

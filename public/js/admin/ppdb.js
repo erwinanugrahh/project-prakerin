@@ -1,16 +1,22 @@
+var columns = [
+    {data: "checkbox",className:'p-0 pr-1 align-middle'},
+    {data: "nisn"},
+    {data: "name"},
+    {data: "email"},
+]
+if($('#is-smk').val()=="1"){
+    columns.push({data: "skill"});
+    columns.push({data: "action", className:'text-center align-middle'});
+}else{
+    columns.push({data: "action", className:'text-center align-middle'})
+}
 var table = $('#ppdb_table').DataTable({
     "serverSide":true,
     "bSort":true,
     "ajax":{
         url:"/admin/get_ppdb"
     },
-    "columns": [
-        {data: "checkbox",className:'p-0 pr-1 align-middle'},
-        {data: "name"},
-        {data: "nisn"},
-        {data: "major"},
-        {data: "action", className:'text-center align-middle'},
-    ]
+    columns
 })
 
 //select all
@@ -28,6 +34,17 @@ $(document).on('click', '.rejected', function(){
     send_result([id], 'rejected', [$(this).data('name')])
 })
 
+var major = $('<select></select>').addClass('custom-select').addClass('mt-3').attr('id', 'major_id')
+$.ajax({
+    url: '/api/get_major_ppdb',
+    async: false,
+    success: function(data){
+        major.append('<option value=""></option>')
+        data.forEach((value)=>{
+            major.append(`<option value="${value.id}">${value.name}</option>`)
+        })
+    }
+})
 function send_result(ids, action, additional){
     var option = {
         accepted: 'terima',
@@ -41,16 +58,26 @@ function send_result(ids, action, additional){
     }else{
         message = `${ids.length} siswa ini akan di${option[action]}`;
     }
-    Swal.fire({
+
+    var options = {
         title: 'Apakah Kamu Yakin?',
-        text: message,
         icon: 'info',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: `Ya, ${option[action]}`,
         cancelButtonText: 'Batal'
-    }).then((result) => {
+    }
+    if(action=='rejected'){
+        options.text = message;
+    }else{
+        options.html = message+major.prop('outerHTML');
+        options.preConfirm = () => {
+            const major_id = Swal.getPopup().querySelector('#major_id').value
+            return { major_id }
+          }
+    }
+    Swal.fire(options).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
                 url: 'ppdb/send_result',
@@ -58,7 +85,8 @@ function send_result(ids, action, additional){
                 data: {
                     _token: $('input[name=_token]').val(),
                     ids,
-                    action
+                    action,
+                    major_id: result.value.major_id
                 },
                 success: function(result){
                     table.draw()

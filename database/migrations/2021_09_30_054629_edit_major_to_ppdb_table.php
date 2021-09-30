@@ -14,8 +14,9 @@ class EditMajorToPpdbTable extends Migration
     public function up()
     {
         Schema::table('ppdb', function (Blueprint $table) {
+            $table->string('email')->after('nisn')->unique();
             $table->dropColumn('major');
-            $table->foreignId('skill_id')->after('address')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('skill_id')->after('address')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -28,7 +29,7 @@ class EditMajorToPpdbTable extends Migration
     {
         Schema::table('ppdb', function (Blueprint $table) {
             $table->dropForeign(['skill_id']);
-            $table->dropColumn('skill_id');
+            $table->dropColumn('skill_id', 'email');
             $table->string('major')->after('address');
         });
     }

@@ -14,21 +14,13 @@
 
                         <li class="nav-item dropdown">
                         <a href="#about-us" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Profil</a>
-                        {{-- <i class="fa fa-angle-down"></i> --}}
-
-                        {{-- <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('user') }}/faq.html">Sambutan Kepala Sekolah</a></li>
-                            <li><a href="{{ url('user') }}/about.html">Sejarah SMK</a></li>
-                            <li><a href="{{ url('user') }}/team.html">Visi & Misi SMK</a></li>
-                            <li><a href="{{ url('user') }}/testimonials.html">Struktur Organisasi</a></li>
-                        </ul> --}}
                         </li>
 
-                        @if (setting('setting_web')['website_for']=='smk')
+                        @can('smk')
                         <li class="nav-item dropdown">
                             <a href="#program-keahlian" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Keahlian</a>
                         </li>
-                        @endif
+                        @endcan
 
                         <li class="nav-item dropdown">
                         <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Ekstrakulikuler <i class="fa fa-angle-down pl-2"></i></a>
@@ -46,9 +38,11 @@
                         <li class="nav-item dropdown">
                             <a href="#news" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Berita</a>
                         </li>
+                        @can('open-pengumuman')
                         <li class="nav-item dropdown">
                             <a href="{{ url('/ppdb') }}" class="nav-link dropdown-toggle">PPDB</a>
                         </li>
+                        @endcan
 
                         <li class="nav-item"><a class="nav-item dropdown-toggle halaman-scroll"></a></li>
 

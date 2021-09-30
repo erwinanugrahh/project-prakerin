@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('get_major_ppdb', [\App\Http\Controllers\PpdbController::class, 'get_major']);
 Route::post('student/import', [App\Http\Controllers\StudentController::class, 'preview']);
 Route::post('teacher/import', [App\Http\Controllers\TeacherController::class, 'preview']);
 Route::get('get_testimonials', [App\Http\Controllers\TestimonialController::class, 'ajax']);

@@ -25,9 +25,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('kenaikan-kelas', function(){
+        Gate::define('kenaikan-kelas', function($user = null){
             return setting('setting_ppdb')['kenaikan_kelas']=="true";
         });
-        //
+        Gate::define('smk', function($user = null){
+            return setting('setting_web')['website_for']=='smk';
+        });
+        Gate::define('open-pengumuman', function($user = null){
+            return setting('setting_ppdb')['open_pengumuman']=='true';
+        });
+        Gate::define('open-ppdb', function($user = null){
+            return setting('setting_ppdb')['open_ppdb']=='true';
+        });
     }
 }

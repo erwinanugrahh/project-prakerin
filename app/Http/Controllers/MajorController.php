@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Major;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
@@ -14,8 +15,21 @@ class MajorController extends Controller
      */
     public function index()
     {
-        $majorities = Major::all();
-        return request()->ajax()?response()->json(['data'=>$majorities]):view('admin.major.index', compact('majorities'));
+        $level = [
+            ['Name'=>'','Id'=>0],
+            ['Name'=>'VII','Id'=>1],
+            ['Name'=>'VIII','Id'=>2],
+            ['Name'=>'IX','Id'=>3]
+        ];
+        if(setting('setting_web')['website_for']=='smk'){
+            $level[1]['Name'] = 'X';
+            $level[2]['Name'] = 'XI';
+            $level[3]['Name'] = 'XII';
+        }
+        $is_smk = setting('setting_web')['website_for']=='smk';
+        $majorities = Major::with('skill')->get();
+        $skills = Skill::select('id', 'name')->get()->toArray();
+        return request()->ajax()?response()->json(['data'=>$majorities, 'level'=>$level, 'is_smk'=>$is_smk, 'skills'=>$skills]):view('admin.major.index', compact('majorities'));
     }
 
     /**
@@ -38,6 +52,7 @@ class MajorController extends Controller
     {
         $validate = $request->validate([
             'level' => 'required',
+            'skill_id'=>'sometimes',
             'name' => 'required'
         ]);
 
@@ -79,6 +94,7 @@ class MajorController extends Controller
     {
         $validate = $request->validate([
             'level' => 'required',
+            'skill_id'=>'sometimes',
             'name' => 'required'
         ]);
 
