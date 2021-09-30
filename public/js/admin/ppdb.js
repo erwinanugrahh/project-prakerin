@@ -1,43 +1,16 @@
-$('#request_blog').addClass('active').parent().parent().addClass('active');
 var table = $('#ppdb_table').DataTable({
-    // "processing": true,
-    dom: "Bfrtip",
-    "serverSide": true,
-    "bSort" : true,
-    "ajax": {
-        url: '',
-        data: function(data){
-            data.filter_major=$('#filter_major').val()
-        }
+    "serverSide":true,
+    "bSort":true,
+    "ajax":{
+        url:"/admin/get_ppdb"
     },
-    // orderCellsTop: true,
-    fixedHeader: true,
     "columns": [
-        {data:"checkbox",searchable:false,orderable:false,sortable:false,className:'p-0 pr-1 align-middle'},
-        {data:"blogger.name",className:'align-middle',orderable:true,sortable:true},
-        {data:"title",className:'align-middle'},
-        {data:"content",name:'content',className:'align-middle'},
-        {data:"action",searchable:false,orderable:false,sortable:false,className:'align-middle text-center'}//action
-    ],
-    "language": {
-        "sEmptyTable":     "No data available in table",
-        "sInfo":           "Showing"+" _START_ "+"to"+" _END_ "+"of"+" _TOTAL_ "+"records",
-        "sInfoEmpty":      "Showing"+" 0 "+"to"+" 0 "+"of"+" 0 "+"records",
-        "sInfoFiltered":   "("+"filtered"+" "+"from"+" _MAX_ "+"total"+" "+"records"+"",
-        "sInfoPostFix":    "",
-        "sInfoThousands":  ",",
-        "sLengthMenu":     "Show"+" _MENU_ "+"records",
-        "sLoadingRecords": "Loading...",
-        "sProcessing":     "Processing...",
-        "sSearch":         "Search"+":",
-        "sZeroRecords":    "No matching records found",
-        "oPaginate": {
-            "sFirst":    "First",
-            "sLast":     "Last",
-            "sNext":     "Next",
-            "sPrevious": "Previous"
-        },
-    }
+        {data: "checkbox",className:'p-0 pr-1 align-middle'},
+        {data: "name"},
+        {data: "nisn"},
+        {data: "major"},
+        {data: "action", className:'text-center align-middle'},
+    ]
 })
 
 //select all
@@ -46,6 +19,15 @@ $('#orderAll').on('click',function(){
     $('input[name=selected]').prop('checked',checked);
 });
 
+$(document).on('click', '.accepted', function(){
+    let id = $(this).data('id')
+    send_result([id], 'accepted', [$(this).data('name')])
+})
+$(document).on('click', '.rejected', function(){
+    let id = $(this).data('id')
+    send_result([id], 'rejected', [$(this).data('name')])
+})
+
 function send_result(ids, action, additional){
     var option = {
         accepted: 'terima',
@@ -53,12 +35,11 @@ function send_result(ids, action, additional){
     }
     let message;
     if(additional != null){
-        let blogger, title;
-        blogger = additional[0]
-        title = additional[1]
-        message = `Blog ${blogger} yang berjudul ${title} akan di${option[action]}`;
+        let siswa;
+        siswa = additional[0]
+        message = `Calon Siswa ${siswa}  akan di${option[action]}`;
     }else{
-        message = `${ids.length} blog ini akan di${option[action]}`;
+        message = `${ids.length} siswa ini akan di${option[action]}`;
     }
     Swal.fire({
         title: 'Apakah Kamu Yakin?',
@@ -72,7 +53,7 @@ function send_result(ids, action, additional){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'request_blog/send_result',
+                url: 'ppdb/send_result',
                 method: 'POST',
                 data: {
                     _token: $('input[name=_token]').val(),

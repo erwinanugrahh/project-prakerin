@@ -41,19 +41,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\Ppdb::all() as $ppdb)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $ppdb->name }}</td>
-                    <td>{{ $ppdb->nisn }}</td>
-                    <td>{{ $ppdb->major }}</td>
-                    <td>
-                        <a href="" class="btn btn-success">Terima</a>
-                        <a href="" class="btn btn-danger">Tolak</a>
-                    </td>
-                </tr>
-            @endforeach
+
         </tbody>
     </table>
 </div>
+
 @endsection
+
+@push('js')
+    <script src="{{ asset('js/admin/ppdb.js') }}"></script>
+@endpush
+

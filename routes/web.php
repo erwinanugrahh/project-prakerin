@@ -60,6 +60,10 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::post('skill/delete-selected', 'SkillController@delete_selected');
 
         Route::get('ppdb', 'PpdbController@penyetujuan')->name('ppdb.penyetujuan');
+        Route::get('get_ppdb', 'PpdbController@ajax');
+        Route::get('ppdb/{ppdb}', 'PpdbController@show');
+        Route::delete('ppdb/{ppdb}', 'PpdbController@destroy');
+        Route::post('ppdb/send_result', 'PpdbController@send_result');
 
         Route::get('request_blog', 'BlogController@request_blog')->name('blog.request');
         Route::post('request_blog/send_result', 'BlogController@send_result');

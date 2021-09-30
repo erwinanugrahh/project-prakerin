@@ -1,5 +1,3 @@
-<a class="btn btn-theme text-white" href="{{ route('blog.preview', $blog->slug) }}"><i class="fa fa-eye"></i></a>
-<button class="btn btn-success" data-blogger="{{ $blog->blogger->name }}" data-title="{{ $blog->title }}"
-    onclick="send_result([$(this).data('id')], 'accepted', [$(this).data('blogger'),$(this).data('title')])" data-id="{{ $blog->id }}"><i class="fas fa-check-double"></i></button>
-<button class="btn btn-danger" data-blogger="{{ $blog->blogger->name }}" data-title="{{ $blog->title }}"
-    onclick="send_result([$(this).data('id')], 'rejected', [$(this).data('blogger'),$(this).data('title')])" data-id="{{ $blog->id }}"><i class="fas fa-times"></i></button>
+<a class="btn btn-theme text-white detail" href="/admin/ppdb/{{ $ppdb->id }}"><i class="fa fa-eye"></i></a>
+<button class="btn btn-success text-white accepted" data-id="{{ $ppdb->id }}" data-name="{{ $ppdb->name }}"><i class="fas fa-check-double"></i></button>
+<button class="btn btn-danger rejected" data-id="{{ $ppdb->id }}" data-name="{{ $ppdb->name }}"><i class="fas fa-times"></i></button>
