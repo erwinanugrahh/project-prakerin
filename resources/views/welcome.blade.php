@@ -189,107 +189,24 @@
       <!--/ Title row end -->
 
       <div class="row">
-        <div class="col-lg-4">
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon1.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a>AKL</a></h3>
-              <p>Akutansi Blabla bla atau juga disebut AKL<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 1 end -->
-
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/dpib.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a>DPIB</a></h3>
-                <p>Desain Pemodelan Insprastruktur Bangunan atau juga disebut DPIB<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 2 end -->
-
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a>OTKP</a></h3>
-              <p>Otomatisasi & Tata Kelola Perkantoran atau biasa disingkat OTKP adalah<a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 3 end -->
-
-        </div><!-- Col end -->
-
-        {{-- <div class="col-lg-4 text-center">
-          <img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/services/service-center.jpg" alt="service-avater-image">
-        </div><!-- Col end --> --}}
-
-        <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a>TBSM</a></h3>
-              <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
-            </div>
-          </div><!-- Service 5 end -->
-
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a>TEKLIN</a></h3>
-              <p>Mendidik tenaga kerja yang mampu bersaing baik tingkat nasional, regional, maupun global. Menciptakan tenaga yang mampu berwirausaha. Mendidik tenaga terampil yang mampu menciptakan lapangan kerja. Mengembangkan unit produksi yang professional. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 6 end -->
-
-          <div class="ts-service-box d-flex">
-            <div class="ts-service-box-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon6.png" alt="service-icon">
-            </div>
-            <div class="ts-service-box-info">
-              <h3 class="service-box-title"><a>TKRO</a></h3>
-              <p>TekniK Kendaraan Ringan Otomotif bertujuan Mengembangkan dan mengaplikasikan dalam karyanya secara mandiri dan dapat mengisi lowongan pekerjaan di dunia usaha dan dunia industri sebagai tenaga kerja tingkat menengah yang handal. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-            </div>
-          </div><!-- Service 8 end -->
-        </div>
-
-          <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
-            <div class="ts-service-box d-flex">
-              <div class="ts-service-box-img">
-                <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon4.png" alt="service-icon">
-              </div>
-              <div class="ts-service-box-info">
-                <h3 class="service-box-title"><a>MM</a></h3>
-                <p>Teknis Bisnis Sepeda Motor merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi konsumen salah satunya memperbaiki kerusakan yang ada pada motor konsumen dan juga dapat menciptakan produk baru pada sepeda motor. <a href="instagram.com/indrabesset"> Selengkapnya</a> </p>
-              </div>
-            </div><!-- Service 5 end -->
-
-            <div class="ts-service-box d-flex">
-                <div class="ts-service-box-img">
-                  <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon3.png" alt="service-icon">
-                </div>
-                <div class="ts-service-box-info">
-                  <h3 class="service-box-title"><a>RPL</a></h3>
-                  <p>Rekayasa Perangkat Lunak merupakan pekerjaan yang berperan untuk anda agar mampu memenuhi kebutuhan klien salah satunya mengubah hasil photoshop menjadi file wordpress. Anda bisa bekerja sebagai IT consultant yang berperan dalam perencanaan dan pengevaluasian penerapan IT pada sebuah organisasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-                </div>
-              </div><!-- Service 4 end -->
-
-              <div class="ts-service-box d-flex">
-                <div class="ts-service-box-img">
-                  <img loading="lazy" src="{{ url('user') }}/images/icon-image/service-icon5.png" alt="service-icon">
-                </div>
-                <div class="ts-service-box-info">
-                  <h3 class="service-box-title"><a>TKJ</a></h3>
-                  <p>kompetensi keahlian teknik komputer dan jaringan adalah membekali peserta didik dengan keterampilan, pengetahuan dan sikap agar kompeten : ... Menginstalasi perangkat komputer, menginstall sistem operasi dan aplikasi. <a href="instagram.com/indrabesset"> Selengkapnya</a></p>
-                </div>
-              </div><!-- Service 7 end -->
-
-        </div><!-- Col end -->
+        @foreach (App\Models\Skill::all() as $skill)
+            <div class="col-lg-4">
+                <div class="ts-service-box d-flex">
+                    <div class="ts-service-box-img">
+                        <img loading="lazy" src="{{ url($skill->logo) }}" width="80" alt="service-icon">
+                    </div>
+                    <div class="ts-service-box-info">
+                    <h3 class="service-box-title"><a>{{ $skill->name }}</a></h3>
+                    <p>
+                        {{ \Str::limit($skill->description, 50, '...') }}
+                        @if (strlen(strip_tags($skill->description)) > 50)
+                        <a href="/skill/{{ $skill->id }}" class="btn btn-primary btn-sm">selengkapnya</a>
+                        @endif
+                    </p>
+                    </div>
+                </div><!-- Service 1 end -->
+            </div><!-- Col end -->
+        @endforeach
       </div><!-- Content row end -->
     </div>
     <!--/ Container end -->
@@ -520,7 +437,6 @@
 @push('js')
 <script>
     $('.halaman-scroll').on('click', function(e){
-        console.log('oke');
         var tujuan = $(this).attr('href');
         var element = $(tujuan);
         $('html, body').animate({

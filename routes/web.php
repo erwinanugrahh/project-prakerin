@@ -96,12 +96,13 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
     Route::post('blog/delete-selected', 'BlogController@delete_selected');
 
 });
-Route::get('blogs/{category?}/{blog?}', [App\Http\Controllers\HomeController::class,'blog']);
+Route::get('blogs/{category?}/{blog?}', [\App\Http\Controllers\HomeController::class,'blog']);
 
 
 Route::group(['prefix' => 'filemanager'], function() {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+Route::get('/skill/{skill}', [\App\Http\Controllers\SkillController::class, 'show']);
 
 Route::view('/ppdb', 'ppdb')->middleware('can:open-pengumuman');
 
