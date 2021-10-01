@@ -1,7 +1,21 @@
 @extends('layouts.guest')
 
 @section('content')
+
     <div class="container">
+        @can('open-ppdb')
+        <h3 class="mt-4 text-center"><strong>PENGUMUMAN PPDB</strong></h3>
+        <div class="card p-4 text-center">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure suscipit perferendis amet alias, illum quidem omnis fugiat voluptatum error sunt quia eligendi hic exercitationem quo itaque assumenda excepturi tempore aliquid.
+            <div class="input-group w-25 pt-3 mx-auto">
+                <input type="text" class="form-control" placeholder="Cari NISN anda" aria-label="" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="search-nisn">Cari</button>
+                </div>
+            </div>
+        </div>
+        @endcan
+
         @can('open-ppdb')
         <h3 class="mt-4 text-center"><strong>FORM PPDB</strong></h3>
         <div class="card mb-5">
