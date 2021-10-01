@@ -192,11 +192,3 @@
     })
 </script>
 @endpush
-@push('js')
-<script>
-    $('.halaman-scroll').on('click', function(){
-        var tujuan = $(this).attr('href');
-        window.location.href = '/'+tujuan
-    })
-</script>
-@endpush

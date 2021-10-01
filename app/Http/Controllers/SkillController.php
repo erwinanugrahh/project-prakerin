@@ -77,7 +77,7 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        return response()->json($skill->toArray());
+        return request()->ajax()?response()->json($skill->toArray()):view('skill', compact('skill'));
     }
 
     /**

@@ -22,14 +22,14 @@
                         </li>
                         @endcan
 
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                         <a href="{{ url('user') }}/#" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Ekstrakulikuler <i class="fa fa-angle-down pl-2"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('user') }}/news-left-sidebar.html">Balap karung</a></li>
                             <li><a href="{{ url('user') }}/news-right-sidebar.html">Balap Sendok</a></li>
                             <li><a href="{{ url('user') }}/news-single.html">Balap Kaleci</a></li>
                         </ul>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item dropdown">
                             <a href="#gallery" class="nav-link dropdown-toggle halaman-scroll" data-toggle="dropdown">Gallery</a>

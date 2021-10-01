@@ -36,13 +36,17 @@
             </div><!-- Col end -->
 
             <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-                <h3 class="widget-title">Services</h3>
+                <h3 class="widget-title">Menu</h3>
                 <ul class="list-arrow">
-                <li><a href="{{ url('user') }}/service-single.html">Pre-Construction</a></li>
-                <li><a href="{{ url('user') }}/service-single.html">General Contracting</a></li>
-                <li><a href="{{ url('user') }}/service-single.html">Construction Management</a></li>
-                <li><a href="{{ url('user') }}/service-single.html">Design and Build</a></li>
-                <li><a href="{{ url('user') }}/service-single.html">Self-Perform Construction</a></li>
+                    <li><a href="#about-us" class="halaman-scroll">Profil</a></li>
+                    @can('smk')
+                    <li><a href="#program-keahlian" class="halaman-scroll">Keahlian</a></li>
+                    @endcan
+                    <li><a href="#gallery" class="halaman-scroll">Gallery</a></li>
+                    <li><a href="#news" class="halaman-scroll">Berita</a></li>
+                    @can('open-pengumuman')
+                    <li><a href="{{ url('/ppdb') }}">PPDB</a></li>
+                    @endcan
                 </ul>
             </div><!-- Col end -->
             </div><!-- Row end -->
@@ -64,13 +68,13 @@
 
           <div class="col-md-6">
             <div class="footer-menu text-center text-md-right">
-              <ul class="list-unstyled">
+              {{-- <ul class="list-unstyled">
                 <li><a href="{{ url('user') }}/about.html">About</a></li>
                 <li><a href="{{ url('user') }}/team.html">Our people</a></li>
                 <li><a href="{{ url('user') }}/faq.html">Faq</a></li>
                 <li><a href="{{ url('user') }}/news-left-sidebar.html">Blog</a></li>
                 <li><a href="{{ url('user') }}/pricing.html">Pricing</a></li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
         </div><!-- Row end -->
