@@ -8,7 +8,7 @@
     <div class="row border-bottom mb-4">
         <div class="col-sm-6 pt-2"><h6 class="mb-4 bc-header">Data Materi</h6></div>
         <div class="col-sm-6 text-right pb-3">
-            <a href="{{ route('lesson.create') }}" class="pull-right mr-3 shadow btn btn-primary"><b>Tambah Materi</b></a>
+            <a href="{{ route('lesson.create') }}" class="pull-right mr-3 shadow btn btn-primary text-white"><b>Tambah Materi</b></a>
 
             <button class="pull-right mr-3 shadow btn btn-danger" id="delete-selected"><b>Hapus Terpilih</b></button>
 
