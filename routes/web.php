@@ -105,5 +105,6 @@ Route::group(['prefix' => 'filemanager'], function() {
 Route::get('/skill/{skill}', [\App\Http\Controllers\SkillController::class, 'show']);
 
 Route::view('/ppdb', 'ppdb')->middleware('can:open-pengumuman');
+Route::view('/ppdb/daftar', 'ppdb-daftar')->middleware('can:open-ppdb');
 
 Route::view('/contact', 'contact');
