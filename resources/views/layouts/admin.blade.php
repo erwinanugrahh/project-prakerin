@@ -68,7 +68,7 @@
 
     <!--Page Wrapper-->
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow-x: hidden">
 
         @include('partials.auth.header')
 

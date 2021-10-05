@@ -137,8 +137,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact1.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
-              <h2 class="ts-facts-num"><span class="counterUp" data-count="1789">0</span></h2>
-              <h3 class="ts-facts-title">Total Projects</h3>
+              <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\User::where('role', 'teacher')->count() }}">0</span></h2>
+              <h3 class="ts-facts-title">Total Guru</h3>
             </div>
           </div><!-- Col end -->
 
@@ -147,8 +147,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact2.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
-              <h2 class="ts-facts-num"><span class="counterUp" data-count="647">0</span></h2>
-              <h3 class="ts-facts-title">Staff Members</h3>
+              <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\User::where('role', 'student')->count() }}">0</span></h2>
+              <h3 class="ts-facts-title">Total Murid</h3>
             </div>
           </div><!-- Col end -->
 
@@ -157,8 +157,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact3.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
-              <h2 class="ts-facts-num"><span class="counterUp" data-count="4000">0</span></h2>
-              <h3 class="ts-facts-title">Hours of Work</h3>
+              <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\Major::get()->count() }}">0</span></h2>
+              <h3 class="ts-facts-title">Total Kelas</h3>
             </div>
           </div><!-- Col end -->
 
@@ -167,8 +167,8 @@
               <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact4.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
-              <h2 class="ts-facts-num"><span class="counterUp" data-count="44">0</span></h2>
-              <h3 class="ts-facts-title">Countries Experience</h3>
+              <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\Blog::where('status', 'accepted')->count() }}">0</span></h2>
+              <h3 class="ts-facts-title">Total Blog</h3>
             </div>
           </div><!-- Col end -->
         </div> <!-- Facts end -->

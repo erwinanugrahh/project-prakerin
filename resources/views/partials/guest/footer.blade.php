@@ -12,14 +12,13 @@
                 <p>{{ setting('about_us')['description'] }}</p>
                 <div class="footer-social">
                 <ul>
-                    <li><a href="https://facebook.com/erwinanugrah" aria-label="Facebook"><i
-                        class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://twitter.com/erwinanugrah" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    @foreach (setting('social_media')['items'] as $item)
+                    <li>
+                        <a title="{{ $item['name'] }}" target="_blank" href="{{ $item['url'] }}">
+                            <span class="social-icon"><i class="{{ $item['icon'] }}"></i></span>
+                        </a>
                     </li>
-                    <li><a href="https://instagram.com/indrabesset" aria-label="Instagram"><i
-                        class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://youtube.com/bryanx19" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
-                    </li>
+                    @endforeach
                 </ul>
                 </div><!-- Footer social end -->
             </div><!-- Col end -->

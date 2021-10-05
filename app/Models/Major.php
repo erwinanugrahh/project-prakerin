@@ -35,7 +35,7 @@ class Major extends Model
         $levelSetting = setting('setting_web', ['website_for'=>'smk'])['website_for'];
         $level = $levels[$levelSetting];
         if($levelSetting=='smk'){
-            return $level[$this->level].' '.$this->skill->name.' '.$this->name;
+            return $level[$this->level].' '.($this->skill->name??'').' '.$this->name;
         }
         return $level[$this->level].' '.$this->name;
     }

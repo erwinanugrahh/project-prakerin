@@ -53,6 +53,15 @@ if(!function_exists('setting')){
                 'kenaikan_kelas'=>false,
                 'open_pengumuman'=>false,
                 'open_ppdb'=>false
+            ],
+            'social_media'=>[
+                'key'=>'social_media',
+                'items'=>[
+                    ['name' => 'Facebook', 'icon' => 'fab fa-facebook-f', 'url'=>'https://facebook.com/idean-official'],
+                    ['name' => 'Twitter', 'icon' => 'fab fa-twitter', 'url'=>'https://twitter.com/idean-official'],
+                    ['name' => 'Instagram', 'icon' => 'fab fa-instagram', 'url'=>'https://instagram.com/idean-official'],
+                    ['name' => 'Youtube', 'icon' => 'fab fa-youtube', 'url'=>'https://youtube.com/idean-official'],
+                ]
             ]
         ];
         $data = Setting::find($key);

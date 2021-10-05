@@ -52,18 +52,11 @@
           <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
             <ul class="list-unstyled">
               <li>
-                <a title="Facebook" href="https://facebbok.com/erwinanugrah">
-                  <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
-                </a>
-                <a title="Twitter" href="https://twitter.com/erwinanugrah">
-                  <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                </a>
-                <a title="Instagram" href="https://instagram.com/instagram">
-                  <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                </a>
-                <a title="Youtube" href="https://youtube.com/bryanx19">
-                  <span class="social-icon"><i class="fab fa-youtube"></i></span>
-                </a>
+                @foreach (setting('social_media')['items'] as $item)
+                  <a title="{{ $item['name'] }}" target="_blank" href="{{ $item['url'] }}">
+                    <span class="social-icon"><i class="{{ $item['icon'] }}"></i></span>
+                  </a>
+                @endforeach
               </li>
             </ul>
           </div>

@@ -16,7 +16,8 @@ class SettingController extends Controller
     {
         $setting_web = setting('setting_web');
         $about_us = setting('about_us');
-        return view('admin.setting.index',compact('setting_web','about_us'));
+        $social_media = setting('social_media');
+        return view('admin.setting.index',compact('setting_web','about_us', 'social_media'));
     }
 
     /**
