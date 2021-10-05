@@ -28,7 +28,11 @@
                             <p>{{ $lesson['teacher'] }}</p>
                             <p>Batas Upload Tugas: {{ $lesson['end_at'] }}</p>
                             <p>Nilai Tugas: {{ $lesson['value'] }}</p>
-                            <a class="btn btn-sm py-0 text-white btn-primary font-weight-bold" href="{{ $lesson['href'] }}">MASUK PEMBELAJARAN</a>
+                            @if ($lesson['start_at']<=date('Y-m-d H:i:s') && date('Y-m-d H:i:s')<=$lesson['end_at'])
+                                <a class="btn btn-sm py-0 text-white btn-primary font-weight-bold" href="{{ $lesson['href'] }}">MASUK PEMBELAJARAN</a>
+                            @else
+                                <a class="btn btn-sm py-0 text-white btn-warning font-weight-bold" href="#">WAKTU HABIS</a>
+                            @endif
                         </div>
                     </div>
                 </div>

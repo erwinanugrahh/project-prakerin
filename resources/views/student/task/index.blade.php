@@ -7,3 +7,13 @@
 @section('content')
     @livewire('task-index')
 @endsection
+
+@push('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            $('#search').on('keyup', function(){
+                window.livewire.emit('setSearch', $(this).val())
+            })
+        })
+    </script>
+@endpush

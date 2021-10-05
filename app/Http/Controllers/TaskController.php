@@ -104,6 +104,10 @@ class TaskController extends Controller
      */
     public function show(Lesson $task)
     {
+        $major_id = student()->major_id;
+        $lesson_group = $task->lesson_groups->where('major_id', $major_id)->first();
+        if(!($lesson_group['start_at']<=date('Y-m-d H:i:s') && date('Y-m-d H:i:s')<=$lesson_group['end_at']))
+            return abort(403);
         auth()->user()->notifications->where('data.lesson_id', $task->id)->markAsRead();
         $myAnswer = $task->tasks->where('student_id', student()->id)->first();
         return view('student.task.show', compact('task', 'myAnswer'));

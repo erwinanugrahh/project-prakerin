@@ -134,6 +134,7 @@
     <script src="{{ url('plugins/select2/dist/js/select2.full.min.js') }}"></script>
 
     <!--Custom Js Script-->
+    <script>var table = null;</script>
     @stack('js')
     <script src="{{ url('admin/') }}/js/custom.js"></script>
     <!--Custom Js Script-->
@@ -214,7 +215,8 @@
             })
         })
         $('#search').on('keyup', function(){
-            table.search($(this).val()).draw()
+            if(table != null)
+                table.search($(this).val()).draw()
         })
     </script>
     @livewireScripts

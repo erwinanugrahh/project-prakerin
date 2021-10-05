@@ -14,7 +14,7 @@
                     <b>Import Data</b>
                 </button>
 
-                <a href="{{ route('teacher.create') }}" class="pull-right mr-3 shadow btn btn-primary"><b>Tambah Guru</b></a>
+                <a href="{{ route('teacher.create') }}" class="pull-right mr-3 shadow btn btn-primary text-white"><b>Tambah Guru</b></a>
 
                 <button class="pull-right mr-3 shadow btn btn-danger" id="delete-selected"><b>Hapus Terpilih</b></button>
 

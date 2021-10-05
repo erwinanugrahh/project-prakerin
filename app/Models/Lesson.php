@@ -36,6 +36,11 @@ class Lesson extends Model
         return $this->hasMany(LessonGroup::class, 'lesson_id', 'id');
     }
 
+    public function lesson_groups()
+    {
+        return $this->hasMany(LessonGroup::class);
+    }
+
     public function teacher()
     {
         return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
