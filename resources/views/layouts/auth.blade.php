@@ -36,10 +36,10 @@
         <div class="login-box">
             <h1 class="text-center mb-5"><i class="fab fa-xing text-primary"></i> @yield('title') </h1>
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-12 login-box-info">
+                <div class="col-md-6 col-sm-6 col-12 login-box-info d-none d-md-block">
                     @yield('another')
                 </div>
-                <div class="col-md-6 col-sm-6 col-12 login-box-form p-4">
+                <div class="col-md-6 col-sm-6 offset-sm-3 offset-md-0 col-12 login-box-form p-4">
                     @yield('content')
                 </div>
             </div>

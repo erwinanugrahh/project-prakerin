@@ -182,7 +182,7 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-12">
-          <h2 class="section-title">We Are Specialists In</h2>
+          {{-- <h2 class="section-title">We Are Specialists In</h2> --}}
           <h3 class="section-sub-title">Program Keahlian</h3>
         </div>
       </div>
@@ -216,7 +216,7 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-lg-12">
-          <h2 class="section-title">Work of Excellence</h2>
+          {{-- <h2 class="section-title">Work of Excellence</h2> --}}
           <h3 class="section-sub-title">Galeri</h3>
         </div>
       </div>
@@ -261,7 +261,7 @@
 
         <div class="col-12">
           <div class="general-btn text-center">
-            <a class="btn btn-primary" href="{{ url('user') }}/projects.html">View All Projects</a>
+            <a class="btn btn-primary d-none" href="{{ url('user') }}/projects.html">View All Projects</a>
           </div>
         </div>
 
@@ -360,15 +360,15 @@
       <div class="row">
         <div class="col-md-4">
           <div class="subscribe-call-to-acton">
-            <h3>Can We Help?</h3>
-            <h4>(+9) 847-291-4353</h4>
+            <h3>Dapatkah kita membantu?</h3>
+            <h4>{{ $setting_web['phone'] }}</h4>
           </div>
         </div><!-- Col end -->
         <div class="col-md-8">
           <div class="ts-newsletter row align-items-center">
             <div class="col-md-5 newsletter-introtext">
               <h4 class="text-white mb-0">Newsletter Sign-up</h4>
-              <p class="text-white">Latest updates and news</p>
+              <p class="text-white">Update terbaru dan berita terkini</p>
             </div>
 
             <div class="col-md-7 newsletter-form">
@@ -393,7 +393,7 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-12">
-          <h2 class="section-title">Work of Excellence</h2>
+          {{-- <h2 class="section-title">Work of Excellence</h2> --}}
           <h3 class="section-sub-title">Berita terkini</h3>
         </div>
       </div>
