@@ -29,10 +29,10 @@
                         <span class="text-muted mt-0 bio-request">{{ auth()->user()->role }}</span>
                     </div>
                     <div class="col-md-4 col-sm-12 col-12 px-5 text-right pt-4 bio-comment">
-                        <button type="button" class="btn btn-default">
+                        {{-- <button type="button" class="btn btn-default">
                             <i class="far fa-comment"></i>
                         </button>
-                        <button type="button" class="btn btn-theme">Request</button>
+                        <button type="button" class="btn btn-theme">Request</button> --}}
                     </div>
                 </div>
             </div>
@@ -49,18 +49,18 @@
 
             <div class="mb-3">
                 <div class="row user-about">
-                    <div class="col-sm-4 col-4 border-right text-center">
-                        <h4>20</h4>
-                        <p>Reviews</p>
+                    <div class="col-sm-6 col-6 border-right text-center">
+                        <h4>{{ auth()->user()->blogs->count() }}</h4>
+                        <p>Blogs</p>
                     </div>
-                    <div class="col-sm-4 col-4 text-center">
-                        <h4>31</h4>
-                        <p>Clients</p>
+                    <div class="col-sm-6 col-6 text-center">
+                        <h4>{{ auth()->user()->comments()->count() }}</h4>
+                        <p>Komentar</p>
                     </div>
-                    <div class="col-sm-4 col-4 border-left text-center">
-                        <h4>120</h4>
-                        <p>Followers</p>
-                    </div>
+                    {{-- <div class="col-sm-4 col-4 border-left text-center">
+                        <h4>{{ views(App\Models\Blog::first())->count() }}</h4>
+                        <p>Lihat</p>
+                    </div> --}}
                 </div>
             </div>
 
@@ -70,11 +70,11 @@
             <div class="mb-3">
                 <h6 class="mb-3">Blogger</h6>
                 <p class="p-typo"><input type="checkbox" class="js-single" {{ (student()->is_blogger??teacher()->is_blogger??null)?'checked':'' }} id="blog-mode" /><label for="blog-mode" class="pl-3 switch-label">Aktifkan Mode Blogger?</label></p>
-                <div class="text-right">
+                {{-- <div class="text-right">
                     <button type="button" class="btn btn-theme">
                         <i class="fa fa-user-plus"></i> Follow
                     </button>
-                </div>
+                </div> --}}
             </div>
             <div class="dropdown-divider"></div>
             @endif
@@ -102,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown-divider"></div>
+                {{-- <div class="dropdown-divider"></div>
 
                 <div class="mt-3 mb-3">
                     <h6>Socials</h6>
@@ -122,7 +122,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -134,10 +134,10 @@
 
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-customContent" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#custom-home" role="tab" aria-controls="nav-home" aria-selected="true">
+                    {{-- <a class="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#custom-home" role="tab" aria-controls="nav-home" aria-selected="true">
                             <i class="fa fa-list-ul"></i> Blog Saya
-                    </a>
-                    <a class="nav-item nav-link" id="nav-profile" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+                    </a> --}}
+                    <a class="nav-item nav-link active" id="nav-profile" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
                         <i class="fa fa-user"></i> Edit Profile
                     </a>
                     <a class="nav-item nav-link" id="nav-contact" data-toggle="tab" href="#change-password" role="tab" aria-controls="nav-contact" aria-selected="false">
@@ -147,9 +147,9 @@
             </nav>
 
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-customContent">
-                <div class="tab-pane fade show active p-4" id="custom-home" role="tabpanel" aria-labelledby="nav-home">
+                <div class="tab-pane fade p-4" id="custom-home" role="tabpanel" aria-labelledby="nav-home">
 
-                    <!--Single feed-->
+                    {{-- <!--Single feed-->
                     <div class="feed-single mb-3">
                         <div class="media">
                             <img class="mr-3 rounded-circle" height="40px" width="40px" src="{{ url('admin') }}/img/John-doe.png" alt="Generic placeholder image">
@@ -245,13 +245,13 @@
                             </div>
                         </div>
                     </div>
-                    <!--/Single feed-->
+                    <!--/Single feed--> --}}
 
                 </div>
                 <!--/Feed tab-->
 
                 <!--Personal info tab-->
-                <div class="tab-pane fade pl-4 pr-4" id="edit-profile" role="tabpanel" aria-labelledby="nav-contact">
+                <div class="tab-pane fade show active pl-4 pr-4" id="edit-profile" role="tabpanel" aria-labelledby="nav-contact">
 
                     <h5>Form Edit Profile</h5>
                     <div class="d-flex justify-content-center">
@@ -344,6 +344,7 @@
     <script src="{{ url('admin') }}/js/switchery.min.js"></script>
     <script src="{{ url('js/profile.js') }}"></script>
     <script>
+        $('#search').parent().hide()
         $('#edit_about').on('click', ()=>{
             $('#show-about-me').toggleClass('d-none')
             $('#edit-about-me').toggleClass('d-none')
