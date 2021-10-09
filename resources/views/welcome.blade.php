@@ -102,7 +102,7 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                 data-parent="#our-values-accordion">
                 <div class="card-body">
-                    {{ $about_us['visi'] }}
+                    {!! $about_us['visi'] !!}
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#our-values-accordion">
                 <div class="card-body">
-                  {{ $about_us['misi'] }}
+                  {!! $about_us['misi'] !!}
                 </div>
               </div>
             </div>

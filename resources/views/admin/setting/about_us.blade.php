@@ -22,13 +22,13 @@
                 </div>
                 <div class="form-group">
                     <label for="">Visi</label>
-                    <textarea name="visi" id="" rows="7" class="form-control">{{ $about_us['visi'] }}</textarea>
+                    <textarea name="visi" id="" rows="7" class="editor">{{ $about_us['visi'] }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Misi</label>
-                    <textarea name="misi" id="" rows="7" class="form-control">{{ $about_us['misi'] }}</textarea>
+                    <textarea name="misi" id="" rows="7" class="editor">{{ $about_us['misi'] }}</textarea>
                 </div>
-                @livewire('about-us-skills', ['skills'=>$about_us['skills']])
+                @livewire('about-us-skills', ['skills'=>$about_us['skills']??[]])
                 <button class="btn btn-success">Simpan</button>
             </form>
         </div>
