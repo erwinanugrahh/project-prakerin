@@ -108,3 +108,4 @@ Route::view('/ppdb', 'ppdb')->middleware('can:open-pengumuman');
 Route::view('/ppdb/daftar', 'ppdb-daftar')->middleware('can:open-ppdb');
 
 Route::view('/contact', 'contact');
+Route::post('/sendEmail', [\App\Http\Controllers\HomeController::class, 'sendMail']);

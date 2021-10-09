@@ -6,6 +6,8 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class HomeController extends Controller
 {
@@ -16,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('welcome', 'blog');
+        $this->middleware('auth')->except('welcome', 'blog', 'sendMail');
     }
 
     public function welcome()
@@ -129,6 +131,59 @@ class HomeController extends Controller
             }
         }else $blogs = $blogs->get();
         return view('blogs', compact('blogs'));
+    }
+
+    function sendMail(Request $request){
+
+        $subject = $request->input('subject');
+        $name = $request->input('name');
+        $emailAddress = $request->input('email');
+        $message = $request->input('message');
+
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+        try {
+            // Pengaturan Server
+           // $mail->SMTPDebug = 2;                               // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = env('MAIL_HOST');                       // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = env('MAIL_USERNAME');               // SMTP username
+            $mail->Password = env('MAIL_PASSWORD');               // SMTP password
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');           // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = env('MAIL_PORT');                       // TCP port to connect to
+
+            // Siapa yang mengirim email
+            $mail->setFrom($emailAddress, $name);
+
+            $setting_web = setting('setting_web');
+            // Siapa yang akan menerima email
+            $mail->addAddress($setting_web['email'], $setting_web['website_name']); // Add a recipient
+            // $mail->addAddress('ellen@example.com');               // Name is optional
+
+            // ke siapa akan kita balas emailnya
+            $mail->addReplyTo($emailAddress, $name);
+
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+
+            //Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->AltBody = $message;
+
+            $mail->send();
+
+            return redirect('contact')->with('success', 'Terima kasih, kami sudah menerima email anda.');
+        } catch (Exception $e) {
+            return redirect('contact')->with('failed', 'Mailer Error: '.$mail->ErrorInfo);
+        }
+
     }
 
 }

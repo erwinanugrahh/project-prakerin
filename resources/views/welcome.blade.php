@@ -11,7 +11,7 @@
               <h2 class="slide-title" data-animation-in="slideInLeft">Selamat Datang di</h2>
               <h3 class="slide-sub-title" data-animation-in="slideInRight">{{ $setting_web['website_name'] }}</h3>
               <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Selengkapnya</a>
+                {{-- <a href="{{ url('user') }}/services.html" class="slider btn btn-primary">Selengkapnya</a> --}}
                 <a href="{{ url('/contact') }}" class="slider btn btn-primary border">Kontak Kami</a>
               </p>
             </div>
@@ -30,7 +30,7 @@
               <h3 class="slide-sub-title" data-animation-in="slideInLeft">AYO ! MASUK {{ $setting_web['website_name'] }}</h3>
               <p class="slider-description lead" data-animation-in="slideInRight">Kami akan menangani kebingungan anda itu untuk menentukan bagaimana anda mencapai kesuksesan.</p>
               <p data-animation-in="slideInRight">
-                <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Selengkapnya</a>
+                {{-- <a href="{{ url('user') }}/services.html" class="slider btn btn-primary border">Selengkapnya</a> --}}
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@
               <h3 class="slide-sub-title" data-animation-in="fadeIn">We believe sustainability</h3>
               <p class="slider-description lead" data-animation-in="slideInRight">Ayo ! bangunlah impianmu atau orang lain akan mempekerjakanmu untuk membangun impian mereka</p>
               <div data-animation-in="slideInLeft">
-                <a href="{{ url('user') }}/about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Selengkapnya</a>
+                {{-- <a href="{{ url('user') }}/about.html" class="slider btn btn-primary border" aria-label="learn-more-about-us">Selengkapnya</a> --}}
               </div>
             </div>
           </div>

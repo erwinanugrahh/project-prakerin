@@ -4,8 +4,8 @@
     <div class="container my-4">
         <div class="row text-center">
             <div class="col-12">
-              <h2 class="section-title">Reaching our Office</h2>
-              <h3 class="section-sub-title">Find Our Location</h3>
+              {{-- <h2 class="section-title">Reaching our Office</h2> --}}
+              <h3 class="section-sub-title">Temukan Lokasi Kami</h3>
             </div>
           </div>
           <!--/ Title row end -->
@@ -51,9 +51,9 @@
 
           <div class="gap-60"></div>
 
-          <div class="google-map">
+          {{-- <div class="google-map">
             <div id="map" class="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Constra"></div>
-          </div>
+          </div> --}}
 
           <div class="gap-40"></div>
 
@@ -62,8 +62,13 @@
               <h3 class="column-title">We love to hear</h3>
               <!-- contact form works with formspree.io  -->
               <!-- contact form activation doc: https://docs.themefisher.com/constra/contact-form/ -->
-              <form id="contact-form" action="#" method="post" role="form">
-                <div class="error-container"></div>
+              <form id="contact-form" action="/sendEmail" method="post" role="form">
+                @csrf
+                <div class="error-container">
+                    @if (session()->has('failed'))
+                        <div class="alert alert-danger">{{ session()->get('failed') }}</div>
+                    @endif
+                </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
