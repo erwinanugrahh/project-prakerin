@@ -134,7 +134,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-6 ts-facts">
             <div class="ts-facts-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact1.png" alt="facts-img">
+              <img loading="lazy" style="width: 100px" src="{{ url('user') }}/images/icon-image/teacher.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\User::where('role', 'teacher')->count() }}">0</span></h2>
@@ -144,7 +144,7 @@
 
           <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-sm-0">
             <div class="ts-facts-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact2.png" alt="facts-img">
+              <img loading="lazy" style="width: 100px" src="{{ url('user') }}/images/icon-image/student.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\User::where('role', 'student')->count() }}">0</span></h2>
@@ -154,7 +154,7 @@
 
           <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
             <div class="ts-facts-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact3.png" alt="facts-img">
+              <img loading="lazy" style="width: 100px" src="{{ url('user') }}/images/icon-image/building.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\Major::get()->count() }}">0</span></h2>
@@ -164,7 +164,7 @@
 
           <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
             <div class="ts-facts-img">
-              <img loading="lazy" src="{{ url('user') }}/images/icon-image/fact4.png" alt="facts-img">
+              <img loading="lazy" style="width: 100px" src="{{ url('user') }}/images/icon-image/blog.png" alt="facts-img">
             </div>
             <div class="ts-facts-content">
               <h2 class="ts-facts-num"><span class="counterUp" data-count="{{ App\Models\Blog::where('status', 'accepted')->count() }}">0</span></h2>
