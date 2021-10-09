@@ -28,7 +28,7 @@
                     <label for="">Misi</label>
                     <textarea name="misi" id="" rows="7" class="editor">{{ $about_us['misi'] }}</textarea>
                 </div>
-                @livewire('about-us-skills', ['skills'=>$about_us['skills']])
+                @livewire('about-us-skills', ['skills'=>$about_us['skills']??[]])
                 <button class="btn btn-success">Simpan</button>
             </form>
         </div>
