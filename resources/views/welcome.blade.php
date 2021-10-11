@@ -70,13 +70,13 @@
 
           <div class="row">
               @foreach ($about_us['skills'] as $skill)
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="ts-service-box">
                   <span class="ts-service-icon">
                     <i class="{{ $skill['icon'] }}"></i>
                   </span>
                   <div class="ts-service-box-content">
-                    <h3 class="service-box-title">{{ $skill['title'] }}</h3>
+                    <p class="service-box-title">{{ $skill['title'] }}</p>
                   </div>
                 </div><!-- Service 1 end -->
               </div><!-- col end -->
