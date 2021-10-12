@@ -9,7 +9,7 @@
             </div>
             <div class="post-info">
               <h4 class="entry-title">
-                <a href="{{ url('blogs/'.$blog->slug) }}">{{ $blog->title }}</a>
+                <a href="{{ url('blogs/'.$blog->category->name.'/'.$blog->slug) }}">{{ $blog->title }}</a>
               </h4>
             </div>
           </li><!-- 1st post end-->

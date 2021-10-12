@@ -3,18 +3,22 @@
 @section('content')
 <style>
     div#social-links {
-        margin: 0 auto;
+        padding-left: 0;
         max-width: 500px;
+    }
+    div#social-links ul{
+        padding-left: 0;
     }
     div#social-links ul li {
         display: inline-block;
         list-style: none;
-        margin-left: 10px;
+        margin-right: 5px;
+        margin-top: 10px;
     }
-
     div#social-links ul li a {
-        padding: 20px;
+        padding: 0px 7px;
         border: 1px solid #ccc;
+        border-radius: 7px;
         margin: 1px;
         font-size: 30px;
         color: #222;
@@ -22,7 +26,7 @@
     }
 </style>
 <!--/ Header end -->
-<div id="banner-area" class="banner-area" style="background-image:url(/user/images/banner/banner1.jpg)">
+<div id="banner-area" class="banner-area" style="background-image:url(/user/images/banner/banner-1.jpg)">
     <div class="banner-text">
       <div class="container">
           <div class="row">
@@ -77,14 +81,15 @@
                   {!! $blog->content !!}
               </div>
 
-              <div class="tags-area d-flex align-items-center justify-content-between">
+              <div class="tags-area">
+                <span class="font-weight-bold">Share : </span>
                 {!! Share::page(url('/blogs/'. $blog->slug), 'Blog '.$blog->title)->facebook()->twitter()->whatsapp()->linkedin() !!}
                 {{-- <div class="share-items">
                   <ul class="post-social-icons list-unstyled">
                     <li class="social-icons-head">Share:</li>
                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp bg-success"></i></a></li>
                     <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                   </ul>
                 </div> --}}
@@ -110,42 +115,6 @@
               <p class="author-url mb-0">Website: <span><a href="#">http://www.example.com</a></span></p>
             </div>
           </div> <!-- Author box end -->
-
-          {{-- <div class="comments-form border-box">
-            <h3 class="title-normal">Add a comment</h3>
-
-            <form role="form">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="message" class="w-100"><textarea class="form-control required-field" id="message" placeholder="Your Comment" rows="10" required></textarea></label>
-                  </div>
-                </div><!-- Col 12 end -->
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="name" class="w-100"><input class="form-control" name="name" id="name" placeholder="Your Name" type="text" required></label>
-                  </div>
-                </div><!-- Col 4 end -->
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="email" class="w-100"><input class="form-control" name="email" id="email" placeholder="Your Email" type="email" required></label>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="website" class="w-100"><input class="form-control" id="website" placeholder="Your Website" type="text" required></label>
-                  </div>
-                </div>
-
-              </div><!-- Form row end -->
-              <div class="clearfix">
-                <button class="btn btn-primary" type="submit" aria-label="post-comment">Post Comment</button>
-              </div>
-            </form><!-- Form end -->
-          </div><!-- Comments form end --> --}}
 
           @comments(['model'=>$blog])
         </div><!-- Content Col end -->
