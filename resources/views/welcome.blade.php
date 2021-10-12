@@ -300,47 +300,47 @@
 
         <div class="col-lg-6 mt-5 mt-lg-0">
 
-          <h3 class="column-title">Happy Clients</h3>
+          <h3 class="column-title">Mitra Industri</h3>
 
           <div class="row all-clients">
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client1.png"
+                <a href="https://inovindo.co.id/" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra1.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 1 end -->
 
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client2.png"
+                <a href="https://www.astra-honda.com/" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra2.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 2 end -->
 
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client3.png"
+                <a href="https://www.nabatisnack.co.id/" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra3.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 3 end -->
 
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client4.png"
+                <a href="#" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra4.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 4 end -->
 
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client5.png"
+                <a href="#" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra5.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 5 end -->
 
             <div class="col-sm-4 col-6">
               <figure class="clients-logo">
-                <a href="{{ url('user') }}/#!"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/clients/client6.png"
+                <a href="#" target="_blank"><img loading="lazy" class="img-fluid" src="{{ url('user') }}/images/mitra-industri/mitra6.png"
                     alt="clients-logo" /></a>
               </figure>
             </div><!-- Client 6 end -->
@@ -358,13 +358,13 @@
   <section class="subscribe no-padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12 text-center">
           <div class="subscribe-call-to-acton">
             <h3>Dapatkah kita membantu?</h3>
-            <h4>{{ $setting_web['phone'] }}</h4>
+            <h4>Hubungi : {{ $setting_web['phone'] }}</h4>
           </div>
         </div><!-- Col end -->
-        <div class="col-md-8">
+        {{-- <div class="col-md-8">
           <div class="ts-newsletter row align-items-center">
             <div class="col-md-5 newsletter-introtext">
               <h4 class="text-white mb-0">Newsletter Sign-up</h4>
@@ -381,7 +381,7 @@
               </form>
             </div>
           </div><!-- Newsletter end -->
-        </div><!-- Col end -->
+        </div><!-- Col end --> --}}
 
       </div><!-- Content row end -->
     </div>
