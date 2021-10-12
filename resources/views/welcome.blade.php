@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="banner-carousel banner-carousel-1 mb-0">
-    <div class="banner-carousel-item" style="background-image: url(user/images/10.jpg">
+    <div class="banner-carousel-item" style="background-image: url(user/images/banner/banner-1.jpg">
       <div class="slider-content">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="banner-carousel-item" style="background-image: url(user/images/10.jpg">
+    <div class="banner-carousel-item" style="background-image: url(user/images/banner/banner-2.jpg">
       <div class="slider-content text-left">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="banner-carousel-item" style="background-image: url(user/images/10.jpg">
+    <!-- <div class="banner-carousel-item" style="background-image: url(user/images/10.jpg">
       <div class="slider-content text-right">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- Action end -->
   <section id="about-us" class="about-us">

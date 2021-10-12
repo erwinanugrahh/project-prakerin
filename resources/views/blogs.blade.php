@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<div id="banner-area" class="banner-area" style="background-image:url(/user/images/banner/banner1.jpg)">
+<div id="banner-area" class="banner-area" style="background-image:url(/user/images/banner/banner-1.jpg)">
     <div class="banner-text">
       <div class="container">
           <div class="row">

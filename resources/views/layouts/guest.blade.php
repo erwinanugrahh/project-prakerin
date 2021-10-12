@@ -14,7 +14,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="{{ url('user') }}/images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <!-- CSS
 ================================================== -->
