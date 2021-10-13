@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Major;
 use App\Models\Skill;
+use Exception;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
@@ -50,16 +51,23 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'level' => 'required',
-            'skill_id'=>'sometimes',
-            'name' => 'required'
-        ]);
+        try{
+            $validate = $request->validate([
+                'level' => 'required',
+                'skill_id'=>'sometimes',
+                'nama' => 'required'
+            ]);
 
-        $id = Major::create($validate)->id;
+            $id = Major::create($validate)->id;
+            $code = 200;
+            $response = ['id'=>$id];
+        }catch(Exception $e){
+            $code = 500;
+            $response = ['err' => $e->getMessage()];
+        }
 
         // return $request->ajax()?response()->json(['id'=>$id]):back()->with('success', 'Kelas berhasil ditambahkan');
-        return response()->json(['id'=>$id]);
+        return response()->json($response, $code);
     }
 
     /**

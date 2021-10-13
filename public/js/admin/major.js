@@ -59,6 +59,9 @@ var grid = $("#majorities_table").jsGrid({
                     icon: 'success',
                     title: 'Kelas / Jurusan berhasil ditambahkan'
                 })
+            },
+            error: function(e){
+                console.log(e);
             }
         })
         $('#majorities_table').jsGrid("render");
