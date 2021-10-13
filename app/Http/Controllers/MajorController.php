@@ -58,7 +58,8 @@ class MajorController extends Controller
 
         $id = Major::create($validate)->id;
 
-        return $request->ajax()?response()->json(['id'=>$id]):back()->with('success', 'Kelas berhasil ditambahkan');
+        // return $request->ajax()?response()->json(['id'=>$id]):back()->with('success', 'Kelas berhasil ditambahkan');
+        return response()->json(['id'=>$id]);
     }
 
     /**
