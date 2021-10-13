@@ -44,7 +44,7 @@ var grid = $("#majorities_table").jsGrid({
     fields,
     onItemInserting: function(args) {
         $.ajax({
-            url: 'major/',
+            url: '/api/major/',
             method: 'POST',
             data: {
                 name: args.item.Kelas,
@@ -68,7 +68,7 @@ var grid = $("#majorities_table").jsGrid({
     },
     onItemUpdated: function(args) {
         $.ajax({
-            url: 'major/'+args.item.id,
+            url: '/api/major/'+args.item.id,
             method: 'PUT',
             data: {
                 name: args.item.Kelas,
@@ -100,7 +100,7 @@ var grid = $("#majorities_table").jsGrid({
                     args.item.deleteConfirmed = true;
                     $('#majorities_table').jsGrid('deleteItem', args.item);
                     $.ajax({
-                        url: 'major/'+args.item.id,
+                        url: '/api/major/'+args.item.id,
                         method: 'DELETE',
                         data: {
                             name: args.item.Kelas,

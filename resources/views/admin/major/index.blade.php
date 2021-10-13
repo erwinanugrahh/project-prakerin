@@ -22,5 +22,5 @@
 
 @push('js')
     <script src="{{ url('admin/js/jsgrid.min.js') }}"></script>
-    <script src="{{ url('js/admin/major.js') }}"></script>
+    <script src="{{ url('js/admin/major.js?v=1') }}"></script>
 @endpush

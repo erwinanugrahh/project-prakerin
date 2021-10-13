@@ -25,3 +25,9 @@ Route::post('testimonial/delete-selected', [App\Http\Controllers\TestimonialCont
 Route::post('teacher/{teacher}', [App\Http\Controllers\TeacherController::class, 'show']);
 Route::post('student/{student}', [App\Http\Controllers\StudentController::class, 'show']);
 Route::post('set-ppdb', [App\Http\Controllers\SettingController::class, 'store']);
+
+Route::group(['middleware'=>'auth,role:admin', 'namespace'=>'App\Http\Controller'], function(){
+    Route::post('major', [MajorController::class, 'store']);
+    Route::put('major', [MajorController::class, 'update']);
+    Route::delete('major', [MajorController::class, 'destroy']);
+});
