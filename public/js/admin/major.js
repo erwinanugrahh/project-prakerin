@@ -5,7 +5,7 @@ $('#data-major').addClass('active').parent().parent().addClass('active');
 var data = [];
 var fields = [];
 $.ajax({
-    url: '',
+    url: '/admin/major',
     async: false,
     success: function(result){
         fields.push({name: "Tingkat", width: 20, type: "select", items: result.level, valueField: "Id", textField: "Name"})
