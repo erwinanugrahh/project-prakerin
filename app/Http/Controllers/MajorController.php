@@ -55,7 +55,7 @@ class MajorController extends Controller
             $validate = $request->validate([
                 'level' => 'required',
                 'skill_id'=>'sometimes',
-                'nama' => 'required'
+                'name' => 'required'
             ]);
 
             $id = Major::create($validate)->id;
