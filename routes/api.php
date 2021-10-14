@@ -28,8 +28,9 @@ Route::post('teacher/{teacher}', [App\Http\Controllers\TeacherController::class,
 Route::post('student/{student}', [App\Http\Controllers\StudentController::class, 'show']);
 Route::post('set-ppdb', [App\Http\Controllers\SettingController::class, 'store']);
 
+Route::get('major', [MajorController::class, 'ajax']);
 // Route::group(['middleware'=>'auth,role:admin'], function(){
-    Route::post('major', [MajorController::class, 'store']);
-    Route::put('major', [MajorController::class, 'update']);
-    Route::delete('major', [MajorController::class, 'destroy']);
+    // Route::post('major', [MajorController::class, 'store']);
+    // Route::put('major', [MajorController::class, 'update']);
+    // Route::delete('major', [MajorController::class, 'destroy']);
 // });

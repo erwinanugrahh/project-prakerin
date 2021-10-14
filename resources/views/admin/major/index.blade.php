@@ -37,7 +37,8 @@
 
 @push('js')
     <script src="{{ url('admin/js/jsgrid.min.js') }}"></script>
-    <script src="{{ url('js/admin/major.js?v=1') }}"></script>
+    {{-- <script src="{{ url('js/admin/major.js?v=1') }}"></script> --}}
+    <script src="{{ url('js/admin/major1.js?v=1') }}"></script>
     <script>
         $('#ajax').on('submit', function(e){
             e.preventDefault()

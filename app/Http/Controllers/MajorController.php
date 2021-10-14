@@ -28,9 +28,15 @@ class MajorController extends Controller
             $level[3]['Name'] = 'XII';
         }
         $is_smk = setting('setting_web')['website_for']=='smk';
-        $majorities = Major::with('skill')->get();
+        $data = Major::select('id', 'level', 'skill_id', 'name')->get();
         $skills = Skill::select('id', 'name')->get()->toArray();
-        return request()->ajax()?response()->json(['data'=>$majorities, 'level'=>$level, 'is_smk'=>$is_smk, 'skills'=>$skills]):view('admin.major.index', compact('majorities'));
+        return request()->ajax()?response()->json(compact('level', 'data','is_smk', 'skills')):view('admin.major.index');
+    }
+
+    public function ajax()
+    {
+        $majors = Major::select('id', 'level', 'skill_id', 'name')->get();
+        return request()->ajax()?response()->json($majors):abort(403);
     }
 
     /**
@@ -51,23 +57,16 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $validate = $request->validate([
-                'level' => 'required',
-                'skill_id'=>'sometimes',
-                'name' => 'required'
-            ]);
+        $validate = $request->validate([
+            'level' => 'required',
+            'skill_id'=>'sometimes',
+            'name' => 'required'
+        ]);
 
-            $id = Major::create($validate)->id;
-            $code = 200;
-            $response = ['id'=>$id];
-        }catch(Exception $e){
-            $code = 500;
-            $response = ['err' => $e->getMessage()];
-        }
+        $id = Major::create($validate)->id;
 
         // return $request->ajax()?response()->json(['id'=>$id]):back()->with('success', 'Kelas berhasil ditambahkan');
-        return response()->json($response, $code);
+        return response()->json($id);
     }
 
     /**
@@ -109,7 +108,7 @@ class MajorController extends Controller
 
         $major->update($validate);
 
-        return $request->ajax()?response()->json(['oke'=>'oke']):redirect()->route('major.index')->with('success', 'Kelas berhasi diubah');
+        return $request->ajax()?response()->json($major->toArray()):redirect()->route('major.index')->with('success', 'Kelas berhasi diubah');
     }
 
     /**

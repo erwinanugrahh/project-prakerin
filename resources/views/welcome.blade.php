@@ -178,6 +178,7 @@
     <!--/ Container end -->
   </section><!-- Facts end -->
 
+  @can('smk')
   <section id="program-keahlian" class="program-keahlian pb-0">
     <div class="container">
       <div class="row text-center">
@@ -211,6 +212,7 @@
     </div>
     <!--/ Container end -->
   </section><!-- Service end -->
+  @endcan
 
   <section id="gallery" class="gallery solid-bg">
     <div class="container">
