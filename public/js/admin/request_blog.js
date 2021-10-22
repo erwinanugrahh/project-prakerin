@@ -72,7 +72,7 @@ function send_result(ids, action, additional){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'request_blog/send_result',
+                url: '/admin/request_blog/send_result',
                 method: 'POST',
                 data: {
                     _token: $('input[name=_token]').val(),
