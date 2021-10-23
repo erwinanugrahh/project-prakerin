@@ -46,9 +46,6 @@ Route::group(['namespace'=>'App\Http\Controllers'], function(){
         Route::post('student/delete-selected', 'StudentController@delete_selected');
         Route::post('student/import', 'StudentController@import');
 
-        // Route::resource('blogger', BloggerController::class);
-        // Route::post('blogger/delete-selected', 'BloggerController@delete_selected');
-
         Route::resource('setting', SettingController::class);
 
         Route::resource('testimonial', TestimonialController::class);
