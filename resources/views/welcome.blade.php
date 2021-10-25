@@ -402,7 +402,7 @@
       <!--/ Title row end -->
 
       <div class="row">
-          @foreach (App\Models\Blog::latest()->take(3)->get() as $blog)
+          @foreach (App\Models\Blog::latest()->where('status', 'accepted')->take(3)->get() as $blog)
           <div class="col-lg-4 col-md-6 mb-4">
               <div class="latest-post">
               <div class="latest-post-media">

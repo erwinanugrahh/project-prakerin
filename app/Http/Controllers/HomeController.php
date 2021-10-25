@@ -105,7 +105,7 @@ class HomeController extends Controller
     public function blog($category='', $blog='')
     {
         $search = request()->get('search');
-        $blogs = Blog::where('status', 'accepted');
+        $blogs = Blog::latest()->where('status', 'accepted');
         if($search){
             $blogs = $blogs->where(function($q) use ($search){
                 $q->where('title', 'LIKE', '%'.$search.'%')

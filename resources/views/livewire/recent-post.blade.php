@@ -2,10 +2,10 @@
     <div class="widget recent-posts">
         <h3 class="widget-title">Berita Terkini</h3>
         <ul class="list-unstyled">
-          @foreach (App\Models\Blog::latest()->take(3)->get() as $blog)
+          @foreach (App\Models\Blog::latest()->where('status', 'accepted')->take(3)->get() as $blog)
           <li class="d-flex align-items-center">
             <div class="posts-thumb">
-              <a href="{{ url('blogs/'.$blog->slug) }}"><img loading="lazy" alt="img" src="{{ asset("images/banners/$blog->banner") }}"></a>
+              <a href="{{ url('blogs/'.$blog->category->name.'/'.$blog->slug) }}"><img loading="lazy" alt="img" src="{{ asset("images/banners/$blog->banner") }}"></a>
             </div>
             <div class="post-info">
               <h4 class="entry-title">

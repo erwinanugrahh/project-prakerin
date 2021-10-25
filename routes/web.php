@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -101,7 +102,13 @@ Route::group(['prefix' => 'filemanager'], function() {
 });
 Route::get('/skill/{skill}', [\App\Http\Controllers\SkillController::class, 'show']);
 
-Route::view('/ppdb', 'ppdb')->middleware('can:open-pengumuman');
+Route::get('/ppdb', function(Request $request){
+    $ppdb = false;
+    if($request->has('nisn')&&$request->nisn!=''){
+        $ppdb = \App\Models\Student::where('nisn', request()->nisn)->first();
+    }
+    return view('ppdb', compact('ppdb'));
+})->middleware('can:open-pengumuman');
 Route::view('/ppdb/daftar', 'ppdb-daftar')->middleware('can:open-ppdb');
 
 Route::view('/contact', 'contact');
