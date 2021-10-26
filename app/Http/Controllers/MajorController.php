@@ -27,10 +27,17 @@ class MajorController extends Controller
             $level[2]['Name'] = 'XI';
             $level[3]['Name'] = 'XII';
         }
-        $is_smk = setting('setting_web')['website_for']=='smk';
-        $data = Major::select('id', 'level', 'skill_id', 'name')->get();
         $skills = Skill::select('id', 'name')->get()->toArray();
-        return request()->ajax()?response()->json(compact('level', 'data','is_smk', 'skills')):view('admin.major.index');
+        $fields = [
+            ["name" => "level", "title"=> "Tingkat", "type"=> "select", "width"=> 50 , "items"=> $level, "valueField" => "Id", "textField" => "Name" ],
+            ["name" => "skill_id", "title"=> "Jurusan", "type"=> "select", "width"=> 150, "items"=> $skills, "valueField" => "id", "textField" => "name" ],
+            ["name" => "name", "title"=> "Kelas", "type"=> "text", "width"=> 200 ],
+            ["type" => "control" ]
+        ];
+        if(setting('setting_web')['website_for']!='smk'){
+            unset($fields[1]);
+        }
+        return request()->ajax()?response()->json($fields):view('admin.major.index');
     }
 
     public function ajax()

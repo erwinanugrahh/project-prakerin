@@ -14,8 +14,8 @@
                 </div>
             </form>
         </div>
-        @if ($ppdb!=false)
-            @if ($ppdb)
+        @if ($request->has('nisn')&&$request->nisn!='')
+            @if (!is_null($ppdb))
                 <div class="alert alert-success text-center">
                     <h3 class="text-success my-0">Selamat <span class="text-primary">{{ $ppdb->name }}</span>! anda telah diterima.</h3>
                     <h4 class="text-success">Silahkan anda <a href="/login" class="text-primary">login</a> menggunakan NISN / Email anda dan tanggal lahir sebagai password nya</h4>

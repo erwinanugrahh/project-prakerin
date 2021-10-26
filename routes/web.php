@@ -103,11 +103,11 @@ Route::group(['prefix' => 'filemanager'], function() {
 Route::get('/skill/{skill}', [\App\Http\Controllers\SkillController::class, 'show']);
 
 Route::get('/ppdb', function(Request $request){
-    $ppdb = false;
+    $ppdb = null;
     if($request->has('nisn')&&$request->nisn!=''){
         $ppdb = \App\Models\Student::where('nisn', request()->nisn)->first();
     }
-    return view('ppdb', compact('ppdb'));
+    return view('ppdb', compact('ppdb', 'request'));
 })->middleware('can:open-pengumuman');
 Route::view('/ppdb/daftar', 'ppdb-daftar')->middleware('can:open-ppdb');
 

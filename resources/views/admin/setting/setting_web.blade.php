@@ -10,8 +10,12 @@
     <div id="setting_web" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body p-3 text-justify accordion-body">
             <div class="d-flex justify-content-center mb-3">
-                <img id="preview-image-before-upload" src="https://iplbi.or.id/wp-content/plugins/pl-platform/engine/ui/images/default-landscape.png"
-                alt="preview image" style="max-height: 150px;">
+                @if (file_exists(public_path('logo.png')))
+                    <img id="preview-image-before-upload" src="{{ url('logo.png') }}" alt="" style="max-height: 150px">
+                @else
+                    <img id="preview-image-before-upload" src="{{ asset('user/images/icon-image/banner-idean.png') }}"
+                    alt="preview image" style="max-height: 150px;">
+                @endif
             </div>
             <form action="{{ route('setting.store') }}" method="post" enctype="multipart/form-data">
                 @csrf

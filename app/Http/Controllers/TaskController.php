@@ -8,7 +8,7 @@ use App\Models\LessonGroup;
 use App\Notifications\TaskFinished;
 use Illuminate\Http\Request;
 use App\Support\Collection;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
@@ -28,11 +28,11 @@ class TaskController extends Controller
         }
         $lessons = (new Collection($model->get()->map(function($item){
             return [
-                'title' => $item->lesson->title,
-                'teacher' => $item->lesson->teacher->getFullName(),
+                'title' => $item->lesson->title??'',
+                'teacher' => isset($item->lesson->teacher)?$item->lesson->teacher->getFullName():'',
                 'end_at' => $item->end_at,
-                'value' => $item->lesson->getMyValue(),
-                'href' => route('task.show', $item->lesson->slug)
+                'value' => isset($item->lesson)?$item->lesson->getMyValue():0,
+                'href' => route('task.show', $item->lesson->slug??'')
             ];
         })->toArray()))->paginate(6);
         $request->flash();
@@ -87,7 +87,7 @@ class TaskController extends Controller
                 'icon' => 'fas fa-user',
                 'color' => 'bg-info',
                 'title'=>'Tugas '.auth()->user()->name,
-                'text'=>\Str::limit(strip_tags($validate['content']), 50),
+                'text'=>Str::limit(strip_tags($validate['content']), 50),
                 'url'=>url('teacher/lesson/task/'.$newTask->id)
             ];
             $newTask->lesson->teacher->user->notify(new TaskFinished($data));
